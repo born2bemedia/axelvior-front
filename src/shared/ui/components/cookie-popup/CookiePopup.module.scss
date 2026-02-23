@@ -13,8 +13,8 @@
   gap: 12px;
   z-index: 1000;
   border-radius: 0;
-  background: #000;
-  border: 1px solid #222;
+  background: #f1f6fd;
+  border: 1px solid #0000001a;
   box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.05);
 
   max-width: 100%;
@@ -42,7 +42,7 @@
   }
 
   h2 {
-    color: #fff;
+    color: #000;
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
@@ -52,7 +52,7 @@
   }
 
   p {
-    color: #ccc;
+    color: #000;
     font-size: 14px;
     font-style: normal;
     font-weight: 300;
