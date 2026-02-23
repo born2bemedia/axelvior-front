@@ -1,0 +1,372 @@
+@use '@/shared/lib/styles/mixin.scss' as *;
+
+.who_tabs {
+  &__wrapper {
+    padding: 144px 0;
+    @include tablet {
+      padding: 80px 0;
+    }
+    @include mobile {
+      padding: 60px 0;
+    }
+  }
+
+  &__inner {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    @include mobile {
+      flex-direction: column;
+      gap: 24px;
+    }
+  }
+
+  /* ── Tab navigation (left sidebar) ──────────── */
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 250px;
+    flex-shrink: 0;
+
+    @include mobile {
+      width: 100%;
+      flex-direction: row;
+      overflow-x: auto;
+      gap: 0;
+      -webkit-overflow-scrolling: touch;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+
+  &__nav_btn {
+    background: none;
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 16px 0;
+    text-align: left;
+    cursor: pointer;
+    font-family: var(--font-cabinet-grotesk, sans-serif);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 140%;
+    letter-spacing: var(--letter-spacing--0_25, -0.25px);
+    text-transform: uppercase;
+    color: var(--color-black-solid, #000);
+    transition: font-weight 0.2s, border-color 0.2s;
+    justify-content: flex-start;
+
+    @include mobile {
+      white-space: nowrap;
+      padding: 12px 16px;
+      border-top: none;
+      border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+      font-size: 12px;
+    }
+
+    &--active {
+      font-weight: 700;
+      border-top-width: 1px;
+      border-top-style: solid;
+      @include mobile {
+        border-top: none;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+      }
+    }
+  }
+
+  /* ── Panel ─────────────────────────────────── */
+
+  &__panel {
+    flex: 1;
+    min-height: 500px;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    @include mobile {
+      min-height: auto;
+    }
+  }
+
+  &__panel_inner {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 48px;
+    @include mobile {
+      padding: 32px 20px;
+      gap: 32px;
+    }
+  }
+
+  /* ── Shared tab content ────────────────────── */
+
+  &__tab_content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 700px;
+    z-index: 1;
+  }
+
+  &__tab_heading {
+    font-family: var(--font-clash-grotesk, sans-serif);
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 120%;
+    letter-spacing: var(--letter-spacing--0_25, -0.25px);
+    color: var(--color-white-solid, #fff);
+    @include tablet {
+      font-size: 40px;
+    }
+    @include mobile {
+      font-size: 32px;
+    }
+  }
+
+  &__tab_text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: var(--color-white-solid, #fff);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    letter-spacing: var(--letter-spacing--0_5, -0.5px);
+    @include mobile {
+      font-size: 16px;
+    }
+  }
+
+  &__tab_footer {
+    max-width: 700px;
+    color: var(--color-white-solid, #fff);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    letter-spacing: var(--letter-spacing--0_5, -0.5px);
+    @include mobile {
+      font-size: 16px;
+    }
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+
+  /* ── Tab 1: Partners grid ──────────────────── */
+
+  &__partners {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  &__partners_title {
+    color: var(--color-white-solid, #fff);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%;
+    letter-spacing: var(--letter-spacing--0_25, -0.25px);
+    text-align: center;
+    @include mobile {
+      font-size: 20px;
+      text-align: left;
+    }
+  }
+
+  &__partners_grid {
+    display: flex;
+    gap: 2px;
+    @include mobile {
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+
+  &__partner_card {
+    flex: 1;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    p {
+      color: var(--color-white-solid, #fff);
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 140%;
+      letter-spacing: var(--letter-spacing--0_25, -0.25px);
+    }
+  }
+
+  /* ── Tab 2: List items ─────────────────────── */
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  &__list_title {
+    color: var(--color-white-solid, #fff);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%;
+    letter-spacing: var(--letter-spacing--0_25, -0.25px);
+    @include mobile {
+      font-size: 20px;
+    }
+  }
+
+  &__list_items {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__list_item {
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    p {
+      color: var(--color-white-solid, #fff);
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 140%;
+      letter-spacing: var(--letter-spacing--0_25, -0.25px);
+    }
+  }
+
+  /* ── Tab 3: Philosophy ─────────────────────── */
+
+  &__philosophy {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &__philosophy_bg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    max-width: 1022px;
+    object-fit: cover;
+    pointer-events: none;
+    opacity: 0.6;
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__philosophy_gradient {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  /* ── Tab 4: Offer cards ────────────────────── */
+
+  &__offer_grid {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    @include mobile {
+      flex-direction: column;
+    }
+  }
+
+  &__offer_card {
+    flex: 1;
+    min-height: 300px;
+    border-radius: 4px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: var(--color-white-solid, #fff);
+    overflow: hidden;
+    position: relative;
+    @include mobile {
+      min-height: 200px;
+    }
+
+    img {
+      width: 106px;
+      height: auto;
+      position: absolute;
+      bottom: 0;
+      right: 24px;
+    }
+
+    &--dark {
+      color: var(--color-blue-8, #000829);
+    }
+  }
+
+  &__offer_title {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
+    letter-spacing: var(--letter-spacing--0_25, -0.25px);
+  }
+
+  &__offer_desc {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    letter-spacing: var(--letter-spacing--0_25, -0.25px);
+  }
+
+  &__offer_cta {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  &__offer_btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background: var(--color-white-solid, #fff);
+    color: var(--color-blue-8, #000829);
+    font-family: var(--font-cabinet-grotesk, sans-serif);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    letter-spacing: var(--letter-spacing--0_25, -0.25px);
+    border: none;
+    border-radius: 3px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}

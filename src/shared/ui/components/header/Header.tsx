@@ -32,7 +32,7 @@ export const Header = () => {
 
   const NAV_ITEMS = [
     { text: t("home", { fallback: "Home" }), href: "/" },
-    { text: t("who", { fallback: "Who" }), href: "/about-us" },
+    { text: t("who", { fallback: "Who" }), href: "/who" },
     { text: t("what", { fallback: "What" }), href: "/due-diligence" },
     { text: t("why", { fallback: "Why" }), href: "/market-research" },
     {

@@ -31,7 +31,12 @@ export const HomeHero = () => {
                 fallback: "Clarity changes everything.",
               })}
             </motion.h1>
-            <motion.p>
+            <motion.p
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInUp}
+            >
               {t("subtitle", {
                 fallback: "Effort stalls when it’s spread too thin.",
               })}{" "}
