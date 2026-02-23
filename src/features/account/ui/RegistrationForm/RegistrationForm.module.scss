@@ -1,0 +1,193 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  width: 100%;
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    h1 {
+      color: #fff;
+      text-align: center;
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+    }
+    .text {
+      color: #ccc;
+      text-align: center;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: normal;
+    }
+  }
+
+  .loginLink {
+    color: #ccc;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+  }
+  .formWrapper {
+    border: 1px solid #222;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 32px;
+  }
+  .formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+    width: 100%;
+
+    label {
+      color: #ccc;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: normal;
+    }
+
+    .required {
+      color: #ff2d30;
+      margin-left: 4px;
+    }
+
+    input {
+      display: flex;
+      height: 38px;
+      padding: 10px 16px;
+      align-items: center;
+      gap: 10px;
+      align-self: stretch;
+      transition: border-color 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.03);
+      color: #fff;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: normal;
+
+      &:focus {
+        outline: none;
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+      }
+    }
+
+    .passwordWrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      input {
+        padding-right: 48px;
+        width: 100%;
+      }
+
+      .togglePassword {
+        position: absolute;
+        right: 12px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(255, 255, 255, 0.7);
+        transition: color 0.2s ease;
+        width: 24px;
+        height: 24px;
+
+        &:hover {
+          color: rgba(255, 255, 255, 0.9);
+        }
+
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+
+    .errorInput {
+      border-color: rgba(255, 62, 71, 0.3);
+    }
+
+    .error {
+      color: #ff2d30;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 20px;
+      margin-top: 4px;
+    }
+  }
+
+  .rootError {
+    color: #ff2d30;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+  }
+
+  button {
+    width: 100%;
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.successMessage {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 28rem;
+  margin: 0 auto;
+  text-align: center;
+
+  h2 {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    color: #ccc;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  button {
+    width: 100%;
+  }
+}

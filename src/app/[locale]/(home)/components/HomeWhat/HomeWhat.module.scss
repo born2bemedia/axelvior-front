@@ -1,0 +1,290 @@
+@use '@/shared/lib/styles/mixin.scss' as *;
+
+.home_what {
+  background: #f1f6fd;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 144px 0;
+
+    @include tablet {
+      padding: 80px 0;
+      border: none;
+      gap: 32px;
+    }
+  }
+
+  // ── HEADER ─────────────────────────────────────────────────────────────────
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__label_row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__label {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: -0.25px;
+    text-transform: uppercase;
+    color: #000;
+  }
+
+  &__divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  // ── INTRO ──────────────────────────────────────────────────────────────────
+
+  &__intro {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 40px 0;
+
+    @include tablet {
+      padding: 0;
+    }
+  }
+
+  &__title {
+    font-size: 40px;
+    font-weight: 300;
+    line-height: 1.2;
+    letter-spacing: -0.25px;
+    color: #000;
+
+    strong {
+      font-weight: 700;
+    }
+
+    @include tablet {
+      font-size: 32px;
+    }
+  }
+
+  &__intro p {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: -0.5px;
+    color: #000;
+    max-width: 800px;
+
+    @include tablet {
+      font-size: 14px;
+    }
+  }
+
+  // ── SOLUTIONS ──────────────────────────────────────────────────────────────
+
+  &__solutions {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__solutions_title {
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: -0.75px;
+    color: #000;
+    text-align: center;
+    width: 100%;
+
+    @include tablet {
+      font-size: 24px;
+      text-align: left;
+    }
+  }
+
+  // ── CARDS ──────────────────────────────────────────────────────────────────
+
+  &__cards {
+    display: flex;
+    gap: 20px;
+    align-items: stretch;
+
+    @include tablet {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+
+  &__card {
+    flex: 1;
+    min-width: 0;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 400px;
+    padding: 24px;
+    position: relative;
+
+    @include tablet {
+      min-height: auto;
+    }
+  }
+
+  &__card_content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    position: relative;
+    z-index: 1;
+    flex: 1;
+  }
+
+  &__card_title {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: -0.25px;
+  }
+
+  &__card_list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__card_item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &__card_item_divider {
+    display: block;
+    width: 100%;
+    height: 1px;
+  }
+
+  &__card_item_row {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    padding-top: 6px;
+  }
+
+  &__card_plus {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    flex-shrink: 0;
+    width: 16px;
+  }
+
+  &__card_item_text {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: -0.5px;
+
+    @include tablet {
+      font-size: 14px;
+    }
+  }
+
+  // ── BANNER ─────────────────────────────────────────────────────────────────
+
+  &__banner {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 48px;
+
+    @include tablet {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      min-height: auto;
+      padding: 24px;
+    }
+  }
+
+  &__banner_bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    @include tablet {
+      display: none;
+    }
+  }
+
+  &__banner_box {
+    background: #0c4a58;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    width: 700px;
+    position: relative;
+    z-index: 1;
+
+    @include tablet {
+      width: 100%;
+      border-radius: 4px;
+      position: relative;
+    }
+
+    p {
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 1.4;
+      letter-spacing: -0.25px;
+      color: #fff;
+
+      @include tablet {
+        font-size: 16px;
+      }
+    }
+  }
+
+  &__banner_btn {
+    display: inline-flex;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    background: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: -0.25px;
+    color: #000829;
+    white-space: nowrap;
+    align-self: flex-start;
+    transition: background 0.2s;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.9);
+    }
+  }
+}

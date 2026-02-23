@@ -1,0 +1,229 @@
+@use '@/shared/lib/styles/mixin.scss' as *;
+
+.footer {
+  background: #f1f6fd;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    padding: 40px 0;
+
+    @include tablet {
+      gap: 40px;
+    }
+  }
+
+  // ─── TOP SECTION ─────────────────────────────────────────────────────────────
+
+  &__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    @include tablet {
+      flex-direction: column;
+      gap: 40px;
+    }
+  }
+
+  // ─── BRAND ───────────────────────────────────────────────────────────────────
+
+  &__brand {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__logo_text {
+    display: block;
+    font-family: var(--font-onest), sans-serif;
+    font-size: 60px;
+    font-weight: 300;
+    line-height: 1.2;
+    letter-spacing: -0.25px;
+    color: var(--color-black-solid, #000);
+    text-decoration: none;
+    white-space: nowrap;
+
+    @include tablet {
+      font-size: 48px;
+    }
+  }
+
+  // ─── SOCIAL ICONS ────────────────────────────────────────────────────────────
+
+  &__socials {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 4px;
+    overflow: hidden;
+    padding: 1px;
+  }
+
+  &__social_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    transition: opacity 0.2s;
+
+    &:last-child {
+      border-right: none;
+    }
+
+    &:hover {
+      opacity: 0.6;
+    }
+
+    // Invert the white SVG icons to be dark on light background
+    svg {
+      width: 16px;
+      height: 16px;
+      filter: brightness(0);
+    }
+  }
+
+  // ─── NAVIGATION ──────────────────────────────────────────────────────────────
+
+  &__nav {
+    display: flex;
+    gap: 24px;
+    width: 900px;
+
+    @include desktop {
+      width: auto;
+      gap: 16px;
+    }
+
+    @include tablet {
+      flex-direction: column;
+      width: 100%;
+      gap: 0;
+    }
+  }
+
+  &__nav_col {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__nav_header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 0;
+  }
+
+  &__nav_plus {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    color: #09234f;
+    flex-shrink: 0;
+  }
+
+  &__nav_cat {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: -0.25px;
+    text-transform: uppercase;
+    color: var(--color-black-solid, #000);
+  }
+
+  &__nav_links {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__nav_link {
+    display: block;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: -0.25px;
+    color: var(--color-black-solid, #000);
+    padding: 12px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    transition: opacity 0.2s;
+
+    @include tablet {
+      font-size: 14px;
+    }
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
+  // ─── BOTTOM SECTION ──────────────────────────────────────────────────────────
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+
+    @include tablet {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+      gap: 10px;
+    }
+  }
+
+  &__copyright {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: -0.25px;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.65);
+
+    @include tablet {
+      font-size: 11px;
+    }
+  }
+
+  &__legal {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    @include tablet {
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    a {
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: -0.25px;
+      text-transform: uppercase;
+      color: rgba(0, 0, 0, 0.65);
+      text-decoration: none;
+      transition: color 0.2s;
+
+      &:hover {
+        color: rgba(0, 0, 0, 0.9);
+      }
+    }
+  }
+
+  &__legal_sep {
+    display: inline-block;
+    width: 1px;
+    height: 12px;
+    background: rgba(0, 0, 0, 0.08);
+    flex-shrink: 0;
+
+    @include tablet {
+      display: none;
+    }
+  }
+}

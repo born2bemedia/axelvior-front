@@ -1,0 +1,75 @@
+@use '@/shared/lib/styles/mixin.scss' as *;
+
+.home_from {
+  background: #f1f6fd;
+  position: relative;
+  overflow: hidden;
+
+  &__dots {
+    position: absolute;
+    left: -225px;
+    top: -408px;
+    width: 1308px;
+    height: 695px;
+    pointer-events: none;
+    user-select: none;
+
+    @include tablet {
+      width: 600px;
+      height: 320px;
+      left: -100px;
+      top: -50px;
+    }
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 80px 0;
+    position: relative;
+    z-index: 1;
+
+    @include tablet {
+      justify-content: flex-start;
+      padding: 60px 0;
+    }
+  }
+
+  &__content {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+
+    @include tablet {
+      width: 100%;
+      text-align: left;
+    }
+  }
+
+  &__title {
+    font-size: 40px;
+    font-weight: 300;
+    line-height: 1.2;
+    letter-spacing: -0.25px;
+    color: #000;
+
+    @include tablet {
+      font-size: 32px;
+    }
+  }
+
+  &__subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: -0.25px;
+    color: #000;
+
+    @include tablet {
+      font-size: 14px;
+    }
+  }
+}

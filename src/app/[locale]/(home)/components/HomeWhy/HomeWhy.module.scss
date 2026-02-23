@@ -1,0 +1,264 @@
+@use '@/shared/lib/styles/mixin.scss' as *;
+
+.home_why {
+  background: #fff;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 80px 0;
+
+    @include tablet {
+      padding: 60px 0;
+      gap: 32px;
+    }
+  }
+
+  // ── HEADER ─────────────────────────────────────────────────────────────────
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__label {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: -0.25px;
+    text-transform: uppercase;
+    color: #000;
+  }
+
+  &__divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  // ── BODY ───────────────────────────────────────────────────────────────────
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+  }
+
+  &__intro {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__title {
+    font-size: 40px;
+    font-weight: 300;
+    line-height: 1.2;
+    letter-spacing: -0.25px;
+    color: #000;
+
+    @include tablet {
+      font-size: 32px;
+    }
+  }
+
+  &__desc {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: -0.5px;
+    color: #000;
+    max-width: 800px;
+
+    @include tablet {
+      font-size: 14px;
+    }
+  }
+
+  // ── BELIEFS ────────────────────────────────────────────────────────────────
+
+  &__beliefs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__beliefs_lead {
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: -0.75px;
+    color: #000;
+
+    @include tablet {
+      font-size: 24px;
+    }
+  }
+
+  &__beliefs_grid {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+
+    @include tablet {
+      flex-direction: column;
+      gap: 0;
+    }
+  }
+
+  &__belief_item {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+    img {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    @include tablet {
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      flex-direction: column;
+    }
+  }
+
+  &__belief_title {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: -0.25px;
+    color: #000;
+
+    @include tablet {
+      font-size: 18px;
+    }
+  }
+
+  // ── BANNER ─────────────────────────────────────────────────────────────────
+
+  &__banner {
+    background: #384ce3;
+    border-radius: 4px;
+    overflow: hidden;
+    padding: 48px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    position: relative;
+
+    @include tablet {
+      padding: 24px;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  &__banner_content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 700px;
+    flex-shrink: 0;
+
+    @include tablet {
+      width: 100%;
+    }
+  }
+
+  &__banner_title {
+    font-size: 40px;
+    font-weight: 300;
+    line-height: 1.2;
+    letter-spacing: -0.25px;
+    color: #fff;
+
+    @include tablet {
+      font-size: 28px;
+    }
+  }
+
+  &__banner_text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    p {
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 1.4;
+      letter-spacing: -0.25px;
+      color: #fff;
+
+      @include tablet {
+        font-size: 16px;
+      }
+    }
+  }
+
+  &__banner_btn {
+    display: inline-flex;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    background: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: -0.25px;
+    color: #000829;
+    white-space: nowrap;
+    align-self: flex-start;
+    transition: background 0.2s;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.9);
+    }
+  }
+
+  &__banner_decoration {
+    display: flex;
+    height: 204px;
+    width: 298px;
+    min-height: var(--height-204, 204px);
+    padding: 24px 218px 24px 0;
+    align-items: center;
+    flex: 1 0 0;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 4px;
+    border-top: var(--stroke-weight-2, 2px) solid var(--color-azure-88, #c4f0ff);
+    border-bottom: var(--stroke-weight-2, 2px) solid
+      var(--color-azure-88, #c4f0ff);
+    border-left: var(--stroke-weight-2, 2px) solid
+      var(--color-azure-88, #c4f0ff);
+
+    @include tablet {
+      display: none;
+    }
+
+
+    img {
+      width: 132px;
+      height: auto;
+      position: absolute;
+      left: -66px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+
+}

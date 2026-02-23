@@ -1,0 +1,72 @@
+@use '@/shared/lib/styles/mixin.scss' as *;
+
+.home_hero {
+  background: #f1f6fd;
+  &__content {
+    padding-top: 96px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    border-right: var(--stroke-weight-1, 1px) solid
+      var(--color-black-10, rgba(0, 0, 0, 0.1));
+    border-left: var(--stroke-weight-1, 1px) solid
+      var(--color-black-10, rgba(0, 0, 0, 0.1));
+    @include tablet {
+      border: none;
+    }
+    h1 {
+      color: var(--color-black-solid, #000);
+      text-align: center;
+      font-size: 60px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 120%; /* 72px */
+      letter-spacing: var(--letter-spacing--0_25, -0.25px);
+      font-family: var(--font-cabinet-grotesk);
+      @include tablet {
+        font-size: 36px;
+      }
+    }
+    p {
+      color: var(--color-black-solid, #000);
+      text-align: center;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 140%; /* 22.4px */
+      letter-spacing: var(--letter-spacing--0_25, -0.25px);
+      @include tablet {
+        font-size: 14px;
+      }
+    }
+  }
+  &__buttons {
+    display: flex;
+    gap: 10px;
+    margin: 12px 0 32px 0;
+    @include tablet {
+    }
+  }
+  &__image {
+    width: 100%;
+    height: auto;
+    img {
+      width: 100%;
+      height: auto;
+      &.desktop_image {
+        display: block;
+        @include tablet {
+          display: none;
+        }
+      }
+      &.mobile_image {
+        display: none;
+        @include tablet {
+          display: block;
+        }
+      }
+    }
+  }
+}

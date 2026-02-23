@@ -1,0 +1,165 @@
+@use '@/shared/lib/styles/mixin.scss' as *;
+
+.title {
+  margin-bottom: 1.5rem;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.empty,
+.loadingText {
+  margin-bottom: 1rem;
+  color: rgba(204, 204, 204, 0.8);
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.tableWrap {
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+  @include tablet {
+    min-width: unset;
+  }
+
+  tr {
+    @include tablet {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 16px;
+      td {
+        border-right: none;
+      }
+      .serviceCell {
+        width: 100%;
+        order: 2;
+        font-size: 20px;
+      }
+      .date {
+        width: 50%;
+        order: 1;
+        text-align: right;
+      }
+      .documentsCell {
+        width: 100%;
+        order: 3;
+      }
+      .manage {
+        width: 100%;
+        order: 4;
+        button{
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  td {
+    padding: 12px;
+    color: #fff;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.03);
+    border-top: 2px solid #000;
+    &:first-child {
+      border-left: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    &:last-child {
+      border-right: 1px solid rgba(255, 255, 255, 0.05);
+    }
+  }
+
+  th {
+    color: #fff;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 2px solid #000;
+    &:first-child {
+      border-left: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    &:last-child {
+      border-right: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    text-align: left;
+    white-space: nowrap;
+    @include tablet {
+      display: none;
+    }
+  }
+}
+
+.serviceCell {
+  white-space: pre-line;
+}
+
+.date {
+  white-space: nowrap;
+}
+
+.documentsCell {
+  .documents {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+}
+
+.docLink {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 300;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: rgba(255, 255, 255, 0.85);
+  }
+}
+
+.manage {
+  white-space: nowrap;
+}
+
+.orderAgainBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  height: 38px;
+  font-size: 12px;
+  font-weight: 300;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  border-radius: 0;
+  cursor: pointer;
+  transition: border-color 0.3s ease, background 0.3s ease;
+  box-sizing: border-box;
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+  }
+}
+
+.back {
+  margin-top: 1.5rem;
+  display: flex;
+}
