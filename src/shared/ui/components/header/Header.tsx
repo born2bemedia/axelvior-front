@@ -33,15 +33,15 @@ export const Header = () => {
   const NAV_ITEMS = [
     { text: t("home", { fallback: "Home" }), href: "/" },
     { text: t("who", { fallback: "Who" }), href: "/who" },
-    { text: t("what", { fallback: "What" }), href: "/due-diligence" },
-    { text: t("why", { fallback: "Why" }), href: "/market-research" },
+    { text: t("what", { fallback: "What" }), href: "/what" },
+    { text: t("why", { fallback: "Why" }), href: "/why" },
     {
       text: t("clients", { fallback: "Clients" }),
-      href: "/portfolio-services",
+      href: "/clients",
     },
-    { text: t("pricing", { fallback: "Pricing" }), href: "/lease-advisory" },
-    { text: t("ideas", { fallback: "Ideas" }), href: "/free-guides" },
-    { text: t("connect", { fallback: "Connect" }), href: "/contact" },
+    { text: t("pricing", { fallback: "Pricing" }), href: "/pricing" },
+    { text: t("ideas", { fallback: "Ideas" }), href: "/ideas" },
+    { text: t("connect", { fallback: "Connect" }), href: "/connect" },
   ] as const;
 
   useEffect(() => {

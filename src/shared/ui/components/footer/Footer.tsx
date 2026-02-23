@@ -21,23 +21,23 @@ export const Footer = () => {
     {
       category: t('foundation', { fallback: 'Foundation' }),
       links: [
-        { text: t('footer-who', { fallback: 'Who' }), href: '/about-us' },
-        { text: t('footer-what', { fallback: 'What' }), href: '/due-diligence' },
-        { text: t('footer-why', { fallback: 'Why' }), href: '/market-research' },
+        { text: t('footer-who', { fallback: 'Who' }), href: '/who' },
+        { text: t('footer-what', { fallback: 'What' }), href: '/what' },
+        { text: t('footer-why', { fallback: 'Why' }), href: '/why' },
       ],
     },
     {
       category: t('engage', { fallback: 'Engage' }),
       links: [
-        { text: t('footer-clients', { fallback: 'Clients' }), href: '/portfolio-services' },
-        { text: t('footer-pricing', { fallback: 'Pricing' }), href: '/lease-advisory' },
-        { text: t('footer-connect', { fallback: 'Connect' }), href: '/contact' },
+        { text: t('footer-clients', { fallback: 'Clients' }), href: '/clients' },
+        { text: t('footer-pricing', { fallback: 'Pricing' }), href: '/pricing' },
+        { text: t('footer-connect', { fallback: 'Connect' }), href: '/connect' },
       ],
     },
     {
       category: t('thinking', { fallback: 'Thinking' }),
       links: [
-        { text: t('footer-ideas', { fallback: 'Ideas' }), href: '/free-guides' },
+        { text: t('footer-ideas', { fallback: 'Ideas' }), href: '/ideas' },
       ],
     },
   ];
