@@ -112,11 +112,110 @@
   "common": {
     "last-updated": "Last updated:"
   },
+  "whoFor": {
+    "heading": "Axelvior is for entrepreneurs who:",
+    "card1": "Carry full ownership of what they build — from concept to outcome",
+    "card2": "Operate without committees or approval layers — making final decisions themselves",
+    "card3": "Take responsibility for both results and direction, understanding that the two must align",
+    "card4": "Recognize that growth brings new challenges, constraints, and risks that require new approaches",
+    "footer": "Our work isn't about titles or headcount. It's about ownership — intellectual, strategic, and personal."
+  },
   "whoHero": {
     "title1": "Who we are",
     "title2": "Axelvior exists to help independent entrepreneurs build with intention and clarity.",
     "subtitle1": "We’re not a marketing agency or a typical consultancy. We’re here to bring structure to your work — to help turn effort into something sustainable and impactful.",
     "subtitle2": "Our goal is to help entrepreneurs move from idea and instinct to tangible growth, without sacrificing independence."
+  },
+  "whoTabs": {
+    "tab1": {
+      "heading": "WHO WE WORK WITH",
+      "desc1": "We work best with those who are past the starting phase, but feel that what they are building could be clearer, more intentional, or more aligned.",
+      "desc2": "This isn't about fixing broken systems; this is about refining what already exists and making it stronger, sharper, and capable of lasting growth.",
+      "partnersTitle": "Our ideal partners are:",
+      "partner1": "Entrepreneurs in the middle of their journey, ready for structured growth and clarity",
+      "partner2": "Individuals who want more than success; they want sustainability and impact",
+      "partner3": "People who understand the importance of direction — and the role clarity plays in decision-making",
+      "footer": "We work with those who are prepared to invest in their business's longevity — because growth doesn't happen overnight, and it's not linear."
+    },
+    "tab2": {
+      "heading": "WHAT MAKES US DIFFERENT",
+      "desc1": "At Axelvior, we don't take a one-size-fits-all approach.",
+      "desc2": "We understand that each entrepreneur's journey is different, and we treat each one with the customized attention it deserves.",
+      "listTitle": "What sets us apart:",
+      "footer": "Our team is made up of strategists, designers, copywriters, and developers — all working in harmony to help you move forward with intention, not just speed."
+    },
+    "tab3": {
+      "heading": "OUR PHILOSOPHY",
+      "desc1": "We believe that business development starts with clarity. Without it, momentum can quickly lose shape, and the progress you've worked so hard for can become scattered or misdirected.",
+      "desc2": "Axelvior exists to help you restore clarity in your growth process so that you can move forward with confidence and purpose.",
+      "desc3": "We are here to help you regain control over your direction — whether that means refining your offer, optimizing your workflows, or preparing for the next phase of growth."
+    },
+    "tab4": {
+      "heading": "WHAT WE OFFER",
+      "cta": "Start a conversation with Axelvior"
+    }
+  },
+  "whyHero": {
+    "title1": "Why We Exist",
+    "subtitle": "Many business solutions are focused on",
+    "subtitle2": "quick wins, growth hacks, or one-size-fits-all frameworks.",
+    "subtitle3": "While these approaches can deliver results, they often lack the depth and foundation needed for",
+    "subtitle4": "long-term sustainability.",
+    "subtitle5": "We exist because",
+    "subtitle6": "sustainable success is designed,",
+    "subtitle7": "not improvised. We understand that real progress doesn’t come from rushing toward growth, but from building the right foundation and setting a clear path forward.",
+    "subtitle8": "Our role isn’t to dictate your direction — it’s to help you",
+    "subtitle9": "regain control",
+    "subtitle10": "of your business and ensure the journey is",
+    "subtitle11": "deliberate,",
+    "subtitle12": "not reactive."
+  },
+  "whyTabs": {
+    "tabs": {
+      "clarity": "WHY CLARITY MATTERS",
+      "structure": "WHY STRUCTURE IS KEY",
+      "growth": "WHY FOCUS ON INTENTIONAL GROWTH",
+      "commitment": "THE AXELVIOR COMMITMENT",
+      "philosophy": "WHY THIS PHILOSOPHY WORKS"
+    },
+    "tab1": {
+      "heading": "WHY CLARITY MATTERS",
+      "desc1": "As an entrepreneur, you likely face daily decisions with competing priorities, changing circumstances, and limited resources. It's easy for your work to become scattered or fragmented, with progress feeling like it's constantly restarting.",
+      "desc2": "Clarity is not about having all the answers upfront — it's about knowing what matters most and making decisions from a place of purpose, not urgency.",
+      "desc3": "We help you define that clarity so every action you take builds toward a future you can visualize."
+    },
+    "tab2": {
+      "heading": "WHY STRUCTURE IS KEY",
+      "desc1": "Business growth often brings new complexity. While freedom and flexibility are crucial to entrepreneurship, structure is what supports that freedom, allowing you to make consistent progress without losing sight of the bigger picture.",
+      "desc2": "Without clear frameworks and processes, even the most motivated entrepreneurs can feel overwhelmed and burned out.",
+      "desc3": "That's why we focus on building scalable systems and decision frameworks that give you the tools to make confident decisions, without feeling stuck or constantly reinventing the wheel."
+    },
+    "tab3": {
+      "heading": "WHY FOCUS ON INTENTIONAL GROWTH",
+      "desc1": "We don't believe in growth for growth's sake.",
+      "desc2": "We believe in intentional growth — where every step forward is purposeful, thoughtful, and aligned with your business values and vision.",
+      "listTitle": "This means:",
+      "item1Title": "Setting the right goals",
+      "item1Desc": "that matter, not what sounds good",
+      "item2Title": "Investing in systems",
+      "item2Desc": "that make it easier to scale, not just increasing capacity",
+      "item3Title": "Focusing on sustainable, long-term success",
+      "item3Desc": "rather than temporary results",
+      "footer": "Intentional growth is about doing things with purpose, not just doing more."
+    },
+    "tab4": {
+      "heading": "THE AXELVIOR COMMITMENT",
+      "desc1": "We're here to help you gain control over the direction of your business — to provide the clarity you need, so you can make decisions that lead to a sustainable, thriving business.",
+      "desc2": "By working with us, you're not just getting business development advice — you're gaining a partner who listens, understands, and helps you turn your vision into reality."
+    },
+    "tab5": {
+      "heading": "WHY THIS PHILOSOPHY WORKS",
+      "desc1": "In today's fast-paced world, it's easy to chase the next big thing or get distracted by quick fixes. But true success is rooted in purpose, strategy, and clarity.",
+      "desc2": "At Axelvior, we help you slow down enough to make decisions with intention, create long-term systems that can grow with you, and empower you to move forward with confidence in the direction you've chosen.",
+      "desc3": "You're building something that matters. Our job is to help make sure it has the foundation to last.",
+      "desc4": "Start with clarity. Start with Axelvior.",
+      "cta": "Start a conversation today"
+    }
   },
   "accountNavigation": {
     "my-orders": "My Orders",
@@ -591,60 +690,5 @@
   "priceList": {
     "title": "Check our full price list",
     "button": "Download"
-  },
-  "whoTabs": {
-    "tabs": {
-      "work-with": "WHO WE WORK WITH",
-      "different": "WHAT MAKES US DIFFERENT",
-      "philosophy": "OUR PHILOSOPHY",
-      "offer": "WHAT WE OFFER"
-    },
-    "tab1": {
-      "heading": "WHO WE WORK WITH",
-      "desc1": "We work best with those who are past the starting phase, but feel that what they are building could be clearer, more intentional, or more aligned.",
-      "desc2": "This isn't about fixing broken systems; this is about refining what already exists and making it stronger, sharper, and capable of lasting growth.",
-      "partnersTitle": "Our ideal partners are:",
-      "partner1": "Entrepreneurs in the middle of their journey, ready for structured growth and clarity",
-      "partner2": "Individuals who want more than success; they want sustainability and impact",
-      "partner3": "People who understand the importance of direction — and the role clarity plays in decision-making",
-      "footer": "We work with those who are prepared to invest in their business's longevity — because growth doesn't happen overnight, and it's not linear."
-    },
-    "tab2": {
-      "heading": "WHAT MAKES US DIFFERENT",
-      "desc1": "At Axelvior, we don't take a one-size-fits-all approach.",
-      "desc2": "We understand that each entrepreneur's journey is different, and we treat each one with the customized attention it deserves.",
-      "listTitle": "What sets us apart:",
-      "item1": "Focused guidance, not \"strategic noise\"",
-      "item2": "Personalized frameworks, not templated solutions",
-      "item3": "Sustainable direction, not rapid growth at the cost of long-term stability",
-      "item4": "Structured decisions, not scattered action",
-      "footer": "Our team is made up of strategists, designers, copywriters, and developers — all working in harmony to help you move forward with intention, not just speed."
-    },
-    "tab3": {
-      "heading": "OUR PHILOSOPHY",
-      "desc1": "We believe that business development starts with clarity. Without it, momentum can quickly lose shape, and the progress you've worked so hard for can become scattered or misdirected.",
-      "desc2": "Axelvior exists to help you restore clarity in your growth process so that you can move forward with confidence and purpose.",
-      "desc3": "We are here to help you regain control over your direction — whether that means refining your offer, optimizing your workflows, or preparing for the next phase of growth."
-    },
-    "tab4": {
-      "heading": "WHAT WE OFFER",
-      "offer1Title": "Strategic Direction",
-      "offer1Desc": "Helping you articulate and refine your business vision.",
-      "offer2Title": "Strategic Advice",
-      "offer2Desc": "Providing actionable guidance based on real-world insights.",
-      "offer3Title": "Business Structure & Systems",
-      "offer3Desc": "Building frameworks to scale your operations without losing sight of the mission.",
-      "offer4Title": "Positioning & Offer Development",
-      "offer4Desc": "Clarifying what you offer, and making sure it's aligned with your business direction.",
-      "cta": "Start a conversation with Axelvior"
-    }
-  },
-  "whoFor": {
-    "heading": "Axelvior is for entrepreneurs who:",
-    "card1": "Carry full ownership of what they build — from concept to outcome",
-    "card2": "Operate without committees or approval layers — making final decisions themselves",
-    "card3": "Take responsibility for both results and direction, understanding that the two must align",
-    "card4": "Recognize that growth brings new challenges, constraints, and risks that require new approaches",
-    "footer": "Our work isn't about titles or headcount. It's about ownership — intellectual, strategic, and personal."
   }
 }
