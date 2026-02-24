@@ -291,9 +291,16 @@
   padding: 80px;
   min-height: 300px;
   position: relative;
+  background-image: url("/images/pricing/popupBack.png");
+  background-repeat: no-repeat;
+  background-position: left -90px;
+  background-size: 70%;
 
   @include tablet {
     padding: 48px;
+    height: 80vh;
+    background-position: left bottom;
+    background-size: 220%;
   }
   @include mobile {
     flex-direction: column;
