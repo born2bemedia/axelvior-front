@@ -10,12 +10,7 @@ import { fadeInUp } from "@/shared/lib/helpers/animations";
 
 import styles from "./WhoTabs.module.scss";
 
-const TABS = [
-  { id: "work-with", label: "WHO WE WORK WITH" },
-  { id: "different", label: "WHAT MAKES US DIFFERENT" },
-  { id: "philosophy", label: "OUR PHILOSOPHY" },
-  { id: "offer", label: "WHAT WE OFFER" },
-] as const;
+
 
 const TAB_COLORS: Record<string, string> = {
   "work-with": "#09234f",
@@ -370,6 +365,13 @@ export const WhoTabs = () => {
   const [activeTab, setActiveTab] = useState<string>("work-with");
   const t = useTranslations("whoTabs");
 
+  const TABS = [
+    { id: "work-with", label: t("heading1", { fallback: "WHO WE WORK WITH" }) },
+    { id: "different", label: t("heading2", { fallback: "WHAT MAKES US DIFFERENT" }) },
+    { id: "philosophy", label: t("heading3", { fallback: "OUR PHILOSOPHY" }) },
+    { id: "offer", label: t("heading4", { fallback: "WHAT WE OFFER" }) },
+  ] as const;
+
   return (
     <section className={styles.who_tabs}>
       <div className={styles.who_tabs__wrapper}>
@@ -387,9 +389,7 @@ export const WhoTabs = () => {
                       : undefined
                   }
                 >
-                  {t(`tabs.${tab.id}`, {
-                    fallback: tab.label,
-                  })}
+                  {tab.label}
                 </button>
               ))}
             </nav>
