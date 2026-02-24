@@ -1,12 +1,12 @@
 import type { Children } from "../../model/types";
-import { GuideContent } from "../content/GuideContent";
+import { IdeaContent } from "../content/IdeaContent";
 
-export const GuideRenderer = ({ content }: { content: Children[] }) => (
+export const InfoRenderer = ({ content }: { content: Children[] }) => (
   <>
     {!Array.isArray(content) ? null : (
       <>
         {content.map((node, i) => (
-          <GuideContent
+          <IdeaContent
             key={String(`node-${i}`)}
             node={node}
             type={node.type}

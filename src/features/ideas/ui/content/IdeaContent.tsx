@@ -5,9 +5,9 @@ import { memo } from "react";
 import { cn } from "@/shared/lib/helpers/styles";
 
 import type { Children, Children2 } from "../../model/types";
-import st from "./GuideContent.module.scss";
+import st from "./IdeaContent.module.scss";
 
-export const GuideContent = memo(
+export const IdeaContent = memo(
   ({ node, type }: { node: Children; type: string }) => {
     if (type === "heading") {
       return (
@@ -83,7 +83,7 @@ export const GuideContent = memo(
   },
 );
 
-GuideContent.displayName = "GuideContent";
+IdeaContent.displayName = "IdeaContent";
 
 const ListItem = ({ value }: { value?: Children2[] }) => {
   if (!value) return null;

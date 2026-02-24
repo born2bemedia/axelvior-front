@@ -2,13 +2,13 @@
 
 const SERVER_URL = process.env.SERVER_URL;
 
-export const getGuides = async ({ locale = "en" }: { locale?: string }) => {
-  const res = await fetch(`${SERVER_URL}/api/guides?locale=${locale}`);
+export const getIdeas = async ({ locale = "en" }: { locale?: string }) => {
+  const res = await fetch(`${SERVER_URL}/api/ideas?locale=${locale}`);
   const data = await res.json();
   return data.docs.reverse();
 };
 
-export const getGuide = async ({
+export const getIdea = async ({
   slug,
   locale = "en",
 }: {
@@ -16,7 +16,7 @@ export const getGuide = async ({
   locale?: string;
 }) => {
   const res = await fetch(
-    `${SERVER_URL}/api/guides?where[slug][in]=${slug}&locale=${locale}`,
+    `${SERVER_URL}/api/ideas?where[slug][in]=${slug}&locale=${locale}`,
   );
   const data = await res.json();
   return data.docs[0];
