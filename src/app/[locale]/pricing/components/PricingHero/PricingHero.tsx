@@ -70,7 +70,7 @@ export const PricingHero = () => {
               </b>
               {t("subtitle7", {
                 fallback: "we offer, including",
-              })}
+              })}{" "}
               <b>
                 {t("subtitle8", {
                   fallback: "fixed prices",
@@ -93,17 +93,17 @@ export const PricingHero = () => {
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeInUp}
-              className={styles.why_hero__image}
+              className={styles.pricing_hero__image}
             >
               <Image
-                src="/images/why/hero.png"
+                src="/images/pricing/hero.png"
                 alt="Hero"
                 width={1312}
                 height={500}
                 className={styles.desktop_image}
               />
               <Image
-                src="/images/why/heroMob.png"
+                src="/images/pricing/heroMob.png"
                 alt="Hero"
                 width={370}
                 height={500}

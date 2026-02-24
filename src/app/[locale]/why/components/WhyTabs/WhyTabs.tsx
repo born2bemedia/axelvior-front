@@ -10,13 +10,7 @@ import { fadeInUp } from "@/shared/lib/helpers/animations";
 
 import styles from "./WhyTabs.module.scss";
 
-const TABS = [
-  { id: "clarity", label: "WHY CLARITY MATTERS" },
-  { id: "structure", label: "WHY STRUCTURE IS KEY" },
-  { id: "growth", label: "WHY FOCUS ON INTENTIONAL GROWTH" },
-  { id: "commitment", label: "THE AXELVIOR COMMITMENT" },
-  { id: "philosophy", label: "WHY THIS PHILOSOPHY WORKS" },
-] as const;
+
 
 const TAB_COLORS: Record<string, string> = {
   clarity: "#09234f",
@@ -199,14 +193,10 @@ function TabGrowth({
               <img src={item.icon} alt="" className={styles.why_tabs__icon} />
               <div className={styles.why_tabs__list_item_text}>
                 <strong>
-                  {t(`tab3.${item.key}Title`, {
-                    fallback: item.titleFallback,
-                  })}
+                  {item.titleFallback}
                 </strong>
                 <span>
-                  {t(`tab3.${item.key}Desc`, {
-                    fallback: item.descFallback,
-                  })}
+                  {item.descFallback}
                 </span>
               </div>
             </div>
@@ -319,6 +309,14 @@ export const WhyTabs = () => {
   const [activeTab, setActiveTab] = useState<string>("clarity");
   const t = useTranslations("whyTabs");
 
+  const TABS = [
+    { id: "clarity", label: t("heading1", { fallback: "WHY CLARITY MATTERS" }) },
+    { id: "structure", label: t("heading2", { fallback: "WHY STRUCTURE IS KEY" }) },
+    { id: "growth", label: t("heading3", { fallback: "WHY FOCUS ON INTENTIONAL GROWTH" }) },
+    { id: "commitment", label: t("heading4", { fallback: "THE AXELVIOR COMMITMENT" }) },
+    { id: "philosophy", label: t("heading5", { fallback: "WHY THIS PHILOSOPHY WORKS" }) },
+  ] as const;
+
   return (
     <section className={styles.why_tabs}>
       <div className={styles.why_tabs__wrapper}>
@@ -336,9 +334,7 @@ export const WhyTabs = () => {
                       : undefined
                   }
                 >
-                  {t(`tabs.${tab.id}`, {
-                    fallback: tab.label,
-                  })}
+                  {tab.label}
                 </button>
               ))}
             </nav>

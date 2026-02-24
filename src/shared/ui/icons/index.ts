@@ -1,3 +1,4 @@
+export * from './arrow-right';
 export * from './delete';
 export * from './email';
 export * from './eye';

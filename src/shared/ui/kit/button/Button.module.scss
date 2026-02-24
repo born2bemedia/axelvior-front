@@ -33,4 +33,9 @@
     color: var(--color-blue-8, #000829);
     border-color: var(--color-blue-8, #000829);
   }
+  &.black {
+    background: var(--color-blue-8, #000829);
+    color: var(--color-white-solid, #fff);
+    border-color: var(--color-blue-8, #000829);
+  }
 }
