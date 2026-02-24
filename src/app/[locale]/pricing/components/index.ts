@@ -1,2 +1,5 @@
+export * from './PricingDownload/PricingDownload';
 export * from './PricingHero/PricingHero';
-export * from './WhyTabs/WhyTabs';
+export * from './PricingHowWeWork/PricingHowWeWork';
+export * from './PricingPackages/PricingPackages';
+export * from './PricingTabs/PricingTabs';
