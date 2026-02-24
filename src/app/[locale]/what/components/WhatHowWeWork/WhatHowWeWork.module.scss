@@ -1,0 +1,323 @@
+@use '@/shared/lib/styles/mixin.scss' as *;
+
+.what_how_work {
+  padding-top: 144px;
+  padding-bottom: 144px;
+
+  @include tablet {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+
+    @include tablet {
+      flex-direction: column;
+    }
+  }
+
+  &__tabs {
+    flex: 0 0 250px;
+  }
+
+  &__tabs > :not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  &__tab {
+    display: block;
+    width: 100%;
+    text-align: left;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding-top: 16px;
+    padding-bottom: 16px;
+    color: var(--color-black-solid, #000);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 140%;
+    letter-spacing: -0.25px;
+
+    span {
+      display: inline-block;
+      max-width: 195px;
+    }
+  }
+
+  &__tab_active {
+    font-weight: 700;
+    border-color: #000829;
+  }
+
+  &__right_column {
+    flex-grow: 1;
+  }
+
+  // ── Content One ────────────────────────────────────────────────────────────
+
+  &__content_one {
+    background-color: #09234f;
+    padding: 48px;
+
+    @include tablet {
+      padding: 24px;
+    }
+  }
+
+  &__content_one_title {
+    color: #fff;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 300;
+    letter-spacing: -0.25px;
+    margin-bottom: 10px;
+    max-width: 570px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include tablet {
+      font-size: 36px;
+    }
+  }
+
+  &__content_one_list {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(4, 1fr);
+    margin-bottom: 10px;
+
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mobile {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  &__content_one_item {
+    padding: 16px;
+    min-height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    @include mobile {
+      font-size: 16px;
+    }
+  }
+
+  &__content_one_item_title {
+    color: #fff;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+
+  &__content_one_subtitle {
+    max-width: 800px;
+    color: #fff;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 140%;
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include mobile {
+      font-size: 16px;
+    }
+  }
+
+  &__content_one_link_wrapper {
+    text-align: center;
+  }
+
+  &__content_one_link {
+    display: inline-block;
+    border-radius: 3.12px;
+    background: #fff;
+    padding: 12px 16px;
+    color: #000829;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.25px;
+  }
+
+  // ── Content Two ────────────────────────────────────────────────────────────
+
+  &__content_two {
+    background-color: #0c4a58;
+    padding: 48px;
+
+    @include tablet {
+      padding: 24px;
+    }
+  }
+
+  &__content_two_top {
+    margin-bottom: 40px;
+
+    @include tablet {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__content_two_title {
+    color: #fff;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 120%;
+    letter-spacing: -0.25px;
+    margin-bottom: 20px;
+
+    @include tablet {
+      font-size: 40px;
+    }
+  }
+
+  &__content_two_subtitle {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 140%;
+    letter-spacing: -0.5px;
+    max-width: 700px;
+
+    @include mobile {
+      font-size: 16px;
+    }
+  }
+
+  &__content_two_list {
+    margin-bottom: 40px;
+  }
+
+  &__content_two_item {
+    padding: 19.5px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  &__content_two_item_icon {
+    max-width: 24px;
+  }
+
+  &__content_two_item_title {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 140%;
+    letter-spacing: -0.25px;
+
+    @include mobile {
+      font-size: 14px;
+    }
+  }
+
+  &__content_two_caption_first {
+    margin-bottom: 12px;
+  }
+
+  &__content_two_caption {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 140%;
+    letter-spacing: -0.5px;
+
+    @include mobile {
+      font-size: 16px;
+    }
+  }
+
+  // ── Content Three ────────────────────────────────────────────────────────────
+
+  &__content_three {
+    background: #384ce3;
+    padding: 48px 48px 154px 48px;
+    position: relative;
+    z-index: 1;
+
+    @include mobile {
+      padding: 24px 24px 177px 24px;
+    }
+  }
+
+  &__content_three_image {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+  }
+
+  &__content_three_image_desktop {
+    @media screen and (max-width: 390px) {
+      display: none;
+    }
+  }
+
+  &__content_three_image_mobile {
+    display: none;
+
+    @media screen and (max-width: 390px) {
+      display: block;
+    }
+  }
+
+  &__content_three_title {
+    color: #fff;
+    font-size: 60px;
+    font-weight: 300;
+    line-height: 120%;
+    letter-spacing: -0.25px;
+    margin-bottom: 20px;
+
+    @include tablet {
+      font-size: 40px;
+    }
+  }
+
+  &__content_three_subtitle_wrapper {
+    margin-bottom: 20px;
+    max-width: 700px;
+
+    & > :not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__content_three_subtitle {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 140%;
+    letter-spacing: -0.5px;
+
+    @include mobile {
+      font-size: 16px;
+    }
+  }
+
+  &__content_three_link {
+    display: inline-block;
+    border-radius: 3.12px;
+    background: #fff;
+    padding: 12px 16px;
+    color: #000829;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.25px;
+  }
+}
