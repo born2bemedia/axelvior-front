@@ -1,10 +1,12 @@
-export type Guide = {
+export type Idea = {
   title: string;
   slug: string;
+  excerpt: string;
   image: {
     url: string;
   };
   content: string;
+  info: string;
 };
 
 export type PolicyDef = {
