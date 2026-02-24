@@ -5,6 +5,8 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getLocale } from 'next-intl/server';
 import { ToastContainer } from 'react-toastify';
 
+import { FormsPopupRenderer } from '@/features/forms';
+
 import { cn } from '@/shared/lib/helpers/styles';
 import { CookiePopup, Footer, Header } from '@/shared/ui/components';
 
@@ -66,6 +68,7 @@ export default async function RootLayout({
           <Footer />
           <ToastContainer />
           <CookiePopup />
+          <FormsPopupRenderer />
         </NextIntlClientProvider>
       </body>
     </html>

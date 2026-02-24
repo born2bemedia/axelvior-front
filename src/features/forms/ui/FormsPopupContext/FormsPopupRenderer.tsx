@@ -2,8 +2,6 @@
 
 import { useFormsPopupStore } from "@/features/forms/model/store";
 
-import { MarketResearchPopup } from "../MarketResearchPopup/MarketResearchPopup";
-import { PropertyConsultationPopup } from "../PropertyConsultationPopup/PropertyConsultationPopup";
 import { RequestPopup } from "../RequestPopup/RequestPopup";
 
 export function FormsPopupRenderer() {
@@ -13,16 +11,6 @@ export function FormsPopupRenderer() {
 
   return (
     <>
-      <MarketResearchPopup
-        isOpen={popupType === "market-research"}
-        onClose={closePopup}
-        onReturnHome={closePopup}
-      />
-      <PropertyConsultationPopup
-        isOpen={popupType === "property-consultation"}
-        onClose={closePopup}
-        onReturnHome={closePopup}
-      />
       {popupType === "request" && requestName && (
         <RequestPopup
           name={requestName}

@@ -1,17 +1,8 @@
-import type {
-  MarketResearchSchema,
-  PropertyConsultationSchema,
-  RequestFormSchema,
-} from "../model/schemas";
-
-type FormType = "market-research" | "property-consultation" | "request";
+import type { RequestFormSchema } from "../model/schemas";
 
 export async function submitForm(
-  formType: FormType,
-  data:
-    | MarketResearchSchema
-    | PropertyConsultationSchema
-    | (RequestFormSchema & { name?: string })
+  formType: "request",
+  data: RequestFormSchema & { name?: string }
 ): Promise<void> {
   const body: Record<string, unknown> = {
     formType,
@@ -31,18 +22,6 @@ export async function submitForm(
     const json = (await res.json().catch(() => ({}))) as { message?: string };
     throw new Error(json?.message ?? "Submission failed");
   }
-}
-
-export async function submitMarketResearch(
-  data: MarketResearchSchema
-): Promise<void> {
-  return submitForm("market-research", data);
-}
-
-export async function submitPropertyConsultation(
-  data: PropertyConsultationSchema
-): Promise<void> {
-  return submitForm("property-consultation", data);
 }
 
 export async function submitRequestForm(

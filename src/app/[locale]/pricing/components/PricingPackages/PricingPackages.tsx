@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
+import { useFormsPopupStore } from "@/features/forms";
 import { usePackages } from "@/features/solutions/lib/packages";
 
 import { fadeInUp } from "@/shared/lib/helpers/animations";
@@ -15,7 +16,11 @@ import styles from "./PricingPackages.module.scss";
 export const PricingPackages = () => {
   const t = useTranslations("pricingPackages");
   const packages = usePackages();
+  const openRequest = useFormsPopupStore((state) => state.openRequest);
 
+  const onClick = (name: string) => {
+    openRequest(name);
+  };
   return (
     <section className={styles.packages}>
       <div className={styles.packages__wrapper}>
@@ -56,7 +61,7 @@ export const PricingPackages = () => {
                       {t("from", { fallback: "From" })} €
                       {pkg.price.toLocaleString("en-IE")}
                     </p>
-                    <Button variant="white" url="/contact" type="link">
+                    <Button variant="white" type="button" onClick={() => onClick(pkg.name)}>
                       {pkg.cta}
                     </Button>
                   </motion.div>

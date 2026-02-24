@@ -8,6 +8,8 @@ type FormPopupProps = {
   children: React.ReactNode;
   /** Optional id for the dialog title (accessibility) */
   ariaLabelledBy?: string;
+  /** Optional class to override the default panel styling */
+  panelClassName?: string;
 };
 
 export const FormPopup = ({
@@ -15,6 +17,7 @@ export const FormPopup = ({
   onClose,
   children,
   ariaLabelledBy,
+  panelClassName,
 }: FormPopupProps) => {
   if (!isOpen) return null;
 
@@ -30,7 +33,10 @@ export const FormPopup = ({
       aria-modal="true"
       aria-labelledby={ariaLabelledBy}
     >
-      <div className={styles.panel} onClick={(e) => e.stopPropagation()}>
+      <div
+        className={panelClassName ?? styles.panel}
+        onClick={(e) => e.stopPropagation()}
+      >
         {children}
       </div>
     </div>
