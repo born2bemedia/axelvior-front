@@ -6,3 +6,20 @@ export type Service = {
   prefix?: string;
   suffix?: string;
 };
+
+export type PackageItem = {
+  title: string;
+  description: string;
+  icon: string;
+};
+
+export type Package = {
+  id: string;
+  name: string;
+  boldIntro: string;
+  description: string;
+  price: number;
+  cta: string;
+  inheritsFrom?: string;
+  items: PackageItem[];
+};
