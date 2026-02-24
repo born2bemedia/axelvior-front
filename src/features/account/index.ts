@@ -5,5 +5,4 @@ export { AccountPage } from "./ui/AccountPage/AccountPage";
 export { AccountSettingsPage } from "./ui/AccountSettingsPage/AccountSettingsPage";
 export { LoginForm } from "./ui/LoginForm/LoginForm";
 export { MyOrdersPage } from "./ui/MyOrdersPage/MyOrdersPage";
-export { MyServicesPage } from "./ui/MyServicesPage/MyServicesPage";
 export { RegistrationForm } from "./ui/RegistrationForm/RegistrationForm";

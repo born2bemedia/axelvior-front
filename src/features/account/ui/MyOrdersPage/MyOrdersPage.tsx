@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 
 import { isOrderCompleted, type Order } from "@/features/account/model/orders.types";
 import { useAuthStore } from "@/features/account/store/auth";
-import { useAllServices } from "@/features/services/lib/get-all-services";
+import { useAllServices } from "@/features/solutions/lib/get-all-services";
 
 import { Button } from "@/shared/ui/kit/button/Button";
 

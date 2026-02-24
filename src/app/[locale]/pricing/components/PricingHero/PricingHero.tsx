@@ -7,16 +7,16 @@ import { useTranslations } from "next-intl";
 
 import { fadeInUp } from "@/shared/lib/helpers/animations";
 
-import styles from "./WhyHero.module.scss";
+import styles from "./PricingHero.module.scss";
 
-export const WhyHero = () => {
-  const t = useTranslations("whyHero");
+export const PricingHero = () => {
+  const t = useTranslations("pricingHero");
 
   return (
     <>
-      <section className={styles.why_hero}>
+      <section className={styles.pricing_hero}>
         <div className={"container"}>
-          <div className={styles.why_hero__content}>
+          <div className={styles.pricing_hero__content}>
             <motion.h1
               initial="hidden"
               whileInView="visible"
@@ -24,9 +24,19 @@ export const WhyHero = () => {
               variants={fadeInUp}
             >
               {t("title1", {
-                fallback: "Why We Exist",
+                fallback: "Invest in your growth.",
               })}
             </motion.h1>
+            <motion.h2
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInUp}
+            >
+              {t("title2", {
+                fallback: "EXPLORE OUR PRICING & PLANS",
+              })}
+            </motion.h2>
             <motion.p
               initial="hidden"
               whileInView="visible"
@@ -34,56 +44,48 @@ export const WhyHero = () => {
               variants={fadeInUp}
             >
               {t("subtitle", {
-                fallback: "Many business solutions are focused on",
+                fallback:
+                  "We understand that each business has unique needs. Our pricing reflects the",
               })}{" "}
               <b>
                 {t("subtitle2", {
-                  fallback:
-                    "quick wins, growth hacks, or one-size-fits-all frameworks.",
+                  fallback: "complexity",
                 })}{" "}
               </b>
               {t("subtitle3", {
-                fallback:
-                  "While these approaches can deliver results, they often lack the depth and foundation needed for",
+                fallback: "and",
               })}{" "}
               <b>
                 {t("subtitle4", {
-                  fallback: "long-term sustainability.",
+                  fallback: "customization",
                 })}{" "}
               </b>
-              <br />
               {t("subtitle5", {
-                fallback: "We exist because",
+                fallback: "of our services. Below is an overview of the",
               })}{" "}
               <b>
                 {t("subtitle6", {
-                  fallback: "sustainable success is designed,",
+                  fallback: "core services",
                 })}{" "}
               </b>
               {t("subtitle7", {
-                fallback:
-                  "not improvised. We understand that real progress doesn’t come from rushing toward growth, but from building the right foundation and setting a clear path forward.",
+                fallback: "we offer, including",
               })}
-              <br />
-              {t("subtitle8", {
-                fallback:
-                  "Our role isn’t to dictate your direction — it’s to help you",
-              })}{" "}
               <b>
-                {t("subtitle9", {
-                  fallback: "regain control",
+                {t("subtitle8", {
+                  fallback: "fixed prices",
                 })}{" "}
               </b>
-              {t("subtitle10", {
-                fallback: "of your business and ensure the journey is",
+              {t("subtitle9", {
+                fallback: "for specific solutions and",
               })}{" "}
               <b>
-                {t("subtitle11", {
-                  fallback: "deliberate,",
+                {t("subtitle10", {
+                  fallback: "flexible pricing",
                 })}{" "}
               </b>
-              {t("subtitle12", {
-                fallback: "not reactive.",
+              {t("subtitle11", {
+                fallback: "based on your unique requirements.",
               })}
             </motion.p>
             <motion.div
