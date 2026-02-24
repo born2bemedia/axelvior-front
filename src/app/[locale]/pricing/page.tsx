@@ -1,10 +1,9 @@
-import { WhyHero, WhyTabs } from "./components";
+import { PricingHero } from "./components";
 
 export default async function Why() {
   return (
     <>
-      <WhyHero />
-      <WhyTabs />
+      <PricingHero />
     </>
   );
 }
