@@ -3,6 +3,8 @@ import { z } from "zod";
 // Set to false to disable reCAPTCHA (e.g. development)
 const ENABLE_RECAPTCHA = true;
 
+const serviceSchema = z.string().optional();
+const messageSchema = z.string().optional();
 const recaptchaSchema = ENABLE_RECAPTCHA
   ? z.string().min(1, "Please complete the reCAPTCHA verification")
   : z.string().optional();
@@ -12,9 +14,11 @@ const phoneSchema = z
   .min(1, "This field is required")
   .refine(
     (val) => /^[+]?[\d\s-]{10,}$/.test(val.replace(/\s/g, "")),
-    "Please provide a valid phone number."
+    "Please provide a valid phone number.",
   );
 
+const companyNameSchema = z.string().optional();
+const websiteSchema = z.string().optional();
 const emailSchema = z
   .string()
   .min(1, "This field is required")
@@ -22,42 +26,15 @@ const emailSchema = z
 
 const fullNameSchema = z.string().min(1, "This field is required");
 
-const countrySchema = z.string().min(1, "Please select your property location.");
-
-// 1. Market Research Request
-export const marketResearchSchema = z.object({
-  goal: z.string().min(1, "This field is required"),
-  country: z.string().min(1, "This field is required"),
-  city: z.string().min(1, "This field is required"),
-  propertyType: z.string().min(1, "This field is required"),
-  valueRange: z.string().min(1, "This field is required"),
-  fullName: fullNameSchema,
-  phone: phoneSchema,
-  email: emailSchema,
-  recaptcha: recaptchaSchema,
-});
-
-export type MarketResearchSchema = z.infer<typeof marketResearchSchema>;
-
-// 2. Request Property Consultation
-export const propertyConsultationSchema = z.object({
-  iWant: z.string().min(1, "This field is required"),
-  areaOfInterest: z.string().min(1, "This field is required"),
-  iNeed: z.string().min(1, "This field is required"),
-  fullName: fullNameSchema,
-  email: emailSchema,
-  phone: phoneSchema,
-  recaptcha: recaptchaSchema,
-});
-
-export type PropertyConsultationSchema = z.infer<typeof propertyConsultationSchema>;
-
-// 3 & 4. [PACKAGE NAME] / [SERVICE NAME] Request (same schema)
+// 1. [PACKAGE NAME] / [SERVICE NAME] Request (same schema)
 export const requestFormSchema = z.object({
+  service: serviceSchema,
   fullName: fullNameSchema,
   email: emailSchema,
   phone: phoneSchema,
-  country: countrySchema,
+  companyName: companyNameSchema,
+  website: websiteSchema,
+  message: messageSchema,
   recaptcha: recaptchaSchema,
 });
 

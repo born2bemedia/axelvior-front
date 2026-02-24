@@ -1,6 +1,7 @@
 "use client";
 
 import { useCartStore } from "@/features/cart/store/cart";
+import { useFormsPopupStore } from "@/features/forms";
 
 import { ArrowRightIcon } from "@/shared/ui/icons";
 
@@ -14,6 +15,8 @@ interface ServiceItemProps {
 export const ServiceItem = ({ service }: ServiceItemProps) => {
   const formattedPrice = `€${service.price.toLocaleString("en-IE")}`;
   const addToCart = useCartStore((state) => state.addToCart);
+  const openRequest = useFormsPopupStore((state) => state.openRequest);
+
 
   const onClick = () => {
     if (service.type === "purchasable") {
@@ -24,7 +27,7 @@ export const ServiceItem = ({ service }: ServiceItemProps) => {
         quantity: 1,
       });
     } else {
-      console.log("order");
+      openRequest(service.title);
     }
   };
 
