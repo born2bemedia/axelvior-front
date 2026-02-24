@@ -339,7 +339,11 @@
     "tab4": {
       "heading": "WHAT WE OFFER",
       "cta": "Start a conversation with Axelvior"
-    }
+    },
+    "heading1": "WHO WE WORK WITH",
+    "heading2": "WHAT MAKES US DIFFERENT",
+    "heading3": "OUR PHILOSOPHY",
+    "heading4": "WHAT WE OFFER"
   },
   "whyHero": {
     "title1": "Why We Exist",
@@ -388,7 +392,12 @@
       "desc3": "You're building something that matters. Our job is to help make sure it has the foundation to last.",
       "desc4": "Start with clarity. Start with Axelvior.",
       "cta": "Start a conversation today"
-    }
+    },
+    "heading1": "WHY CLARITY MATTERS",
+    "heading2": "WHY STRUCTURE IS KEY",
+    "heading3": "WHY FOCUS ON INTENTIONAL GROWTH",
+    "heading4": "THE AXELVIOR COMMITMENT",
+    "heading5": "WHY THIS PHILOSOPHY WORKS"
   },
   "accountNavigation": {
     "my-orders": "My Orders",
