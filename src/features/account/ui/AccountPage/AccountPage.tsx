@@ -6,7 +6,6 @@ import { useTranslations } from "next-intl";
 
 import type { Order } from "@/features/account/model/orders.types";
 import { useAuthStore } from "@/features/account/store/auth";
-import { useAllServices } from "@/features/solutions/lib/get-all-services";
 
 import { Button } from "@/shared/ui/kit/button/Button";
 
@@ -27,7 +26,6 @@ export const AccountPage = () => {
   const user = useAuthStore((s) => s.user);
   const isInitialized = useAuthStore((s) => s.isInitialized);
   const fetchUser = useAuthStore((s) => s.fetchUser);
-  const { getDescriptionByTitle, getLocalizedTitle } = useAllServices();
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -68,12 +66,11 @@ export const AccountPage = () => {
       const item = order.items![i];
       const productTitle = item.product ?? "—";
       // Convert English title to localized title based on current locale
-      const localizedTitle = getLocalizedTitle(productTitle);
       rows.push({
         orderId: order.id,
         itemIndex: i,
-        service: localizedTitle,
-        description: getDescriptionByTitle(productTitle),
+        service: productTitle,
+        description: undefined,
       });
     }
   }

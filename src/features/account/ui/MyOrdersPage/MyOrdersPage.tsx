@@ -6,7 +6,6 @@ import { useTranslations } from "next-intl";
 
 import { isOrderCompleted, type Order } from "@/features/account/model/orders.types";
 import { useAuthStore } from "@/features/account/store/auth";
-import { useAllServices } from "@/features/solutions/lib/get-all-services";
 
 import { Button } from "@/shared/ui/kit/button/Button";
 
@@ -48,7 +47,6 @@ export const MyOrdersPage = () => {
   const user = useAuthStore((s) => s.user);
   const isInitialized = useAuthStore((s) => s.isInitialized);
   const fetchUser = useAuthStore((s) => s.fetchUser);
-  const { getLocalizedTitle } = useAllServices();
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -86,8 +84,7 @@ export const MyOrdersPage = () => {
     const date = formatDate(order.createdAt);
     const status = order.status ?? "Pending";
     const service = (order.items?.map((item) => {
-      const productTitle = item.product ?? "—";
-      return getLocalizedTitle(productTitle);
+        return item.product ?? "—";
     }) ?? []).join("\n") || "—";
     const quantity = order.items?.reduce((sum, item) => sum + (item.quantity ?? 0), 0) ?? 0;
     const total = order.total ?? 0;
