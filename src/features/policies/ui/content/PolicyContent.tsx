@@ -1,107 +1,120 @@
-"use client";
+'use client';
 
-import { memo } from "react";
+import { memo } from 'react';
 
-import { cn } from "@/shared/lib/helpers/styles";
+import { cn } from '@/shared/lib/helpers/styles';
 
-import type { Children, Children2 } from "../../model/types";
-import { ContactInfo } from "../contact-info/ContactInfo";
-import st from "./PolicyContent.module.scss";
+import type { Children, Children2 } from '../../model/types';
+import { ContactInfo } from '../contact-info/ContactInfo';
+import st from './PolicyContent.module.scss';
 
-export const PolicyContent = memo(
-  ({ node, type }: { node: Children; type: string }) => {
-    if (type === "heading") {
+export const PolicyContent = memo(({ node, type }: { node: Children; type: string }) => {
+  console.log(node);
+  console.log(type);
+  if (type === 'heading') {
+    if (node.tag === 'h2') {
       return (
         <h2
           key={`${node.type}-${type}`}
-          className={cn(node.tag === "h2" ? st.heading : st.heading2)}
+          className={cn(node.tag === 'h2' ? st.heading : st.heading2)}
         >
           {node.children?.map((item) => {
             return <span key={item.text}>{item.text}</span>;
           })}
         </h2>
       );
-    }
-
-    if (type === "paragraph") {
+    } else if (node.tag === 'h3') {
       return (
-        <div key={`${node.type}-${type}`}>
-          <p className={st.text}>
-            {node.children?.map((item, i) => {
-              if (item.type === "linebreak") {
-                return <br key={`br-${i}`} />;
-              }
-
-              if (item.type === "link") {
-                return (
-                  <a
-                    key={`link-${i}`}
-                    href={item.fields?.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={st.link}
-                  >
-                    {item.children?.map((child, j) => (
-                      <span key={`link-text-${j}`}>{child.text}</span>
-                    ))}
-                  </a>
-                );
-              }
-
-              return (
-                <span
-                  key={`text-${i}`}
-                  className={cn(item.format === 1 && st.bold)}
-                >
-                  {item.text}
-                </span>
-              );
-            })}
-          </p>
-        </div>
-      );
-    }
-
-    if (type === "list") {
-      return (
-        <ul
+        <h3
           key={`${node.type}-${type}`}
-          className={cn(
-            st.list,
-            node.listType === "bullet" ? st.listDisc : st.listDecimal,
-          )}
+          className={cn(node.tag === 'h3' ? st.heading3 : st.heading4)}
         >
-          {node.children?.map((item, i) => (
-            <li key={`li-${i}`}>
-              <ListItem value={item.children} />
-            </li>
-          ))}
-        </ul>
+          {node.children?.map((item) => {
+            return <span key={item.text}>{item.text}</span>;
+          })}
+        </h3>
+      );
+    } else if (node.tag === 'h4') {
+      return (
+        <h4
+          key={`${node.type}-${type}`}
+          className={cn(node.tag === 'h4' ? st.heading4 : st.heading5)}
+        >
+          {node.children?.map((item) => {
+            return <span key={item.text}>{item.text}</span>;
+          })}
+        </h4>
       );
     }
+  }
 
-    if (type === "quote") {
-      return <ContactInfo />;
-    }
+  if (type === 'paragraph') {
+    return (
+      <div key={`${node.type}-${type}`}>
+        <p className={st.text}>
+          {node.children?.map((item, i) => {
+            if (item.type === 'linebreak') {
+              return <br key={`br-${i}`} />;
+            }
 
-    return null;
-  },
-);
+            if (item.type === 'link') {
+              return (
+                <a
+                  key={`link-${i}`}
+                  href={item.fields?.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={st.link}
+                >
+                  {item.children?.map((child, j) => (
+                    <span key={`link-text-${j}`}>{child.text}</span>
+                  ))}
+                </a>
+              );
+            }
 
-PolicyContent.displayName = "PolicyContent";
+            return (
+              <span key={`text-${i}`} className={cn(item.format === 1 && st.bold)}>
+                {item.text}
+              </span>
+            );
+          })}
+        </p>
+      </div>
+    );
+  }
+
+  if (type === 'list') {
+    return (
+      <ul
+        key={`${node.type}-${type}`}
+        className={cn(st.list, node.listType === 'bullet' ? st.listDisc : st.listDecimal)}
+      >
+        {node.children?.map((item, i) => (
+          <li key={`li-${i}`}>
+            <ListItem value={item.children} />
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
+  if (type === 'quote') {
+    return <ContactInfo />;
+  }
+
+  return null;
+});
+
+PolicyContent.displayName = 'PolicyContent';
 
 const ListItem = ({ value }: { value?: Children2[] }) => {
   if (!value) return null;
 
   return value.map((item, i) => {
-    if (item.type === "link") {
+    if (item.type === 'link') {
       return (
-        <a
-          key={`link-${i}`}
-          href={item.fields?.url}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a key={`link-${i}`} href={item.fields?.url} target="_blank" rel="noopener noreferrer">
           {item.children?.map((child, j) => (
             <span key={`link-text-${j}`} className={st.listUrl}>
               {child.text}
@@ -111,15 +124,12 @@ const ListItem = ({ value }: { value?: Children2[] }) => {
       );
     }
 
-    if (item.type === "linebreak") {
+    if (item.type === 'linebreak') {
       return <br key={`br-${i}`} />;
     }
 
     return (
-      <span
-        key={`list-text-${i}`}
-        className={cn(st.listItem, item.format === 1 && st.bold)}
-      >
+      <span key={`list-text-${i}`} className={cn(st.listItem, item.format === 1 && st.bold)}>
         {item.text}
       </span>
     );
