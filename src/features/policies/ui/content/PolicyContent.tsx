@@ -66,9 +66,17 @@ export const PolicyContent = memo(({ node, type }: { node: Children; type: strin
                   rel="noopener noreferrer"
                   className={st.link}
                 >
-                  {item.children?.map((child, j) => (
-                    <span key={`link-text-${j}`}>{child.text}</span>
-                  ))}
+                  {item.children?.map((child, j) => {
+                    if (child.text === ' ') {
+                      return <> </>;
+                    } else {
+                      return (
+                        <span key={`link-text-${j}`} className={st.listUrl}>
+                          {child.text}
+                        </span>
+                      );
+                    }
+                  })}
                 </a>
               );
             }
@@ -115,11 +123,17 @@ const ListItem = ({ value }: { value?: Children2[] }) => {
     if (item.type === 'link') {
       return (
         <a key={`link-${i}`} href={item.fields?.url} target="_blank" rel="noopener noreferrer">
-          {item.children?.map((child, j) => (
-            <span key={`link-text-${j}`} className={st.listUrl}>
-              {child.text}
-            </span>
-          ))}
+          {item.children?.map((child, j) => {
+            if (child.text === ' ') {
+              return <> </>;
+            } else {
+              return (
+                <span key={`link-text-${j}`} className={st.listUrl}>
+                  {child.text}
+                </span>
+              );
+            }
+          })}
         </a>
       );
     }
