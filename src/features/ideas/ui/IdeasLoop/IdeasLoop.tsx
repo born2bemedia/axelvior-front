@@ -1,22 +1,23 @@
-"use client";
+'use client';
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 
-import { motion } from "framer-motion";
-import { useLocale, useTranslations } from "next-intl";
+import { motion } from 'framer-motion';
+import { useLocale, useTranslations } from 'next-intl';
 
-import { getIdeas } from "@/features/ideas/api/get-ideas";
-import { Idea } from "@/features/ideas/model/types";
+import { getIdeas } from '@/features/ideas/api/get-ideas';
+import { Idea } from '@/features/ideas/model/types';
 
-import { fadeInUp } from "@/shared/lib/helpers/animations";
-import { Button } from "@/shared/ui/kit/button/Button";
+import { fadeInUp } from '@/shared/lib/helpers/animations';
+import { Button } from '@/shared/ui/kit/button/Button';
 
-import styles from "./IdeasLoop.module.scss";
+import styles from './IdeasLoop.module.scss';
 
 export const IdeasLoop = ({ title }: { title?: string }) => {
   const [ideas, setIdeas] = useState<Idea[]>([]);
   const [loading, setLoading] = useState(true);
-  const t = useTranslations("ideasLoop");
+  const t = useTranslations('ideasLoop');
   const locale = useLocale();
   const isMountedRef = useRef(true);
 
@@ -35,7 +36,7 @@ export const IdeasLoop = ({ title }: { title?: string }) => {
       if (isMountedRef.current) {
         setLoading(false);
       }
-      console.error("Error fetching ideas:", error);
+      console.error('Error fetching ideas:', error);
     }
   }, [locale]);
 
@@ -54,7 +55,7 @@ export const IdeasLoop = ({ title }: { title?: string }) => {
 
   return (
     <section className={styles.ideas_loop}>
-      <div className={"container"}>
+      <div className={'container'}>
         <div className={styles.ideas_loop__content}>
           {loading ? (
             Array.from({ length: 4 }).map((_, index) => (
@@ -73,27 +74,28 @@ export const IdeasLoop = ({ title }: { title?: string }) => {
                 <div
                   className={styles.ideas_loop__image}
                   style={{
-                    backgroundImage: `url(${SERVER_URL}${
-                      idea?.image?.url || ""
-                    })`,
+                    backgroundImage: `url(${SERVER_URL}${idea?.image?.url || ''})`,
                   }}
-                ></div>
+                >
+                  <Image
+                    src={SERVER_URL + idea?.image?.url || `/images/articles/${idea.slug}.png`}
+                    alt={idea.title}
+                    width={760}
+                    height={400}
+                  />
+                </div>
                 <div className={styles.ideas_loop__details}>
                   <h3>{idea.title}</h3>
                   <p>{idea.excerpt}</p>
-                  <Button
-                    variant="black"
-                    url={`/ideas/${idea.slug}`}
-                    type="link"
-                  >
-                    {t("button", { fallback: "Read Article" })}
+                  <Button variant="black" url={`/ideas/${idea.slug}`} type="link">
+                    {t('button', { fallback: 'Read Article' })}
                   </Button>
                 </div>
               </motion.div>
             ))
           ) : (
             <div className={styles.ideas_loop__empty}>
-              <p>{t("empty", { fallback: "No guides found" })}</p>
+              <p>{t('empty', { fallback: 'No guides found' })}</p>
             </div>
           )}
         </div>
