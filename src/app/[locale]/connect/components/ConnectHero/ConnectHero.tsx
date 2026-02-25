@@ -10,7 +10,7 @@ import { fadeInUp } from '@/shared/lib/helpers/animations';
 import styles from './ConnectHero.module.scss';
 
 export const ConnectHero = () => {
-  const t = useTranslations('connectsHero');
+  const t = useTranslations('connectHero');
 
   return (
     <motion.section
