@@ -1,4 +1,4 @@
-export const WEBSITE_EMAIL = 'Email';
+export const WEBSITE_EMAIL = 'info@axelvior.com';
 export const WEBSITE_PHONE = 'Phone number';
 
 export const LINKEDIN_URL = '#';
