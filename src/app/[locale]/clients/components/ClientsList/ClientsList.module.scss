@@ -1,0 +1,159 @@
+@use '@/shared/lib/styles/mixin.scss' as *;
+
+.clients_list {
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 20px;
+    padding-top: 144px;
+    padding-bottom: 144px;
+
+    @include tablet {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  }
+
+  &__row_column {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 40px;
+
+    @include tablet {
+      padding: 32px 20px;
+    }
+  }
+
+  /* ── Column One ─────────────────────────────────── */
+
+  &__row_title {
+    color: #000;
+    font-size: 60px;
+    font-weight: 300;
+    line-height: 120%;
+    letter-spacing: -0.25px;
+    margin-bottom: 8px;
+
+    @include tablet {
+      font-size: 40px;
+    }
+  }
+
+  &__row_job {
+    color: #000;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 140%;
+    letter-spacing: -0.5px;
+  }
+
+  /* ── Column Two ─────────────────────────────────── */
+
+  &__row_column_two {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+
+    @include tablet {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__row_column_two_item_one,
+  &__row_column_two_item_two {
+    padding: 36px 24px;
+
+    @include tablet {
+      padding: 32px 20px;
+    }
+  }
+
+  &__row_column_two_item_one {
+    border-radius: 4px;
+    background: #eff5f0;
+  }
+
+  &__row_column_two_item_two {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  /* ── Column Three ─────────────────────────────────── */
+
+  &__row_column_quote_wrapper {
+    p::before {
+      content: '"';
+    }
+
+    p::after {
+      content: '"';
+    }
+  }
+
+  &__row_column_quote {
+    color: #000;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 130%;
+    letter-spacing: -0.75px;
+    font-style: italic;
+
+    @include tablet {
+      font-size: 30px;
+    }
+
+    @include mobile {
+      font-size: 24px;
+    }
+  }
+
+  &__row_column_autor {
+    color: #000;
+    font-size: 18px;
+    line-height: 140%;
+    letter-spacing: -0.5px;
+  }
+
+  /* ── Column Four ─────────────────────────────────── */
+
+  &__row_column_four {
+    border: none;
+    padding: 36px 24px;
+    border-radius: 4px;
+    background: var(--color-azure-87, #c6dbf6);
+
+    @include tablet {
+      padding: 32px 20px;
+    }
+  }
+
+  &__row_column_four_list {
+    padding-left: 22px;
+    list-style-type: disc;
+  }
+
+  &__row_column_title {
+    color: #000;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 120%;
+    letter-spacing: -0.25px;
+    margin-bottom: 8px;
+
+    @include tablet {
+      font-size: 30px;
+    }
+
+    @include mobile {
+      font-size: 24px;
+    }
+  }
+
+  &__row_column_description {
+    color: #000;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 140%;
+    letter-spacing: -0.25px;
+  }
+}
