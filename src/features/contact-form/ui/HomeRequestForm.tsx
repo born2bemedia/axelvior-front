@@ -6,7 +6,10 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 
 import { submitHomeRequestForm } from '../api/submitHomeRequestForm';
-import { createHomeRequestFormSchema,type HomeRequestFormSchema } from '../model/ContactForm.schema';
+import {
+  createHomeRequestFormSchema,
+  type HomeRequestFormSchema,
+} from '../model/ContactForm.schema';
 import { ContactFormSuccess } from './ContactFormSuccess';
 import styles from './HomeRequestForm.module.scss';
 
@@ -98,7 +101,6 @@ export const HomeRequestForm = () => {
     <>
       <div className={styles.form}>
         <form onSubmit={handleSubmit(onSubmit)} noValidate>
-
           {/* ── Your details ─────────────────────────────── */}
           <div className={styles.section}>
             <div className={styles.row}>
@@ -140,7 +142,7 @@ export const HomeRequestForm = () => {
               </div>
               <div className={styles.field}>
                 <label htmlFor="companyName">
-                  Company name <span className={styles.optional}>(optional)</span>
+                  Company name <span className={styles.optional}>(OPTIONAL)</span>
                 </label>
                 <input
                   id="companyName"
@@ -153,7 +155,7 @@ export const HomeRequestForm = () => {
 
             <div className={styles.field}>
               <label htmlFor="website">
-                Your website <span className={styles.optional}>(optional)</span>
+                Your website <span className={styles.optional}>(OPTIONAL)</span>
               </label>
               <input
                 id="website"
@@ -177,9 +179,13 @@ export const HomeRequestForm = () => {
                   className={errors.projectType ? styles.errorInput : ''}
                   defaultValue=""
                 >
-                  <option value="" disabled>Please specify</option>
+                  <option value="" disabled>
+                    Please specify
+                  </option>
                   {PROJECT_TYPE_OPTIONS.map((opt) => (
-                    <option key={opt} value={opt}>{opt}</option>
+                    <option key={opt} value={opt}>
+                      {opt}
+                    </option>
                   ))}
                 </select>
                 <span className={styles.selectArrow} />
@@ -211,21 +217,24 @@ export const HomeRequestForm = () => {
                   className={errors.investmentRange ? styles.errorInput : ''}
                   defaultValue=""
                 >
-                  <option value="" disabled>Please specify</option>
+                  <option value="" disabled>
+                    Please specify
+                  </option>
                   {INVESTMENT_OPTIONS.map((opt) => (
-                    <option key={opt} value={opt}>{opt}</option>
+                    <option key={opt} value={opt}>
+                      {opt}
+                    </option>
                   ))}
                 </select>
                 <span className={styles.selectArrow} />
               </div>
-              {errors.investmentRange && <p className={styles.error}>{errors.investmentRange.message}</p>}
+              {errors.investmentRange && (
+                <p className={styles.error}>{errors.investmentRange.message}</p>
+              )}
             </div>
-          </div>
 
-          <div className={styles.divider} />
+            {/* ── Goals & friction points ───────────────────── */}
 
-          {/* ── Goals & friction points ───────────────────── */}
-          <div className={styles.section}>
             <div className={styles.field}>
               <label htmlFor="goals">Goals &amp; friction points</label>
               <textarea
@@ -258,12 +267,9 @@ export const HomeRequestForm = () => {
                 {...register('clientContext')}
               />
             </div>
-          </div>
 
-          <div className={styles.divider} />
+            {/* ── Timing ───────────────────────────────────── */}
 
-          {/* ── Timing ───────────────────────────────────── */}
-          <div className={styles.section}>
             <div className={styles.field}>
               <label htmlFor="timing">Timing</label>
               <div className={styles.selectWrapper}>
@@ -273,9 +279,13 @@ export const HomeRequestForm = () => {
                   className={errors.timing ? styles.errorInput : ''}
                   defaultValue=""
                 >
-                  <option value="" disabled>When would you ideally like to start?</option>
+                  <option value="" disabled>
+                    When would you ideally like to start?
+                  </option>
                   {TIMING_OPTIONS.map((opt) => (
-                    <option key={opt} value={opt}>{opt}</option>
+                    <option key={opt} value={opt}>
+                      {opt}
+                    </option>
                   ))}
                 </select>
                 <span className={styles.selectArrow} />
@@ -292,42 +302,53 @@ export const HomeRequestForm = () => {
                   className={errors.followUp ? styles.errorInput : ''}
                   defaultValue=""
                 >
-                  <option value="" disabled>Preferred way to continue the conversation</option>
+                  <option value="" disabled>
+                    Preferred way to continue the conversation
+                  </option>
                   {FOLLOW_UP_OPTIONS.map((opt) => (
-                    <option key={opt} value={opt}>{opt}</option>
+                    <option key={opt} value={opt}>
+                      {opt}
+                    </option>
                   ))}
                 </select>
                 <span className={styles.selectArrow} />
               </div>
               {errors.followUp && <p className={styles.error}>{errors.followUp.message}</p>}
             </div>
-          </div>
 
-          <div className={styles.divider} />
+            {/* ── Attachments ───────────────────────────────── */}
 
-          {/* ── Attachments ───────────────────────────────── */}
-          <div className={styles.section}>
             <div className={styles.field}>
               <label htmlFor="attachments">
-                Attachments <span className={styles.optional}>(optional)</span>
+                Attachments <span className={styles.optional}>(OPTIONAL)</span>
               </label>
-              <div
-                className={styles.fileUpload}
-                onClick={() => fileInputRef.current?.click()}
-              >
+              <div className={styles.fileUpload} onClick={() => fileInputRef.current?.click()}>
                 <span className={styles.fileUploadText}>
-                  {attachments.length > 0
-                    ? attachments.map((f) => f.name).join(', ')
-                    : (
-                      <>
-                        Upload any materials that help explain your situation
-                        <br />
-                        (e.g., notes, outlines, links, drafts)
-                      </>
-                    )}
+                  {attachments.length > 0 ? (
+                    attachments.map((f) => f.name).join(', ')
+                  ) : (
+                    <>
+                      Upload any materials that help explain your situation
+                      <br />
+                      (e.g., notes, outlines, links, drafts)
+                    </>
+                  )}
                 </span>
-                <svg className={styles.fileIcon} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12.1992 11.45L10.7492 12.9C10.3692 13.28 10.3692 13.9 10.7492 14.28C11.1292 14.66 11.7492 14.66 12.1292 14.28L14.6492 11.76C15.7192 10.69 15.7192 8.95 14.6492 7.88L14.3692 7.6C13.2992 6.53 11.5592 6.53 10.4892 7.6L7.59922 10.49C5.92922 12.16 5.92922 14.87 7.59922 16.54L7.87922 16.82C9.54922 18.49 12.2592 18.49 13.9292 16.82L17.2492 13.5" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <svg
+                  className={styles.fileIcon}
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12.1992 11.45L10.7492 12.9C10.3692 13.28 10.3692 13.9 10.7492 14.28C11.1292 14.66 11.7492 14.66 12.1292 14.28L14.6492 11.76C15.7192 10.69 15.7192 8.95 14.6492 7.88L14.3692 7.6C13.2992 6.53 11.5592 6.53 10.4892 7.6L7.59922 10.49C5.92922 12.16 5.92922 14.87 7.59922 16.54L7.87922 16.82C9.54922 18.49 12.2592 18.49 13.9292 16.82L17.2492 13.5"
+                    stroke="#fff"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
                 </svg>
                 <input
                   ref={fileInputRef}
@@ -346,13 +367,13 @@ export const HomeRequestForm = () => {
           {/* ── Submit ───────────────────────────────────── */}
           <div className={styles.submitArea}>
             <p className={styles.submitNote}>
-              Once submitted, we&apos;ll review your request and follow up with the next steps or clarifying questions.
+              Once submitted, we&apos;ll review your request and follow up with the next steps or
+              clarifying questions.
             </p>
             <button type="submit" className={styles.submitBtn} disabled={isLoading}>
               {isLoading ? 'Sending...' : 'Submit a request'}
             </button>
           </div>
-
         </form>
       </div>
       {isSuccess && <ContactFormSuccess onClose={() => setIsSuccess(false)} />}

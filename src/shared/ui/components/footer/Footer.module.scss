@@ -1,8 +1,6 @@
 @use '@/shared/lib/styles/mixin.scss' as *;
 
 .footer {
-  background: #f1f6fd;
-
   &__inner {
     display: flex;
     flex-direction: column;
