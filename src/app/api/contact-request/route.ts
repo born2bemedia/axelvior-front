@@ -108,11 +108,11 @@ export async function POST(request: Request): Promise<NextResponse> {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Request Received - Axelvior</title>
 </head>
-<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #0a0a0a; color: #ffffff;">
-  <table role="presentation" style="width: 100%; border-collapse: collapse; background-color: #121212;">
+<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #fff; color: #333;">
+  <table role="presentation" style="width: 100%; border-collapse: collapse; background-color: #fff;">
     <tr>
       <td align="center" style="padding: 40px 20px;">
-        <table role="presentation" style="max-width: 640px; width: 100%; border-collapse: collapse; background-color: #121212; overflow: hidden;">
+        <table role="presentation" style="max-width: 640px; width: 100%; border-collapse: collapse; background-color: #fff; overflow: hidden;">
           <tr>
             <td style="padding: 0; height: 100px;">
               <img style="width: 100%; height: auto;" src="https://axelvior.com/images/email-header.png" alt="Axelvior Logo">
@@ -134,13 +134,13 @@ export async function POST(request: Request): Promise<NextResponse> {
               </p style="margin: 0 0 24px; color: #333;font-size: 16px;font-style: normal;font-weight: 400;line-height: 140%;">
               <p style="margin: 0 0 24px; color: #333;font-size: 16px;font-style: normal;font-weight: 400;line-height: 140%;">
                 Best regards,<br>
-                <strong style="color: #ffffff;">The Axelvior Team</strong>
+                <strong style="color: #333;">The Axelvior Team</strong><br>
                 <span style="font-size:16px;">
                   Strategic Solutions for Modern Business
                 </span>
               </p>
-              <p style="margin: 0; color: #333;font-size: 16px;font-style: normal;font-weight: 400;line-height: 140%;">
-                <a href="https://axelvior.com" target="_blank" style="color: #333;font-weight: 700;text-decoration: underline;">axelvior.com</a>
+              <p style="margin: 0; color: #333;font-size: 18px;font-style: normal;font-weight: 400;line-height: 140%;">
+                <a href="https://axelvior.com" target="_blank" style="color: #333;font-weight: 400;text-decoration: underline;">axelvior.com</a>
               </p>
             </td>
           </tr>
