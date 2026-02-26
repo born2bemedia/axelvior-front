@@ -459,6 +459,10 @@
     "descGrowth": "Sustainable growth requires more than ambition — it requires a plan. We help you identify the right levers for expansion and build strategies that compound over time.",
     "servicesAndPricing": "Services & Pricing:"
   },
+  "SignUpHero": {
+    "title": "Join Axelvior Today",
+    "subtitle": "Register to manage your engagements and unlock exclusive strategic insights. Partner with Axelvior to scale your impact today."
+  },
   "whatHelp": {
     "tabOneTitle": "Strategic Direction",
     "tabOneMainSubtitle": "At Axelvior, we help you set a clear, achievable direction for your business — one that aligns with your long-term vision, while considering where you currently stand. We work with you to define a",
@@ -790,16 +794,25 @@
     "successTitle": "Your account has been created successfully!",
     "successMessage": "You can now log in with your email and password.",
     "goToLogin": "Go to Login",
-    "title": "Join Estanora",
-    "subtitle": "Create your account to access property insights and personalized services.",
-    "firstName": "First name:",
-    "lastName": "Last name:",
-    "email": "Email:",
-    "password": "Password:",
+    "firstName": "FIRST NAME",
+    "firstNamePlaceholder": "Enter your name",
+    "lastName": "LAST NAME",
+    "lastNamePlaceholder": "Enter your last name",
+    "username": "USERNAME",
+    "usernamePlaceholder": "Enter your username",
+    "email": "EMAIL",
+    "emailPlaceholder": "Enter your email",
+    "phone": "PHONE NUMBER",
+    "password": "PASSWORD",
+    "passwordPlaceholder": "Enter your password",
+    "repeatPassword": "REPEAT PASSWORD",
+    "repeatPasswordPlaceholder": "Repeat your password",
+    "agreementPartOne": "By signing up, you confirm that you are over 18 years old and agree to our",
+    "agreementBoldOne": "Terms and Conditions",
+    "agreementPartTwo": "and",
+    "agreementBoldTwo": "Privacy Policy.",
     "registering": "Registering...",
-    "register": "Register",
-    "loginLink1": "Already have an account?",
-    "loginLink2": "Log in"
+    "register": "Join Now"
   },
   "checkoutForm": {
     "completeYourOrder": "Complete Your Order",

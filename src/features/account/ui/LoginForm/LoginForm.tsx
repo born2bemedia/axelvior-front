@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
@@ -11,7 +11,6 @@ import { useAuthStore } from '@/features/account/store/auth';
 
 import { EyeIcon, EyeOffIcon } from '@/shared/ui/icons';
 import { Button } from '@/shared/ui/kit/button/Button';
-import { Checkbox } from '@/shared/ui/kit/checkbox/CheckBox';
 
 import styles from './LoginForm.module.scss';
 
@@ -99,11 +98,16 @@ export const LoginForm = () => {
           {errors.password && <span className={styles.error}>{errors.password.message}</span>}
         </div>
 
-        <div className={styles.checkboxGroup}>
-          <Checkbox
-            label={t('keepSigned', { fallback: 'Keep me signed in on this device' })}
-            registration={register('keepSigned')}
-          />
+        <div className={styles.formGroup}>
+          <label className="custom_checkbox_label">
+            <input type="checkbox" className="custom_checkbox_input" {...register('keepSigned')} />
+            <span className="custom_checkbox_element"></span>
+            <span className="custom_checkbox_label_title">
+              {t('keepSigned', {
+                fallback: 'Keep me signed in on this device',
+              })}
+            </span>
+          </label>
         </div>
         {errors.root && <span className={styles.rootError}>{errors.root.message}</span>}
         <Button type="submit" variant="blue" disabled={isLoading}>

@@ -18,7 +18,10 @@ type AuthStore = {
     firstName: string,
     lastName: string,
     email: string,
-    password: string
+    password: string,
+    username: string,
+    phone: string,
+    agreement: boolean
   ) => Promise<{ ok: boolean; message?: string }>;
   logout: () => Promise<void>;
   setUser: (user: AuthUser | null) => void;

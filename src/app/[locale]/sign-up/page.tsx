@@ -1,9 +1,9 @@
-import { RegistrationForm } from '@/features/account';
+import { SignUpHero } from './components';
 
 export default async function LogIn() {
   return (
     <>
-      <RegistrationForm />
+      <SignUpHero />
     </>
   );
 }
