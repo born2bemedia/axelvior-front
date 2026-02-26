@@ -134,7 +134,10 @@ const postOrder = async (
     throw new Error(`Failed to create order: ${response.status} - ${errorText}`);
   }
 
-  const orderResult = (await response.json()) as Record<string, unknown>;
+  const orderResult = (await response.json()) as {
+    doc?: { orderNumber?: string };
+  };
+  const createdOrderNumber = orderResult.doc?.orderNumber ?? orderNumber;
 
   // Після успішної покупки логінимо юзера, якщо він щойно створений
   if (isNewUser && password && data.email) {
@@ -171,18 +174,27 @@ const postOrder = async (
       const adminMsg = {
         to: ADMIN_EMAIL,
         from: FROM_EMAIL,
-        subject: `New Order Received - ${orderNumber}`,
+        subject: `New Order Received - ${createdOrderNumber}`,
         html: `
-          <h2>New Order Received - ${orderNumber}</h2>
+          <h2>New Order Received - ${createdOrderNumber}</h2>
           <p><strong>User:</strong> ${data.firstName} ${data.lastName}</p>
           <p><strong>Email:</strong> ${data.email}</p>
           <p><strong>Phone:</strong> ${data.phone ?? ''}</p>
-          <p><strong>Address:</strong> ${data.address1}${data.address2 ? `, ${data.address2}` : ''}, ${data.city}, ${data.zip}, ${data.country}</p>
+          <p><strong>Address:</strong> ${data.address1}${
+            data.address2 ? `, ${data.address2}` : ''
+          }, ${data.city}, ${data.zip}, ${data.country}</p>
           ${data.orderNotes ? `<p><strong>Order Notes:</strong> ${data.orderNotes}</p>` : ''}
           <p><strong>Total:</strong> €${total.toFixed(2)}</p>
           <p><strong>Items:</strong></p>
           <ul>
-            ${cart.map((item) => `<li>${item.title} x ${item.quantity} - €${(item.price * item.quantity).toFixed(2)}</li>`).join('')}
+            ${cart
+              .map(
+                (item) =>
+                  `<li>${item.title} x ${item.quantity} - €${(item.price * item.quantity).toFixed(
+                    2
+                  )}</li>`
+              )
+              .join('')}
           </ul>
         `,
       };
@@ -202,120 +214,90 @@ const postOrder = async (
       const userMsg = {
         to: data.email,
         from: FROM_EMAIL,
-        subject: "We've received your Estanora order",
+        subject: "We've received your Axelvior order",
         html: `
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Received - Estanora</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Received - Axelvior</title>
 </head>
-
-<body
-    style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #0a0a0a; color: #ffffff;">
-    <table role="presentation" style="width: 100%; border-collapse: collapse; background-color: #0a0a0a;">
-
-        <tr>
-            <td align="center" style="padding: 40px 20px;">
-                <table role="presentation"
-                    style="max-width: 640px; width: 100%; border-collapse: collapse; background-color: #1a1a1a;overflow: hidden;">
-                    <!-- Header -->
-                    <tr>
-                        <td style="padding: 0;height: 100px;">
-
-                            <img style="width: 100%;height: auto;" src="https://estanora.com/images/mail-header.png"
-                                alt="Estanora Logo">
-                        </td>
-                    </tr>
-
-                    <!-- Content -->
-                    <tr>
-                        <td style="padding: 32px;background: #000;">
-                            <p style="margin: 0 0 32px; color: rgba(204, 204, 204, 0.40);
-                            font-size: 42px;
-                            font-style: normal;
-                            font-weight: 400;
-                            line-height: normal;">
-                                Dear ${safeFirstName},
-                            </p>
-
-                            <p style="margin: 0 0 24px; 
-                            color: #CCC;
-                            font-size: 14px;
-                            font-style: normal;
-                            font-weight: 300;
-                            line-height: normal;">
-                                Thank you for choosing Estanora for your real estate consultation.
-                            </p>
-
-                            <p style="margin: 0 0 24px; 
-                            color: #CCC;
-                            font-size: 14px;
-                            font-style: normal;
-                            font-weight: 300;
-                            line-height: normal;">
-                                We're happy to let you know that your order has been successfully received. One of our
-                                experts will review your request and contact you shortly to clarify details and ensure
-                                we deliver a tailored, high-value consulting experience.
-                            </p>
-
-                            <p style="margin: 0 0 24px; 
-                            color: #CCC;
-                            font-size: 14px;
-                            font-style: normal;
-                            font-weight: 300;
-                            line-height: normal;">
-                                In the meantime, no further action is required from you. If you have any additional
-                                information you'd like to share, you can simply reply to this email.
-                            </p>
-
-                            <p style="margin: 0 0 24px; 
-                            color: #CCC;
-                            font-size: 14px;
-                            font-style: normal;
-                            font-weight: 300;
-                            line-height: normal;">
-                                We appreciate your trust in Estanora and look forward to working with you.
-                            </p>
-
-                            <p style="margin: 0; color: #FFF;
-                            font-size: 20px;
-                            font-style: normal;
-                            font-weight: 400;
-                            line-height: normal;">
-                                Kind regards,<br>
-                                <strong style="color: #ffffff;">The Estanora Team</strong>
-                            </p>
-                        </td>
-                    </tr>
-
-                    <!-- Footer -->
-                    <tr>
-                        <td style="border-top: 1px solid #222; padding: 24px 30px; background: #000;">
-                            <a href="mailto:info@estanora.com" style="color: #FFF;
-                            font-size: 10px;
-                            font-style: normal;
-                            font-weight: 400;
-                            line-height: normal;
-                            text-transform: uppercase;
-                            float: left;
-                            text-decoration: none;">
-                                <img style="margin-right: 8px;margin-bottom: -2px;" width="14" height="14"
-                                    src="https://estanora.com/images/mail-icon.png" alt="Estanora Mail Icon">
-                                info@estanora.com
-                            </a>
-                            <img style="width: 124.695px;height: 20px; float: right;"
-                                src="https://estanora.com/images/mail-logo.png" alt="Estanora Mail Icon">
-                        </td>
-                    </tr>
-                </table>
+<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #fff; color: #333;">
+  <table role="presentation" style="width: 100%; border-collapse: collapse; background-color: #fff;">
+    <tr>
+      <td align="center" style="padding: 40px 20px;">
+        <table role="presentation" style="max-width: 640px; width: 100%; border-collapse: collapse; background-color: #fff; overflow: hidden;">
+          <tr>
+            <td style="padding: 0; height: 100px;">
+              <img style="width: 100%; height: auto;" src="https://axelvior.com/images/email-header.png" alt="Axelvior Logo">
             </td>
-        </tr>
-    </table>
-</body>
+          </tr>
+          <tr>
+            <td style="padding: 32px; background: #fff;">
+              <p style="margin: 0 0 32px; color: #333;font-size: 24px;font-style: normal;font-weight: 400;line-height: 140%;">
+                Dear ${safeFirstName},
+              </p>
+              <p style="margin: 0 0 24px; color: #333;font-size: 16px;font-style: normal;font-weight: 400;line-height: 140%;">
+                Thank you for choosing Axelvior as your strategic partner. We have successfully received your request and are pleased to confirm your engagement.<br>
+                Our team is currently reviewing your requirements to ensure our resources align with your business objectives.
+              </p>
+              <span style="display: block;padding: 20px;background:#384CE3;margin: 32px 0;color: #FFF;font-size: 14px;font-style: normal;font-weight: 400;line-height: 140%;">
+                Engagement Summary:<br><br>
 
+                ${cart
+                  .map(
+                    (item) => `
+                  <ul>
+                    <li>
+                      Service: <strong>${escapeHtml(item.title)}</strong>
+                    </li>
+                    <li>
+                      Quantity: <strong>${item.quantity}</strong>
+                    </li>
+                    <li>
+                      Order ID: <strong>${createdOrderNumber}</strong>
+                    </li>
+                    <li>
+                      Date: <strong>${new Date().toLocaleDateString()}</strong>
+                    </li>
+                    <li>
+                      Total Amount: <strong>${escapeHtml(
+                        (item.price * item.quantity).toFixed(2)
+                      )}</strong>
+                    </li>
+                  </ul>
+                  `
+                  )
+                  .join('')}
+              </span>
+              <p style="margin: 0 0 24px; color: #333;font-size: 16px;font-style: normal;font-weight: 400;line-height: 140%;">
+                <b>What Happens Next?</b><br>
+                You will receive an email shortly containing payment instructions. Once those details are finalized, we will move forward with the next phase of your project.<br>
+                We look forward to a successful collaboration.
+              </p>
+              <p style="margin: 0 0 24px; color: #333;font-size: 16px;font-style: normal;font-weight: 400;line-height: 140%;">
+                Best regards,<br>
+                <strong style="color: #333;">The Axelvior Team</strong><br>
+                <span style="font-size:16px;">
+                  Strategic Solutions for Modern Business
+                </span>
+              </p>
+              <p style="margin: 0; color: #333;font-size: 18px;font-style: normal;font-weight: 400;line-height: 140%;">
+                <a href="https://axelvior.com" target="_blank" style="color: #333;font-weight: 400;text-decoration: underline;">axelvior.com</a>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 0; height: 100px;">
+              <img style="width: 100%; height: auto;" src="https://axelvior.com/images/email-footer.png" alt="Axelvior Logo">
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
 </html>
         `,
       };

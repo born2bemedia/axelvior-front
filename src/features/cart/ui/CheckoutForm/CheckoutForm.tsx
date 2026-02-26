@@ -116,7 +116,7 @@ export const CheckoutForm = () => {
 
   const onSubmit = async (data: CheckoutFormSchema) => {
     try {
-      await createOrder({
+      const result = await createOrder({
         billing: {
           firstName: data.firstName,
           lastName: data.lastName,
@@ -136,6 +136,11 @@ export const CheckoutForm = () => {
         recaptcha: data.recaptcha,
         userId: user?.id,
       });
+
+      const orderNumber = (result as { doc?: { orderNumber?: string } })?.doc?.orderNumber ?? '';
+      if (typeof sessionStorage !== 'undefined') {
+        sessionStorage.setItem('lastOrder', JSON.stringify({ orderNumber, items, total }));
+      }
 
       clearCart();
       setRecaptchaKey((k) => k + 1);

@@ -3,7 +3,10 @@
 import { useCallback, useRef, useState } from 'react';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
+import PhoneInput from 'react-phone-input-2';
+
+import { excludedCountries } from '@/shared/lib/helpers/excludedCountries';
 
 import { submitHomeRequestForm } from '../api/submitHomeRequestForm';
 import {
@@ -12,6 +15,8 @@ import {
 } from '../model/ContactForm.schema';
 import { ContactFormSuccess } from './ContactFormSuccess';
 import styles from './HomeRequestForm.module.scss';
+
+import 'react-phone-input-2/lib/style.css';
 
 const PROJECT_TYPE_OPTIONS = [
   'Business direction & clarity',
@@ -47,6 +52,7 @@ export const HomeRequestForm = () => {
 
   const {
     register,
+    control,
     handleSubmit,
     watch,
     reset,
@@ -131,12 +137,21 @@ export const HomeRequestForm = () => {
             <div className={styles.row}>
               <div className={styles.field}>
                 <label htmlFor="phone">Phone number</label>
-                <input
-                  id="phone"
-                  type="tel"
-                  placeholder="Enter your phone number"
-                  {...register('phone')}
-                  className={errors.phone ? styles.errorInput : ''}
+                <Controller
+                  name="phone"
+                  control={control}
+                  render={({ field }) => (
+                    <PhoneInput
+                      country="gb"
+                      value={field.value}
+                      onChange={field.onChange}
+                      excludeCountries={[...new Set(excludedCountries)]}
+                      containerClass={`${styles.phoneContainer} ${errors.phone ? styles.phoneError : ''}`}
+                      inputProps={{ id: 'phone' }}
+                      enableSearch
+                      preferredCountries={['gb']}
+                    />
+                  )}
                 />
                 {errors.phone && <p className={styles.error}>{errors.phone.message}</p>}
               </div>

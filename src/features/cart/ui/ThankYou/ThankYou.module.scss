@@ -1,20 +1,99 @@
+@use '@/shared/lib/styles/mixin.scss' as *;
+
 .wrap {
-  padding: 2rem 0;
-  text-align: center;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
 
 .title {
-  color: #fff;
-  font-size: 32px;
-  font-weight: 500;
-  margin-bottom: 0.75rem;
+  color: #000;
+  text-align: center;
+  font-family: var(--font-clash-grotesk, sans-serif);
+  font-size: 80px;
+  font-weight: 300;
+  line-height: 120%;
+  letter-spacing: -0.5px;
+
+  @include tablet {
+    font-size: 60px;
+  }
+
+  @include mobile {
+    font-size: 36px;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  gap: 8px;
 }
 
 .text {
-  color: rgba(204, 204, 204, 0.9);
+  color: #000;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: -0.25px;
+
+  @include mobile {
+    font-size: 14px;
+  }
+  a {
+    text-decoration: underline;
+  }
+}
+
+.orderDetails {
+  width: 100%;
+  margin: 16px 0;
+}
+
+.orderTitle {
+  color: #000;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 140%;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.orderTable {
+  width: 100%;
+  border-collapse: collapse;
   font-size: 14px;
-  font-weight: 300;
-  line-height: 1.5;
-  margin-bottom: 1.5rem;
+  margin: 0 auto;
+
+  th,
+  td {
+    padding: 10px 12px;
+    text-align: left;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+  }
+
+  th {
+    background: rgba(0, 0, 0, 0.04);
+    font-weight: 600;
+    color: #000;
+  }
+
+  td {
+    color: #333;
+  }
+
+  @include mobile {
+    font-size: 12px;
+
+    th,
+    td {
+      padding: 8px;
+    }
+  }
 }
