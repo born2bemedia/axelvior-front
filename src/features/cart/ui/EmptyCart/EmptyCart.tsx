@@ -1,44 +1,41 @@
-import { useTranslations } from "next-intl";
+import Image from 'next/image';
 
-import { Button } from "@/shared/ui/kit/button/Button";
+import { useTranslations } from 'next-intl';
 
-import styles from "./EmptyCart.module.scss";
+import { Button } from '@/shared/ui/kit/button/Button';
 
-const OFFERS = [
-  { href: "/due-diligence", label: "Due Diligence" },
-  { href: "/market-research", label: "Market Research" },
-  { href: "/portfolio-services", label: "Portfolio Services" },
-  { href: "/lease-advisory", label: "Lease Advisory" },
-] as const;
+import styles from './EmptyCart.module.scss';
 
 export const EmptyCart = () => {
-  const t = useTranslations("emptyCart");
+  const t = useTranslations('emptyCart');
+
   return (
-    <div className={styles.wrap}>
-      <h1 className={styles.title}>
-        {t("title", { fallback: "Your cart is empty" })}
-      </h1>
-      <p className={styles.text}>
-        {t("text", {
-          fallback:
-            "You haven't added any services yet. Please check our offers:",
-        })}
-      </p>
-      <ul className={styles.links}>
-        {OFFERS.map(({ href, label }, index) => (
-          <li key={index}>
-            {index ! == OFFERS.length - 1 ? (
-              <Button type="link" url={href} variant="bordered">
-                {label}
-              </Button>
-            ) : (
-              <Button type="link" url={href} variant="white">
-                {label}
-              </Button>
-            )}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <section className={styles.wrap} aria-labelledby="empty-cart-title">
+      <div className={'container'}>
+        <div className={styles.content}>
+          <h1 id="empty-cart-title" className={styles.title}>
+            {t('heading', { fallback: 'Your Cart Is Empty' })}
+          </h1>
+          <p className={styles.text}>
+            {t('description', {
+              fallback:
+                "It looks like you haven't selected any services yet. Ready to start your next project? Browse our consulting tiers and expert resources to get started.",
+            })}
+          </p>
+          <div className={styles.action}>
+            <Button type="link" url="/pricing" variant="blue">
+              {t('cta', { fallback: 'View Consulting Solutions' })}
+            </Button>
+          </div>
+        </div>
+      </div>
+      <Image
+        src="/images/cart-empty.png"
+        alt="Empty Cart"
+        width={1312}
+        height={373}
+        className={styles.illustration}
+      />
+    </section>
   );
 };
