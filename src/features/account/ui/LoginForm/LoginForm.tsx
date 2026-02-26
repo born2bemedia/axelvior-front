@@ -116,7 +116,7 @@ export const LoginForm = () => {
             : t('login', { fallback: 'Log in' })}
         </Button>
 
-        <Link href="#" className={styles.signupLink}>
+        <Link href="/forgot-password" className={styles.signupLink}>
           {t('signupLink', { fallback: 'Forgot Password?' })}
         </Link>
       </div>

@@ -340,7 +340,7 @@
     width: 507px;
     max-width: 100%;
     border: 1px solid #222;
-    background: #000;
+    background: var(--color-blue-8, #000829);
     position: relative;
     img {
       position: absolute;
@@ -376,8 +376,8 @@
       }
     }
     p {
-      color: rgba(204, 204, 204, 0.3);
-      font-size: 14px;
+      color: #fff;
+      font-size: 16px;
       font-style: normal;
       font-weight: 400;
       line-height: normal;
