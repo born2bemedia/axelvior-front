@@ -1,15 +1,19 @@
-"use client";
+'use client';
 
-import { create } from "zustand";
+import { create } from 'zustand';
 
-import type { AuthUser } from "../model/auth.types";
+import type { AuthUser } from '../model/auth.types';
 
 type AuthStore = {
   user: AuthUser | null;
   isLoading: boolean;
   isInitialized: boolean;
   fetchUser: () => Promise<void>;
-  login: (email: string, password: string) => Promise<{ ok: boolean; message?: string }>;
+  login: (
+    email: string,
+    password: string,
+    keepSigned: boolean
+  ) => Promise<{ ok: boolean; message?: string }>;
   register: (
     firstName: string,
     lastName: string,
@@ -18,6 +22,9 @@ type AuthStore = {
   ) => Promise<{ ok: boolean; message?: string }>;
   logout: () => Promise<void>;
   setUser: (user: AuthUser | null) => void;
+
+  keepSigned: boolean;
+  setKeepSigned: (value: boolean) => void;
 };
 
 export const useAuthStore = create<AuthStore>((set, get) => ({
@@ -25,10 +32,22 @@ export const useAuthStore = create<AuthStore>((set, get) => ({
   isLoading: false,
   isInitialized: false,
 
+  keepSigned: false,
+
+  setKeepSigned: (value) => {
+    set({ keepSigned: value });
+
+    if (value) {
+      localStorage.setItem('keepSigned', 'true');
+    } else {
+      localStorage.removeItem('keepSigned');
+    }
+  },
+
   fetchUser: async () => {
     set({ isLoading: true });
     try {
-      const res = await fetch("/api/auth/me", { credentials: "include" });
+      const res = await fetch('/api/auth/me', { credentials: 'include' });
       const data = (await res.json()) as { user?: AuthUser | null };
       set({
         user: data.user ?? null,
@@ -40,54 +59,62 @@ export const useAuthStore = create<AuthStore>((set, get) => ({
     }
   },
 
-  login: async (email, password) => {
+  login: async (email, password, keepSigned) => {
     set({ isLoading: true });
     try {
-      const res = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
-        credentials: "include",
+        credentials: 'include',
       });
       const data = (await res.json()) as { user?: AuthUser; message?: string };
       if (!res.ok) {
         set({ isLoading: false });
-        return { ok: false, message: data.message ?? "Login failed." };
+        return { ok: false, message: data.message ?? 'Login failed.' };
       }
+
+      // We save only if the login is successful
+      if (keepSigned) {
+        localStorage.setItem('keepSigned', 'true');
+      } else {
+        localStorage.removeItem('keepSigned');
+      }
+
       set({ user: data.user ?? null, isLoading: false });
       return { ok: true };
     } catch {
       set({ isLoading: false });
-      return { ok: false, message: "Login failed." };
+      return { ok: false, message: 'Login failed.' };
     }
   },
 
   register: async (firstName, lastName, email, password) => {
     set({ isLoading: true });
     try {
-      const res = await fetch("/api/auth/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const res = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ firstName, lastName, email, password }),
-        credentials: "include",
+        credentials: 'include',
       });
       console.log(res);
       const data = (await res.json()) as { user?: AuthUser; message?: string };
       if (!res.ok) {
         set({ isLoading: false });
-        return { ok: false, message: data.message ?? "Registration failed." };
+        return { ok: false, message: data.message ?? 'Registration failed.' };
       }
       set({ user: data.user ?? null, isLoading: false });
       return { ok: true };
     } catch {
       set({ isLoading: false });
-      return { ok: false, message: "Registration failed." };
+      return { ok: false, message: 'Registration failed.' };
     }
   },
 
   logout: async () => {
     try {
-      await fetch("/api/auth/logout", { method: "POST", credentials: "include" });
+      await fetch('/api/auth/logout', { method: 'POST', credentials: 'include' });
     } finally {
       set({ user: null });
     }

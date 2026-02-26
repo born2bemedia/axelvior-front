@@ -761,14 +761,16 @@
     "button": "Contact Estanora support"
   },
   "account": {
-    "title": "Welcome Back to Estanora",
-    "subtitle": "Access your account and manage your property insights with ease.",
-    "email": "Email",
-    "password": "Password",
+    "title": "Welcome Back to Axelvior",
+    "subtitle": "Enter your credentials to log in. If you’ve forgotten your password, click “Forgot Password?” for assistance.",
+    "email": "USERNAME OR EMAIL",
+    "placeHolderEmail": "Enter your username",
+    "password": "PASSWORD",
+    "placeHolderPassword": "Enter your password",
+    "keepSigned": "Keep me signed in on this device",
     "loggingIn": "Logging in...",
     "login": "Log in",
-    "signupLink1": "Don't have an account?",
-    "signupLink2": "Sign up"
+    "signupLink": "Forgot Password?"
   },
   "myOrdersPage": {
     "loading": "Loading orders...",

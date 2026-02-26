@@ -1,24 +1,26 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useTranslations } from "next-intl";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useTranslations } from 'next-intl';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
 
-import { useAuthStore } from "@/features/account/store/auth";
+import { useAuthStore } from '@/features/account/store/auth';
 
-import { EyeIcon, EyeOffIcon } from "@/shared/ui/icons";
-import { Button } from "@/shared/ui/kit/button/Button";
+import { EyeIcon, EyeOffIcon } from '@/shared/ui/icons';
+import { Button } from '@/shared/ui/kit/button/Button';
+import { Checkbox } from '@/shared/ui/kit/checkbox/CheckBox';
 
-import styles from "./LoginForm.module.scss";
+import styles from './LoginForm.module.scss';
 
-import { Link, useRouter } from "@/i18n/navigation";
+import { Link, useRouter } from '@/i18n/navigation';
 
 const loginSchema = z.object({
-  email: z.string().email("Invalid email").min(1, "Email is required"),
-  password: z.string().min(1, "Password is required"),
+  email: z.email('Invalid email').min(1, 'Email is required'),
+  password: z.string().min(1, 'Password is required'),
+  keepSigned: z.boolean(),
 });
 
 type LoginFormSchema = z.infer<typeof loginSchema>;
@@ -27,7 +29,7 @@ export const LoginForm = () => {
   const router = useRouter();
   const login = useAuthStore((s) => s.login);
   const isLoading = useAuthStore((s) => s.isLoading);
-  const t = useTranslations("account");
+  const t = useTranslations('account');
   const [showPassword, setShowPassword] = useState(false);
 
   const {
@@ -37,84 +39,82 @@ export const LoginForm = () => {
     formState: { errors },
   } = useForm<LoginFormSchema>({
     resolver: zodResolver(loginSchema),
-    defaultValues: { email: "", password: "" },
+    defaultValues: { email: '', password: '', keepSigned: false },
   });
 
   const onSubmit = async (data: LoginFormSchema) => {
-    const result = await login(data.email, data.password);
+    const result = await login(data.email, data.password, data.keepSigned);
     if (result.ok) {
-      router.push("/account");
+      router.push('/account');
     } else {
-      setError("root", { message: result.message ?? "Login failed." });
+      setError('root', { message: result.message ?? 'Login failed.' });
     }
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
       <div className={styles.header}>
-        <h1 className={styles.title}>
-          {t("title", { fallback: "Welcome Back to Estanora" })}
-        </h1>
+        <h1 className={styles.title}>{t('title', { fallback: 'Welcome Back to Axelvior' })}</h1>
         <p className={styles.text}>
-          {t("subtitle", {
+          {t('subtitle', {
             fallback:
-              "Access your account and manage your property insights with ease.",
+              'Enter your credentials to log in. If you’ve forgotten your password, click “Forgot Password?” for assistance.',
           })}
         </p>
       </div>
       <div className={styles.formWrapper}>
         <div className={styles.formGroup}>
-          <label htmlFor="email">{t("email", { fallback: "Email" })} </label>
+          <label htmlFor="email">{t('email', { fallback: 'USERNAME OR EMAIL' })} </label>
           <input
             id="email"
             type="email"
-            {...register("email")}
+            {...register('email')}
             autoComplete="email"
-            className={errors.email ? styles.errorInput : ""}
+            placeholder={t('placeHolderEmail', { fallback: 'Enter your username' })}
+            className={errors.email ? styles.errorInput : ''}
           />
-          {errors.email && (
-            <span className={styles.error}>{errors.email.message}</span>
-          )}
+          {errors.email && <span className={styles.error}>{errors.email.message}</span>}
         </div>
+
         <div className={styles.formGroup}>
-          <label htmlFor="password">
-            {t("password", { fallback: "Password" })}
-          </label>
+          <label htmlFor="password">{t('password', { fallback: 'PASSWORD' })}</label>
           <div className={styles.passwordWrapper}>
             <input
               id="password"
-              type={showPassword ? "text" : "password"}
-              {...register("password")}
+              type={showPassword ? 'text' : 'password'}
+              {...register('password')}
               autoComplete="current-password"
-              className={errors.password ? styles.errorInput : ""}
+              placeholder={t('placeHolderPassword', { fallback: 'Enter your password' })}
+              className={errors.password ? styles.errorInput : ''}
             />
             <button
               type="button"
               className={styles.togglePassword}
               onClick={() => setShowPassword(!showPassword)}
-              aria-label={showPassword ? "Hide password" : "Show password"}
+              aria-label={showPassword ? 'Hide password' : 'Show password'}
             >
               {showPassword ? <EyeOffIcon /> : <EyeIcon />}
             </button>
           </div>
-          {errors.password && (
-            <span className={styles.error}>{errors.password.message}</span>
-          )}
+          {errors.password && <span className={styles.error}>{errors.password.message}</span>}
         </div>
-        {errors.root && (
-          <span className={styles.rootError}>{errors.root.message}</span>
-        )}
-        <Button type="submit" variant="white" disabled={isLoading}>
+
+        <div className={styles.checkboxGroup}>
+          <Checkbox
+            label={t('keepSigned', { fallback: 'Keep me signed in on this device' })}
+            registration={register('keepSigned')}
+          />
+        </div>
+        {errors.root && <span className={styles.rootError}>{errors.root.message}</span>}
+        <Button type="submit" variant="blue" disabled={isLoading}>
           {isLoading
-            ? t("loggingIn", { fallback: "Logging in..." })
-            : t("login", { fallback: "Log in" })}
+            ? t('loggingIn', { fallback: 'Logging in...' })
+            : t('login', { fallback: 'Log in' })}
         </Button>
-        <p className={styles.signupLink}>
-          {t("signupLink1", { fallback: "Don't have an account?" })}{" "}
-          <Link href="/registration">
-            {t("signupLink2", { fallback: "Sign up" })}
-          </Link>
-        </p>
+
+        <Link href="#" className={styles.signupLink}>
+          {t('signupLink', { fallback: 'Forgot Password?' })}
+        </Link>
       </div>
     </form>
   );
