@@ -1,5 +1,33 @@
 @use '@/shared/lib/styles/mixin.scss' as *;
 
+.account {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background: linear-gradient(180deg, #f1f6fd 0%, #fff 100%);
+
+  &__top {
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    button {
+      padding-top: 11px;
+      padding-bottom: 11px;
+      line-height: 1;
+    }
+  }
+
+  &__title {
+    color: #000;
+    font-size: 40px;
+    font-weight: 300;
+    line-height: 120%;
+    letter-spacing: -0.25px;
+  }
+}
+
 .title {
   margin-bottom: 1.5rem;
   color: #fff;
