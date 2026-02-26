@@ -17,7 +17,7 @@ import styles from './LoginForm.module.scss';
 import { Link, useRouter } from '@/i18n/navigation';
 
 const loginSchema = z.object({
-  email: z.email('Invalid email').min(1, 'Email is required'),
+  email: z.string().min(1, 'Please enter username or email'),
   password: z.string().min(1, 'Password is required'),
   keepSigned: z.boolean(),
 });
@@ -66,7 +66,7 @@ export const LoginForm = () => {
           <label htmlFor="email">{t('email', { fallback: 'USERNAME OR EMAIL' })} </label>
           <input
             id="email"
-            type="email"
+            type="text"
             {...register('email')}
             autoComplete="email"
             placeholder={t('placeHolderEmail', { fallback: 'Enter your username' })}
