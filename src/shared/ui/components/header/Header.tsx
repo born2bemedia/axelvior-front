@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import React, { useEffect, useState } from "react";
-import Image from "next/image";
-import { usePathname } from "next/navigation";
+import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
-import { useTranslations } from "next-intl";
+import { useTranslations } from 'next-intl';
 
-import { useAuthStore } from "@/features/account";
-import { useCartStore } from "@/features/cart";
+import { useAuthStore } from '@/features/account';
+import { useCartStore } from '@/features/cart';
 
-import { WEBSITE_EMAIL, WEBSITE_PHONE } from "@/shared/lib/constants/constants";
-import { FacebookIcon, InstagramIcon, XIcon } from "@/shared/ui/icons";
+import { WEBSITE_EMAIL, WEBSITE_PHONE } from '@/shared/lib/constants/constants';
+import { FacebookIcon, InstagramIcon, XIcon } from '@/shared/ui/icons';
 
-import { LangSelector } from "../language-switcher/LangSelector";
-import styles from "./Header.module.scss";
+import { LangSelector } from '../language-switcher/LangSelector';
+import styles from './Header.module.scss';
 
-import { Link } from "@/i18n/navigation";
+import { Link } from '@/i18n/navigation';
 
 export const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -28,20 +28,20 @@ export const Header = () => {
     return state.items.reduce((total, item) => total + item.quantity, 0);
   });
 
-  const t = useTranslations("header");
+  const t = useTranslations('header');
 
   const NAV_ITEMS = [
-    { text: t("home", { fallback: "Home" }), href: "/" },
-    { text: t("who", { fallback: "Who" }), href: "/who" },
-    { text: t("what", { fallback: "What" }), href: "/what" },
-    { text: t("why", { fallback: "Why" }), href: "/why" },
+    { text: t('home', { fallback: 'Home' }), href: '/' },
+    { text: t('who', { fallback: 'Who' }), href: '/who' },
+    { text: t('what', { fallback: 'What' }), href: '/what' },
+    { text: t('why', { fallback: 'Why' }), href: '/why' },
     {
-      text: t("clients", { fallback: "Clients" }),
-      href: "/clients",
+      text: t('clients', { fallback: 'Clients' }),
+      href: '/clients',
     },
-    { text: t("pricing", { fallback: "Pricing" }), href: "/pricing" },
-    { text: t("ideas", { fallback: "Ideas" }), href: "/ideas" },
-    { text: t("connect", { fallback: "Connect" }), href: "/connect" },
+    { text: t('pricing', { fallback: 'Pricing' }), href: '/pricing' },
+    { text: t('ideas', { fallback: 'Ideas' }), href: '/ideas' },
+    { text: t('connect', { fallback: 'Connect' }), href: '/connect' },
   ] as const;
 
   useEffect(() => {
@@ -61,14 +61,14 @@ export const Header = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <header
-      className={`${styles.header} ${isMobileMenuOpen ? styles.open : ""} ${
-        isScrolled ? styles.scrolled : ""
+      className={`${styles.header} ${isMobileMenuOpen ? styles.open : ''} ${
+        isScrolled ? styles.scrolled : ''
       }`}
     >
       <div className={styles.header__topbar}>
@@ -76,33 +76,16 @@ export const Header = () => {
           <div className={styles.header__topbar__inner}>
             <div className={styles.header__topbar__contacts}>
               <Link href={`mailto:${WEBSITE_EMAIL}`}>{WEBSITE_EMAIL}</Link>
-              {WEBSITE_PHONE && (
-                <Link href={`tel:${WEBSITE_PHONE}`}>{WEBSITE_PHONE}</Link>
-              )}
+              {WEBSITE_PHONE && <Link href={`tel:${WEBSITE_PHONE}`}>{WEBSITE_PHONE}</Link>}
             </div>
             <div className={styles.header__topbar__socials}>
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-              >
+              <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                 <FacebookIcon />
               </a>
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-              >
+              <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <InstagramIcon />
               </a>
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="X"
-              >
+              <a href="#" target="_blank" rel="noopener noreferrer" aria-label="X">
                 <XIcon />
               </a>
             </div>
@@ -115,12 +98,7 @@ export const Header = () => {
           <div className={styles.header__main__inner}>
             <div className={styles.header__left}>
               <Link href="/" className={styles.header__logo}>
-                <Image
-                  src="/images/logo.svg"
-                  alt="axelvior"
-                  width={87}
-                  height={20}
-                />
+                <Image src="/images/logo.svg" alt="axelvior" width={87} height={20} />
               </Link>
 
               <nav className={styles.header__nav}>
@@ -128,7 +106,7 @@ export const Header = () => {
                   <Link
                     key={index}
                     href={item.href}
-                    className={pathname === item.href ? styles.active : ""}
+                    className={pathname === item.href ? styles.active : ''}
                   >
                     {item.text}
                   </Link>
@@ -139,81 +117,70 @@ export const Header = () => {
             <div className={styles.header__actions}>
               {user ? (
                 <Link href="/account" className={styles.header__btn_login}>
-                  {t("account", { fallback: "Account" })}
+                  {t('account', { fallback: 'Account' })}
                 </Link>
               ) : (
                 <>
                   <Link href="/sign-up" className={styles.header__btn_signin}>
-                    {t("sign-up", { fallback: "Sign up" })}
+                    {t('sign-up', { fallback: 'Sign up' })}
                   </Link>
                   <Link href="/log-in" className={styles.header__btn_login}>
-                    {t("login", { fallback: "Login" })}
+                    {t('login', { fallback: 'Login' })}
                   </Link>
                 </>
               )}
 
               <Link href="/checkout" className={styles.header__btn_cart}>
-                {t("cart", { fallback: "Cart" })}
-                {totalItems > 0 && (
-                  <span className={styles.header__cart_badge}>
-                    {totalItems}
-                  </span>
-                )}
+                {t('cart', { fallback: 'Cart' })}
+                {totalItems > 0 && <span className={styles.header__cart_badge}>{totalItems}</span>}
               </Link>
             </div>
 
             <div className={styles.header__mobile_controls}>
               <LangSelector />
               <button
-                className={`${styles.header__burger} ${
-                  isMobileMenuOpen ? styles.open : ""
-                }`}
+                className={`${styles.header__burger} ${isMobileMenuOpen ? styles.open : ''}`}
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 aria-label="Toggle menu"
               >
-                {t("menu", { fallback: "Menu" })}
+                {t('menu', { fallback: 'Menu' })}
               </button>
             </div>
           </div>
         </div>
       </div>
 
-      <div
-        className={`${styles.header__mobile_menu} ${
-          isMobileMenuOpen ? styles.open : ""
-        }`}
-      >
+      <div className={`${styles.header__mobile_menu} ${isMobileMenuOpen ? styles.open : ''}`}>
         <nav>
           {NAV_ITEMS.map((item, index) => (
             <Link
               key={index}
               href={item.href}
-              className={pathname === item.href ? styles.active : ""}
+              className={pathname === item.href ? styles.active : ''}
             >
               {item.text}
+              <span>0{index + 1}</span>
             </Link>
           ))}
         </nav>
         <div className={styles.header__mobile_actions}>
           {user ? (
             <Link href="/account" className={styles.header__btn_login}>
-              {t("account", { fallback: "Account" })}
+              {t('account', { fallback: 'Account' })}
             </Link>
           ) : (
             <>
               <Link href="/sign-up" className={styles.header__btn_signin}>
-                {t("sign-up", { fallback: "Sign up" })}
+                {t('sign-up', { fallback: 'Sign up' })}
               </Link>
               <Link href="/log-in" className={styles.header__btn_login}>
-                {t("login", { fallback: "Login" })}
+                {t('login', { fallback: 'Login' })}
               </Link>
             </>
           )}
           <Link href="/checkout" className={styles.header__btn_cart}>
-            {t("cart", { fallback: "Cart" })}
-            {totalItems > 0 && (
-              <span className={styles.header__cart_badge}>{totalItems}</span>
-            )}
+            {t('cart', { fallback: 'Cart' })}
+            {totalItems > 0 && <span className={styles.header__cart_badge}>{totalItems}</span>}
           </Link>
         </div>
       </div>

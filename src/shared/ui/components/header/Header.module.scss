@@ -262,7 +262,7 @@
     line-height: 140%; /* 22.4px */
     letter-spacing: var(--letter-spacing--0_25, -0.25px);
     &.open {
-      transform: rotate(180deg);
+      //transform: rotate(180deg);
     }
 
     @include tablet {
@@ -280,7 +280,7 @@
     width: 100%;
     z-index: 100;
     background: #f1f6fd;
-    padding: 24px 16px;
+    padding: 16px;
     height: calc(100vh - 100px);
     opacity: 0;
     visibility: hidden;
@@ -288,6 +288,7 @@
     transform: translateY(-10px);
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     overflow-y: auto;
+    box-sizing: border-box;
 
     &.open {
       opacity: 1;
@@ -305,32 +306,41 @@
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 8px;
 
       a {
-        width: 100%;
         display: flex;
-        padding: 12px 16px;
-        justify-content: center;
+        padding: var(--item-spacing-12, 12px) 0;
         align-items: center;
-        border-radius: 6px;
-        background: rgba(0, 0, 0, 0.04);
-        color: #000;
-        text-align: center;
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 1.4;
-        letter-spacing: -0.25px;
-        text-decoration: none;
-        transition: background-color 0.2s;
+        gap: var(--item-spacing-20, 20px);
+        align-self: stretch;
+        color: var(--color-black-solid, #000);
+        border-top: var(--stroke-weight-1, 1px) solid
+          var(--color-black-10, rgba(0, 0, 0, 0.1));
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 140%; /* 25.2px */
+        letter-spacing: var(--letter-spacing--0_5, -0.5px);
+        align-items: center;
+        justify-content: space-between;
 
         &:hover {
-          background: rgba(0, 0, 0, 0.08);
+          color: #384ce3;
+        }
+
+        span {
+          color: var(--color-grey-47, #73787d);
+          text-align: center;
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 140%; /* 16.8px */
+          letter-spacing: var(--letter-spacing--0_25, -0.25px);
+          text-transform: uppercase;
         }
 
         &.active {
           color: #384ce3;
-          background: rgba(56, 76, 227, 0.08);
         }
       }
     }
@@ -338,7 +348,6 @@
 
   &__mobile_actions {
     display: flex;
-    flex-direction: column;
     gap: 8px;
     width: 100%;
 

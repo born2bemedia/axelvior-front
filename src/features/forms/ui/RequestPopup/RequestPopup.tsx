@@ -1,42 +1,34 @@
-"use client";
+'use client';
 
-import { useRef, useState } from "react";
+import { useRef, useState } from 'react';
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useTranslations } from "next-intl";
-import ReCAPTCHA from "react-google-recaptcha";
-import { Controller, useForm } from "react-hook-form";
-import PhoneInput from "react-phone-input-2";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useTranslations } from 'next-intl';
+import ReCAPTCHA from 'react-google-recaptcha';
+import { Controller, useForm } from 'react-hook-form';
+import PhoneInput from 'react-phone-input-2';
 
-import { submitRequestForm } from "@/features/forms/api/submitForm";
-import {
-  type RequestFormSchema,
-  requestFormSchema,
-} from "@/features/forms/model/schemas";
+import { submitRequestForm } from '@/features/forms/api/submitForm';
+import { type RequestFormSchema, requestFormSchema } from '@/features/forms/model/schemas';
 
-import { excludedCountries } from "@/shared/lib/helpers/excludedCountries";
+import { excludedCountries } from '@/shared/lib/helpers/excludedCountries';
 
-import { FormPopup } from "../FormPopup/FormPopup";
-import styles from "./RequestPopup.module.scss";
+import { FormPopup } from '../FormPopup/FormPopup';
+import styles from './RequestPopup.module.scss';
 
-import "react-phone-input-2/lib/style.css";
+import 'react-phone-input-2/lib/style.css';
 
 const ENABLE_RECAPTCHA = true;
 
 type RequestPopupProps = {
-  name: string;
+  service: string;
   isOpen: boolean;
   onClose: () => void;
   onReturnHome?: () => void;
 };
 
-export const RequestPopup = ({
-  name,
-  isOpen,
-  onClose,
-  onReturnHome,
-}: RequestPopupProps) => {
-  const t = useTranslations("forms");
+export const RequestPopup = ({ service, isOpen, onClose, onReturnHome }: RequestPopupProps) => {
+  const t = useTranslations('forms');
   const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -45,21 +37,21 @@ export const RequestPopup = ({
   const form = useForm<RequestFormSchema>({
     resolver: zodResolver(requestFormSchema),
     defaultValues: {
-      fullName: "",
-      email: "",
-      phone: "",
-      companyName: "",
-      website: "",
-      message: "",
-      recaptcha: "",
+      fullName: '',
+      email: '',
+      phone: '',
+      companyName: '',
+      website: '',
+      message: '',
+      recaptcha: '',
     },
   });
 
   const handleRecaptchaChange = (token: string | null) => {
     if (ENABLE_RECAPTCHA) {
-      form.setValue("recaptcha", token ?? "", { shouldValidate: true });
+      form.setValue('recaptcha', token ?? '', { shouldValidate: true });
     } else {
-      form.setValue("recaptcha", "disabled", { shouldValidate: false });
+      form.setValue('recaptcha', 'disabled', { shouldValidate: false });
     }
   };
 
@@ -67,12 +59,12 @@ export const RequestPopup = ({
     setError(null);
     setIsLoading(true);
     try {
-      await submitRequestForm(data, name);
+      await submitRequestForm(data, service);
       setIsSuccess(true);
       form.reset();
       recaptchaRef.current?.reset();
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Submission failed");
+      setError(err instanceof Error ? err.message : 'Submission failed');
       recaptchaRef.current?.reset();
     } finally {
       setIsLoading(false);
@@ -92,12 +84,7 @@ export const RequestPopup = ({
       ariaLabelledBy="request-popup-title"
       panelClassName={styles.panel}
     >
-      <button
-        type="button"
-        className={styles.close}
-        onClick={onClose}
-        aria-label="Close"
-      >
+      <button type="button" className={styles.close} onClick={onClose} aria-label="Close">
         &times;
       </button>
 
@@ -105,21 +92,17 @@ export const RequestPopup = ({
         <div className={styles.successWrapper}>
           <div className={styles.successContent}>
             <h2 id="request-popup-title" className={styles.successTitle}>
-              {t("requestForm.successTitle", { fallback: "Thank you!" })}
+              {t('requestForm.successTitle', { fallback: 'Thank you!' })}
             </h2>
             <p className={styles.successDesc}>
-              {t("requestForm.successMessage1", {
-                name,
+              {t('requestForm.successMessage1', {
+                service,
                 fallback:
-                  "Your request for our service has been successfully submitted. Our team will review the information provided and get in touch with you shortly to discuss the next steps and how we can assist you.",
+                  'Your request for our service has been successfully submitted. Our team will review the information provided and get in touch with you shortly to discuss the next steps and how we can assist you.',
               })}
             </p>
-            <button
-              type="button"
-              className={styles.returnBtn}
-              onClick={handleReturnHome}
-            >
-              {t("returnHome", { fallback: "Return to home page" })}
+            <button type="button" className={styles.returnBtn} onClick={handleReturnHome}>
+              {t('returnHome', { fallback: 'Return to home page' })}
             </button>
           </div>
         </div>
@@ -127,54 +110,47 @@ export const RequestPopup = ({
         <div className={styles.wrapper}>
           <div className={styles.left}>
             <h2 id="request-popup-title" className={styles.title}>
-              {name}
+              {service}
             </h2>
           </div>
 
           <div className={styles.right}>
-            <form
-              className={styles.form}
-              onSubmit={form.handleSubmit(onSubmit)}
-              noValidate
-            >
+            <form className={styles.form} onSubmit={form.handleSubmit(onSubmit)} noValidate>
+              <input type="hidden" name="service" value={service} />
               <div className={styles.formRow}>
                 <div className={styles.formGroup}>
                   <label className={styles.label} htmlFor="req-fullName">
-                    {t("fullName", { fallback: "Full name" })}
+                    {t('fullName', { fallback: 'Full name' })}
                   </label>
                   <input
                     id="req-fullName"
                     type="text"
-                    className={`${styles.input} ${form.formState.errors.fullName ? styles.inputError : ""}`}
-                    placeholder={t("fullNamePlaceholder", {
-                      fallback: "Enter your full name",
+                    className={`${styles.input} ${form.formState.errors.fullName ? styles.inputError : ''}`}
+                    placeholder={t('fullNamePlaceholder', {
+                      fallback: 'Enter your full name',
                     })}
-                    {...form.register("fullName")}
+                    {...form.register('fullName')}
                   />
                   {form.formState.errors.fullName && (
-                    <span className={styles.error}>
-                      {form.formState.errors.fullName.message}
-                    </span>
+                    <span className={styles.error}>{form.formState.errors.fullName.message}</span>
                   )}
                 </div>
 
                 <div className={styles.formGroup}>
                   <label className={styles.label} htmlFor="req-email">
-                    {t("email", { fallback: "Email address" })}
+                    {t('email', { fallback: 'Email address' })}
                   </label>
                   <input
                     id="req-email"
                     type="email"
-                    className={`${styles.input} ${form.formState.errors.email ? styles.inputError : ""}`}
-                    placeholder={t("emailPlaceholder", {
-                      fallback: "Enter your email address",
+                    className={`${styles.input} ${form.formState.errors.email ? styles.inputError : ''}`}
+                    placeholder={t('emailPlaceholder', {
+                      fallback: 'Enter your email address',
                     })}
-                    {...form.register("email")}
+                    {...form.register('email')}
                   />
                   {form.formState.errors.email && (
-                    <span className={styles.error}>
-                      {form.formState.errors.email.message}
-                    </span>
+                    <span className={styles.error}>{form.formState.errors.email.message}</span>
                   )}
                 </div>
               </div>
@@ -182,7 +158,7 @@ export const RequestPopup = ({
               <div className={styles.formRow}>
                 <div className={styles.formGroup}>
                   <label className={styles.label} htmlFor="req-phone">
-                    {t("phone", { fallback: "Phone number" })}
+                    {t('phone', { fallback: 'Phone number' })}
                   </label>
                   <Controller
                     name="phone"
@@ -193,71 +169,69 @@ export const RequestPopup = ({
                         value={field.value}
                         onChange={field.onChange}
                         excludeCountries={[...new Set(excludedCountries)]}
-                        containerClass={`${styles.phoneContainer} ${form.formState.errors.phone ? styles.phoneError : ""}`}
-                        inputProps={{ id: "req-phone" }}
+                        containerClass={`${styles.phoneContainer} ${form.formState.errors.phone ? styles.phoneError : ''}`}
+                        inputProps={{ id: 'req-phone' }}
                         enableSearch
-                        preferredCountries={["gb"]}
+                        preferredCountries={['gb']}
                       />
                     )}
                   />
                   {form.formState.errors.phone && (
-                    <span className={styles.error}>
-                      {form.formState.errors.phone.message}
-                    </span>
+                    <span className={styles.error}>{form.formState.errors.phone.message}</span>
                   )}
                 </div>
 
                 <div className={styles.formGroup}>
                   <label className={styles.label} htmlFor="req-companyName">
-                    {t("companyName", { fallback: "Company name" })}{" "}
+                    {t('companyName', { fallback: 'Company name' })}{' '}
                     <span className={styles.labelOptional}>
-                      {t("optional", { fallback: "(optional)" })}
+                      {t('optional', { fallback: '(optional)' })}
                     </span>
                   </label>
                   <input
                     id="req-companyName"
                     type="text"
                     className={styles.input}
-                    placeholder={t("companyNamePlaceholder", {
-                      fallback: "Enter your company name",
+                    placeholder={t('companyNamePlaceholder', {
+                      fallback: 'Enter your company name',
                     })}
-                    {...form.register("companyName")}
+                    {...form.register('companyName')}
                   />
                 </div>
               </div>
 
               <div className={styles.formGroup}>
                 <label className={styles.label} htmlFor="req-website">
-                  {t("website", { fallback: "Your website" })}{" "}
+                  {t('website', { fallback: 'Your website' })}{' '}
                   <span className={styles.labelOptional}>
-                    {t("optional", { fallback: "(optional)" })}
+                    {t('optional', { fallback: '(optional)' })}
                   </span>
                 </label>
                 <input
                   id="req-website"
                   type="text"
                   className={styles.input}
-                  placeholder={t("websitePlaceholder", {
-                    fallback: "Enter your website URL",
+                  placeholder={t('websitePlaceholder', {
+                    fallback: 'Enter your website URL',
                   })}
-                  {...form.register("website")}
+                  {...form.register('website')}
                 />
               </div>
 
               <div className={styles.formGroup}>
                 <label className={styles.label} htmlFor="req-message">
-                  {t("message", { fallback: "Message" })}{" "}
+                  {t('message', { fallback: 'Message' })}{' '}
                   <span className={styles.labelOptional}>
-                    {t("optional", { fallback: "(optional)" })}
+                    {t('optional', { fallback: '(optional)' })}
                   </span>
                 </label>
                 <textarea
                   id="req-message"
                   className={styles.textarea}
-                  placeholder={t("messagePlaceholder", {
-                    fallback: "Enter your message",
+                  placeholder={t('messagePlaceholder', {
+                    fallback: 'Enter your message',
                   })}
-                  {...form.register("message")}
+                  {...form.register('message')}
                 />
               </div>
 
@@ -265,16 +239,12 @@ export const RequestPopup = ({
                 <div className={styles.recaptcha}>
                   <ReCAPTCHA
                     ref={recaptchaRef}
-                    sitekey={
-                      process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? ""
-                    }
+                    sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? ''}
                     onChange={handleRecaptchaChange}
                     theme="dark"
                   />
                   {form.formState.errors.recaptcha && (
-                    <span className={styles.error}>
-                      {form.formState.errors.recaptcha.message}
-                    </span>
+                    <span className={styles.error}>{form.formState.errors.recaptcha.message}</span>
                   )}
                 </div>
               )}
@@ -287,8 +257,8 @@ export const RequestPopup = ({
                 disabled={form.formState.isSubmitting || isLoading}
               >
                 {isLoading
-                  ? t("loading", { fallback: "Sending…" })
-                  : t("submit", { fallback: "Submit" })}
+                  ? t('loading', { fallback: 'Sending…' })
+                  : t('submit', { fallback: 'Submit' })}
               </button>
             </form>
           </div>

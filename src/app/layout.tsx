@@ -18,14 +18,14 @@ const cabinetGrotesk = localFont({
   variable: '--font-cabinet-grotesk',
   display: 'swap',
   src: [
-    { path: './fonts/CabinetGrotesk-Thin.woff',       weight: '100', style: 'normal' },
-    { path: './fonts/CabinetGrotesk-Extralight.woff',  weight: '200', style: 'normal' },
-    { path: './fonts/CabinetGrotesk-Light.woff',       weight: '300', style: 'normal' },
-    { path: './fonts/CabinetGrotesk-Regular.woff',     weight: '400', style: 'normal' },
-    { path: './fonts/CabinetGrotesk-Medium.woff',      weight: '500', style: 'normal' },
-    { path: './fonts/CabinetGrotesk-Bold.woff',        weight: '700', style: 'normal' },
-    { path: './fonts/CabinetGrotesk-Extrabold.woff',   weight: '800', style: 'normal' },
-    { path: './fonts/CabinetGrotesk-Black.woff',       weight: '900', style: 'normal' },
+    { path: './fonts/CabinetGrotesk-Thin.woff', weight: '100', style: 'normal' },
+    { path: './fonts/CabinetGrotesk-Extralight.woff', weight: '200', style: 'normal' },
+    { path: './fonts/CabinetGrotesk-Light.woff', weight: '300', style: 'normal' },
+    { path: './fonts/CabinetGrotesk-Regular.woff', weight: '400', style: 'normal' },
+    { path: './fonts/CabinetGrotesk-Medium.woff', weight: '500', style: 'normal' },
+    { path: './fonts/CabinetGrotesk-Bold.woff', weight: '700', style: 'normal' },
+    { path: './fonts/CabinetGrotesk-Extrabold.woff', weight: '800', style: 'normal' },
+    { path: './fonts/CabinetGrotesk-Black.woff', weight: '900', style: 'normal' },
   ],
 });
 
@@ -34,21 +34,23 @@ const clashGrotesk = localFont({
   display: 'swap',
   src: [
     { path: './fonts/ClashGrotesk-Extralight.ttf', weight: '200', style: 'normal' },
-    { path: './fonts/ClashGrotesk-Light.ttf',      weight: '300', style: 'normal' },
-    { path: './fonts/ClashGrotesk-Regular.ttf',    weight: '400', style: 'normal' },
-    { path: './fonts/ClashGrotesk-Medium.ttf',     weight: '500', style: 'normal' },
-    { path: './fonts/ClashGrotesk-Semibold.ttf',   weight: '600', style: 'normal' },
-    { path: './fonts/ClashGrotesk-Bold.ttf',       weight: '700', style: 'normal' },
+    { path: './fonts/ClashGrotesk-Light.ttf', weight: '300', style: 'normal' },
+    { path: './fonts/ClashGrotesk-Regular.ttf', weight: '400', style: 'normal' },
+    { path: './fonts/ClashGrotesk-Medium.ttf', weight: '500', style: 'normal' },
+    { path: './fonts/ClashGrotesk-Semibold.ttf', weight: '600', style: 'normal' },
+    { path: './fonts/ClashGrotesk-Bold.ttf', weight: '700', style: 'normal' },
   ],
 });
 
 export const metadata: Metadata = {
-  title: 'axelvior',
-  description: '',
+  title: 'Axelvior | Strategic Business Development for Independent Entrepreneurs',
+  description:
+    'Axelvior helps independent entrepreneurs gain clarity, structure, and strategic direction. We guide you to scale with confidence, making intentional decisions that lead to lasting success.',
   openGraph: {
-    title: 'axelvior  | Real Estate Consulting, Market Research, Due Diligence',
-    description: '',
-    //images: 'https://axelvior.com/images/meta.png',
+    title: 'Axelvior | Strategic Business Development for Independent Entrepreneurs',
+    description:
+      'Axelvior helps independent entrepreneurs gain clarity, structure, and strategic direction. We guide you to scale with confidence, making intentional decisions that lead to lasting success.',
+    images: 'https://axelvior.com/images/meta.png',
   },
 };
 

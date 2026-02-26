@@ -885,10 +885,17 @@
     "button": "Book free call"
   },
   "thankYou": {
-    "thankYou": "Thank you for your order",
-    "text1": "Your request is in our hands. ",
-    "text2": "An Estanora expert will review it and reach out soon to confirm details and guide the next steps.",
-    "text3": "We appreciate your trust in our expertise."
+    "thankYou": "Thank you for partnering with Axelvior!",
+    "text1": "We're thrilled to begin this journey with you and help turn your business vision into something impactful and sustainable.",
+    "orderDetails": "Your Order Details:",
+    "service": "Service:",
+    "quantity": "Quantity:",
+    "orderId": "Order ID:",
+    "totalAmount": "Total Amount",
+    "text2": "Your order is being processed, and you'll receive the payment details via email shortly. Make sure your contact info is up to date, so we can send everything right to you.",
+    "text3": "If you have any questions or just want to chat about next steps, feel free to reach out to us at",
+    "text4": "We're here for you!",
+    "backToHomePage": "Back to Home Page"
   },
   "contactForm": {
     "fullName": "Full name",
