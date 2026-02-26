@@ -1,14 +1,14 @@
-"use server";
+'use server';
 
-import { cookies } from "next/headers";
+import { cookies } from 'next/headers';
 
-import sgMail from "@sendgrid/mail";
+import sgMail from '@sendgrid/mail';
 
-import { verifyRecaptcha } from "@/shared/lib/recaptcha";
+import { verifyRecaptcha } from '@/shared/lib/recaptcha';
 
-import type { CheckoutFormSchema } from "../model/checkout.schema";
-import type { CartItem } from "../store/cart";
-import { ensureUser } from "./user";
+import type { CheckoutFormSchema } from '../model/checkout.schema';
+import type { CartItem } from '../store/cart';
+import { ensureUser } from './user';
 
 const ENABLE_RECAPTCHA = true;
 
@@ -40,34 +40,47 @@ export type CreateOrderPayload = {
   items: CartItem[];
   total: number;
   recaptcha?: string;
+  /** Logged-in user ID — links order to user in CMS */
+  userId?: string;
 };
 
 const postOrder = async (
   data: CheckoutFormSchema,
   total: number,
-  cart: CartItem[]
+  cart: CartItem[],
+  passedUserId?: string
 ) => {
   if (!SERVER_URL) {
-    throw new Error("SERVER_URL is not configured");
+    throw new Error('SERVER_URL is not configured');
   }
 
-  // Перевіряємо/створюємо користувача перед створенням ордера
-  const { userId, isNewUser, password } = await ensureUser({
-    email: data.email,
-    firstName: data.firstName,
-    lastName: data.lastName,
-    phone: data.phone ?? "",
-  });
+  let userId: string;
+  let isNewUser = false;
+  let password: string | undefined;
+
+  if (passedUserId) {
+    userId = passedUserId;
+  } else {
+    const result = await ensureUser({
+      email: data.email,
+      firstName: data.firstName,
+      lastName: data.lastName,
+      phone: data.phone ?? '',
+    });
+    userId = result.userId;
+    isNewUser = result.isNewUser;
+    password = result.password;
+  }
 
   const orderNumber = `ORD_${Math.floor(Math.random() * 900000) + 100000}`;
 
   const orderNotes = [
-    `Contact: ${data.email}, ${data.phone ?? ""}`,
+    `Contact: ${data.email}, ${data.phone ?? ''}`,
     `Billing name: ${data.firstName} ${data.lastName}`,
     data.orderNotes ? `Notes: ${data.orderNotes}` : null,
   ]
     .filter(Boolean)
-    .join("\n");
+    .join('\n');
 
   const orderData = {
     user: userId,
@@ -77,8 +90,8 @@ const postOrder = async (
       price: item.price,
     })),
     total: total,
-    status: "pending",
-    paymentMethod: "Bank Transfer",
+    status: 'pending',
+    paymentMethod: 'Bank Transfer',
     orderNotes,
     billingAddress: {
       address1: data.address1,
@@ -89,16 +102,16 @@ const postOrder = async (
     },
   };
 
-  console.log("Sending order data to Payload:", JSON.stringify(orderData, null, 2));
+  console.log('Sending order data to Payload:', JSON.stringify(orderData, null, 2));
 
   // If Payload returns 500 "Something went wrong", check the CMS repo:
   // - Orders collection: beforeChange hook (e.g. find last order with sort "-createdAt") — ensure it handles empty collection and correct field name (createdAt vs createdAt).
   // - Run the CMS locally and check server logs for the real error/stack trace.
   const response = await fetch(`${SERVER_URL}/api/orders`, {
-    method: "POST",
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
     },
     body: JSON.stringify(orderData),
   });
@@ -106,12 +119,14 @@ const postOrder = async (
   if (!response.ok) {
     const errorText = await response.text();
     console.error(`Order creation failed with status: ${response.status}`);
-    console.error("Error response:", errorText);
+    console.error('Error response:', errorText);
     // Payload often returns { errors: [{ message, name?, data? }] } — log full JSON for debugging
     try {
-      const errJson = JSON.parse(errorText) as { errors?: Array<{ message?: string; name?: string; data?: unknown }> };
+      const errJson = JSON.parse(errorText) as {
+        errors?: Array<{ message?: string; name?: string; data?: unknown }>;
+      };
       if (errJson.errors?.length) {
-        console.error("Payload errors:", JSON.stringify(errJson.errors, null, 2));
+        console.error('Payload errors:', JSON.stringify(errJson.errors, null, 2));
       }
     } catch {
       // ignore
@@ -125,10 +140,10 @@ const postOrder = async (
   if (isNewUser && password && data.email) {
     try {
       const loginRes = await fetch(`${SERVER_URL}/api/users/login`, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
         },
         body: JSON.stringify({ email: data.email, password }),
       });
@@ -136,17 +151,17 @@ const postOrder = async (
         const loginData = (await loginRes.json()) as { token?: string };
         if (loginData.token) {
           const cookieStore = await cookies();
-          cookieStore.set(COOKIE_NAME as string, loginData.token ?? "", {
+          cookieStore.set(COOKIE_NAME as string, loginData.token ?? '', {
             httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
-            sameSite: "lax",
-            path: "/",
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'lax',
+            path: '/',
             maxAge: 60 * 60 * 24 * 7,
           });
         }
       }
     } catch (loginErr) {
-      console.error("Auto-login after purchase failed:", loginErr);
+      console.error('Auto-login after purchase failed:', loginErr);
     }
   }
 
@@ -161,13 +176,13 @@ const postOrder = async (
           <h2>New Order Received - ${orderNumber}</h2>
           <p><strong>User:</strong> ${data.firstName} ${data.lastName}</p>
           <p><strong>Email:</strong> ${data.email}</p>
-          <p><strong>Phone:</strong> ${data.phone ?? ""}</p>
-          <p><strong>Address:</strong> ${data.address1}${data.address2 ? `, ${data.address2}` : ""}, ${data.city}, ${data.zip}, ${data.country}</p>
-          ${data.orderNotes ? `<p><strong>Order Notes:</strong> ${data.orderNotes}</p>` : ""}
+          <p><strong>Phone:</strong> ${data.phone ?? ''}</p>
+          <p><strong>Address:</strong> ${data.address1}${data.address2 ? `, ${data.address2}` : ''}, ${data.city}, ${data.zip}, ${data.country}</p>
+          ${data.orderNotes ? `<p><strong>Order Notes:</strong> ${data.orderNotes}</p>` : ''}
           <p><strong>Total:</strong> €${total.toFixed(2)}</p>
           <p><strong>Items:</strong></p>
           <ul>
-            ${cart.map((item) => `<li>${item.title} x ${item.quantity} - €${(item.price * item.quantity).toFixed(2)}</li>`).join("")}
+            ${cart.map((item) => `<li>${item.title} x ${item.quantity} - €${(item.price * item.quantity).toFixed(2)}</li>`).join('')}
           </ul>
         `,
       };
@@ -175,11 +190,11 @@ const postOrder = async (
       // Escape HTML to prevent XSS
       const escapeHtml = (text: string) => {
         return text
-          .replace(/&/g, "&amp;")
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;")
-          .replace(/"/g, "&quot;")
-          .replace(/'/g, "&#039;");
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
       };
 
       const safeFirstName = escapeHtml(data.firstName);
@@ -308,7 +323,7 @@ const postOrder = async (
       await sgMail.send(adminMsg);
       await sgMail.send(userMsg);
     } catch (emailError) {
-      console.error("Error sending emails:", emailError);
+      console.error('Error sending emails:', emailError);
       // Don't fail the order if email fails
     }
   }
@@ -319,12 +334,12 @@ const postOrder = async (
 export const createOrder = async (payload: CreateOrderPayload) => {
   if (ENABLE_RECAPTCHA) {
     const token = payload.recaptcha;
-    if (!token || token === "disabled") {
-      throw new Error("reCAPTCHA verification is required.");
+    if (!token || token === 'disabled') {
+      throw new Error('reCAPTCHA verification is required.');
     }
     const valid = await verifyRecaptcha(token);
     if (!valid) {
-      throw new Error("reCAPTCHA verification failed. Please try again.");
+      throw new Error('reCAPTCHA verification failed. Please try again.');
     }
   }
 
@@ -337,12 +352,12 @@ export const createOrder = async (payload: CreateOrderPayload) => {
     country: payload.billing.country,
     zip: payload.billing.zip,
     email: payload.contact.email,
-    phone: payload.contact.phone ?? "",
+    phone: payload.contact.phone ?? '',
     orderNotes: payload.orderNotes,
     termsAccepted: true,
     refundPolicyAccepted: true,
     recaptcha: payload.recaptcha,
   };
 
-  return postOrder(formData, payload.total, payload.items);
+  return postOrder(formData, payload.total, payload.items, payload.userId);
 };

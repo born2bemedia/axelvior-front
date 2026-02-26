@@ -1,6 +1,6 @@
-import { NextResponse } from "next/server";
+import { NextResponse } from 'next/server';
 
-import sgMail from "@sendgrid/mail";
+import sgMail from '@sendgrid/mail';
 
 const SERVER_URL = process.env.SERVER_URL;
 const COOKIE_NAME = process.env.COOKIE_NAME;
@@ -14,10 +14,7 @@ if (SENDGRID_API_KEY) {
 export async function POST(request: Request): Promise<NextResponse> {
   try {
     if (!SERVER_URL) {
-      return NextResponse.json(
-        { message: "Server URL is not configured." },
-        { status: 500 },
-      );
+      return NextResponse.json({ message: 'Server URL is not configured.' }, { status: 500 });
     }
 
     const body = (await request.json()) as {
@@ -25,23 +22,31 @@ export async function POST(request: Request): Promise<NextResponse> {
       lastName?: string;
       email?: string;
       password?: string;
+      username?: string;
+      phone?: string;
     };
-    const { firstName, lastName, email, password } = body;
+    const { firstName, lastName, email, password, username, phone } = body;
 
     if (!firstName || !lastName || !email || !password) {
-      return NextResponse.json(
-        { message: "Please fill in all required fields." },
-        { status: 400 },
-      );
+      return NextResponse.json({ message: 'Please fill in all required fields.' }, { status: 400 });
     }
 
+    const userPayload: Record<string, unknown> = {
+      firstName,
+      lastName,
+      email,
+      password,
+    };
+    if (username != null && username !== '') userPayload.username = username;
+    if (phone != null && phone !== '') userPayload.phone = phone;
+
     const res = await fetch(`${SERVER_URL}/api/users`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
       },
-      body: JSON.stringify({ firstName, lastName, email, password }),
+      body: JSON.stringify(userPayload),
     });
 
     if (!res.ok) {
@@ -50,16 +55,13 @@ export async function POST(request: Request): Promise<NextResponse> {
       try {
         const errJson = JSON.parse(errorText) as { errors?: Array<{ message?: string }> };
         if (errJson.errors?.length) {
-          const message = errJson.errors[0]?.message ?? "Registration failed.";
+          const message = errJson.errors[0]?.message ?? 'Registration failed.';
           return NextResponse.json({ message }, { status: res.status });
         }
       } catch {
         // ignore JSON parse error
       }
-      return NextResponse.json(
-        { message: "Registration failed." },
-        { status: res.status },
-      );
+      return NextResponse.json({ message: 'Registration failed.' }, { status: res.status });
     }
 
     const user = (await res.json()) as {
@@ -76,11 +78,11 @@ export async function POST(request: Request): Promise<NextResponse> {
         // Escape HTML to prevent XSS
         const escapeHtml = (text: string) => {
           return text
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
-            .replace(/'/g, "&#039;");
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
         };
 
         const safeFirstName = escapeHtml(firstName);
@@ -228,24 +230,24 @@ export async function POST(request: Request): Promise<NextResponse> {
         const welcomeMsg = {
           to: email,
           from: FROM_EMAIL,
-          subject: "Welcome to axelvior  – Your Account is Ready",
+          subject: 'Welcome to axelvior  – Your Account is Ready',
           html: welcomeEmailHtml,
         };
 
         await sgMail.send(welcomeMsg);
         console.log(`Registration email sent to ${email}`);
       } catch (emailError) {
-        console.error("Error sending registration email:", emailError);
+        console.error('Error sending registration email:', emailError);
         // Не зупиняємо процес, якщо email не відправився
       }
     }
 
     // Automatically log in the user after registration to get a token
     const loginRes = await fetch(`${SERVER_URL}/api/users/login`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
       },
       body: JSON.stringify({ email, password }),
     });
@@ -271,24 +273,21 @@ export async function POST(request: Request): Promise<NextResponse> {
 
     const token = loginData.token;
     const response = NextResponse.json({ user: loginData.user ?? user });
-    
+
     if (token && COOKIE_NAME) {
       response.cookies.set(COOKIE_NAME, token, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",
-        path: "/",
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'lax',
+        path: '/',
         maxAge: 60 * 60 * 24 * 7, // 7 days
       });
     }
 
     return response;
   } catch (error) {
-    const message = error instanceof Error ? error.message : "Unknown error";
-    console.error("Registration error:", message);
-    return NextResponse.json(
-      { message: "Registration failed.", error: message },
-      { status: 500 },
-    );
+    const message = error instanceof Error ? error.message : 'Unknown error';
+    console.error('Registration error:', message);
+    return NextResponse.json({ message: 'Registration failed.', error: message }, { status: 500 });
   }
 }

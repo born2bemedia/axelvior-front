@@ -1,6 +1,6 @@
-import { toast } from "react-toastify";
-import { create } from "zustand";
-import { createJSONStorage, persist } from "zustand/middleware";
+import { toast } from 'react-toastify';
+import { create } from 'zustand';
+import { createJSONStorage, persist } from 'zustand/middleware';
 
 export type CartItem = {
   id: string;
@@ -18,12 +18,18 @@ type CartStore = {
   clearCart: () => void;
   getTotalPrice: () => number;
   getTotalItems: () => number;
+  isLoading: boolean;
+  setIsLoading: (isLoading: boolean) => void;
 };
 
 export const useCartStore = create<CartStore>()(
   persist(
     (set, get) => ({
       items: [],
+      isLoading: true,
+      setIsLoading: (isLoading: boolean) => {
+        set({ isLoading: isLoading ?? true });
+      },
 
       addToCart: (item) => {
         const existingItem = get().items.find((i) => i.id === item.id);
@@ -31,13 +37,11 @@ export const useCartStore = create<CartStore>()(
         if (existingItem) {
           set((state) => ({
             items: state.items.map((i) =>
-              i.id === item.id
-                ? { ...i, quantity: i.quantity + 1 }
-                : i
+              i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
             ),
           }));
           toast.success(`${item.title} quantity updated!`, {
-            position: "bottom-right",
+            position: 'bottom-right',
             autoClose: 3000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -49,7 +53,7 @@ export const useCartStore = create<CartStore>()(
             items: [...state.items, { ...item, quantity: 1 }],
           }));
           toast.success(`${item.title} added to cart!`, {
-            position: "bottom-right",
+            position: 'bottom-right',
             autoClose: 3000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -66,9 +70,7 @@ export const useCartStore = create<CartStore>()(
         }
 
         set((state) => ({
-          items: state.items.map((i) =>
-            i.id === id ? { ...i, quantity } : i
-          ),
+          items: state.items.map((i) => (i.id === id ? { ...i, quantity } : i)),
         }));
       },
 
@@ -83,10 +85,7 @@ export const useCartStore = create<CartStore>()(
       },
 
       getTotalPrice: () => {
-        return get().items.reduce(
-          (total, item) => total + item.price * item.quantity,
-          0
-        );
+        return get().items.reduce((total, item) => total + item.price * item.quantity, 0);
       },
 
       getTotalItems: () => {
@@ -94,7 +93,7 @@ export const useCartStore = create<CartStore>()(
       },
     }),
     {
-      name: "cart",
+      name: 'cart',
       storage: createJSONStorage(() => localStorage),
       partialize: (state) => ({
         items: state.items,
