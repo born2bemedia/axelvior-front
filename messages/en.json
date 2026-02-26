@@ -760,6 +760,14 @@
     "dataUpdatedDescription": "Your personal information has been updated successfully.",
     "close": "Close"
   },
+  "forgotPasswordPage": {
+    "title": "Forgot Password?",
+    "subtitle": "Enter your email to reset your password.",
+    "email": "USERNAME OR EMAIL",
+    "placeHolderEmail": "Enter your username",
+    "resettingPassword": "Resetting password...",
+    "resetPassword": "Reset Password"
+  },
   "formsCta": {
     "button": "Contact Estanora support"
   },
@@ -767,7 +775,7 @@
     "title": "Welcome Back to Axelvior",
     "subtitle": "Enter your credentials to log in. If you’ve forgotten your password, click “Forgot Password?” for assistance.",
     "email": "USERNAME OR EMAIL",
-    "placeHolderEmail": "Enter your username or email",
+    "placeHolderEmail": "Enter your username",
     "password": "PASSWORD",
     "placeHolderPassword": "Enter your password",
     "keepSigned": "Keep me signed in on this device",
@@ -812,6 +820,16 @@
     "agreementBoldTwo": "Privacy Policy.",
     "registering": "Registering...",
     "register": "Join Now"
+  },
+  "setPasswordPage": {
+    "title": "Set New Password",
+    "subtitle": "Enter your new password and repeat it to confirm.",
+    "newPassword": "NEW PASSWORD",
+    "newPasswordPlaceholder": "Enter new password",
+    "repeatNewPassword": "REPEAT NEW PASSWORD",
+    "repeatNewPasswordPlaceholder": "Repeat new password",
+    "savingPassword": "Saving password...",
+    "savePassword": "Save Password"
   },
   "checkoutForm": {
     "checkoutTitle": "Checkout",

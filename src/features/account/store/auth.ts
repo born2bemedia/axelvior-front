@@ -23,6 +23,8 @@ type AuthStore = {
     phone: string,
     agreement: boolean
   ) => Promise<{ ok: boolean; message?: string }>;
+  forgotPassword: (emailOrUsername: string) => Promise<{ ok: boolean; message?: string }>;
+  resetPassword: (token: string, password: string) => Promise<{ ok: boolean; message?: string }>;
   logout: () => Promise<void>;
   setUser: (user: AuthUser | null) => void;
 
@@ -112,6 +114,52 @@ export const useAuthStore = create<AuthStore>((set, get) => ({
     } catch {
       set({ isLoading: false });
       return { ok: false, message: 'Registration failed.' };
+    }
+  },
+
+  forgotPassword: async (emailOrUsername) => {
+    set({ isLoading: true });
+    try {
+      const res = await fetch('/api/auth/forgot-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: emailOrUsername }),
+      });
+      const data = (await res.json()) as { message?: string };
+
+      if (!res.ok) {
+        set({ isLoading: false });
+        return { ok: false, message: data.message ?? 'Forgot password failed.' };
+      }
+
+      set({ isLoading: false });
+      return { ok: true };
+    } catch {
+      set({ isLoading: false });
+      return { ok: false, message: 'Forgot password failed.' };
+    }
+  },
+
+  resetPassword: async (token, password) => {
+    set({ isLoading: true });
+    try {
+      const res = await fetch('/api/auth/reset-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token, password }),
+      });
+      const data = (await res.json()) as { message?: string };
+
+      if (!res.ok) {
+        set({ isLoading: false });
+        return { ok: false, message: data.message ?? 'Reset password failed.' };
+      }
+
+      set({ isLoading: false });
+      return { ok: true };
+    } catch {
+      set({ isLoading: false });
+      return { ok: false, message: 'Reset password failed.' };
     }
   },
 
