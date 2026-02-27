@@ -78,16 +78,21 @@ export const Header = () => {
               <Link href={`mailto:${WEBSITE_EMAIL}`}>{WEBSITE_EMAIL}</Link>
               {WEBSITE_PHONE && <Link href={`tel:${WEBSITE_PHONE}`}>{WEBSITE_PHONE}</Link>}
             </div>
-            <div className={styles.header__topbar__socials}>
-              <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                <FacebookIcon />
-              </a>
-              <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                <InstagramIcon />
-              </a>
-              <a href="#" target="_blank" rel="noopener noreferrer" aria-label="X">
-                <XIcon />
-              </a>
+            <div className={styles.header__topbar_right_column}>
+              <div className={styles.header__topbar__socials}>
+                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                  <FacebookIcon />
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                  <InstagramIcon />
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="X">
+                  <XIcon />
+                </a>
+              </div>
+              <div className={styles.header__topbar_lang_wrapper}>
+                <LangSelector />
+              </div>
             </div>
           </div>
         </div>
@@ -137,7 +142,6 @@ export const Header = () => {
             </div>
 
             <div className={styles.header__mobile_controls}>
-              <LangSelector />
               <button
                 className={`${styles.header__burger} ${isMobileMenuOpen ? styles.open : ''}`}
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -183,6 +187,8 @@ export const Header = () => {
             {totalItems > 0 && <span className={styles.header__cart_badge}>{totalItems}</span>}
           </Link>
         </div>
+
+        <LangSelector />
       </div>
     </header>
   );

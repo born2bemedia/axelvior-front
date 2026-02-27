@@ -1,14 +1,16 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
 
-import { IdeasHero, IdeasLoop } from "./components";
+import { IdeasHero, IdeasLoop } from './components';
 
 export const metadata: Metadata = {
-  title: 'Ideas',
-  description: '',
+  title: 'Ideas | Axelvior Business Insights & Articles',
+  description:
+    'Axelvior shares expert insights, strategies, and thought leadership on business development, focus, scalability, and entrepreneurship. Read our latest articles and empower your business.',
   openGraph: {
-    title: 'Ideas',
-    description: '',
-    //images: 'https://axelvior.com/images/meta.png',
+    title: 'Ideas | Axelvior Business Insights & Articles',
+    description:
+      'Axelvior shares expert insights, strategies, and thought leadership on business development, focus, scalability, and entrepreneurship. Read our latest articles and empower your business.',
+    images: 'https://axelvior.com/images/meta.png',
   },
 };
 

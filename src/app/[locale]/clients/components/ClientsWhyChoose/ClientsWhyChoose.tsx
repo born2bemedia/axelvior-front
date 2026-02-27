@@ -92,7 +92,7 @@ export const ClientsWhyChoose = () => {
               })}
             </strong>
           </p>
-          <Link href={'#'} className={styles.clients_choose__link}>
+          <Link href="/#home-form" className={styles.clients_choose__link}>
             {t('linkTitle', {
               fallback: 'Submit a request',
             })}

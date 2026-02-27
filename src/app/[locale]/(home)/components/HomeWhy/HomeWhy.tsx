@@ -1,29 +1,39 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
+import Link from 'next/link';
 
-import { fadeInUp } from "@/shared/lib/helpers/animations";
+import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
-import styles from "./HomeWhy.module.scss";
+import { fadeInUp } from '@/shared/lib/helpers/animations';
 
-const imgIconLink =
-  "/images/home/imgIconLink.svg";
-const imgIconTrendUp =
-  "/images/home/imgIconTrendUp.svg";
-const imgIconHierarchy =
-  "/images/home/imgIconHierarchy.svg";
-const imgIconCube =
-  "/images/home/imgIconCube.svg";
+import styles from './HomeWhy.module.scss';
+
+const imgIconLink = '/images/home/imgIconLink.svg';
+const imgIconTrendUp = '/images/home/imgIconTrendUp.svg';
+const imgIconHierarchy = '/images/home/imgIconHierarchy.svg';
+const imgIconCube = '/images/home/imgIconCube.svg';
 
 export const HomeWhy = () => {
-  const t = useTranslations("homeWhy");
+  const t = useTranslations('homeWhy');
 
   const beliefs = [
-    { icon: imgIconLink, title: t("belief1", { fallback: "Clarity is more valuable than acceleration" }) },
-    { icon: imgIconTrendUp, title: t("belief2", { fallback: "Growth without intent creates fragility" }) },
-    { icon: imgIconHierarchy, title: t("belief3", { fallback: "Structure should support freedom, not restrict it" }) },
-    { icon: imgIconCube, title: t("belief4", { fallback: "Sustainable success is designed, not improvised" }) },
+    {
+      icon: imgIconLink,
+      title: t('belief1', { fallback: 'Clarity is more valuable than acceleration' }),
+    },
+    {
+      icon: imgIconTrendUp,
+      title: t('belief2', { fallback: 'Growth without intent creates fragility' }),
+    },
+    {
+      icon: imgIconHierarchy,
+      title: t('belief3', { fallback: 'Structure should support freedom, not restrict it' }),
+    },
+    {
+      icon: imgIconCube,
+      title: t('belief4', { fallback: 'Sustainable success is designed, not improvised' }),
+    },
   ];
 
   return (
@@ -32,7 +42,7 @@ export const HomeWhy = () => {
         <div className={styles.home_why__inner}>
           {/* Header */}
           <div className={styles.home_why__header}>
-            <span className={styles.home_why__label}>{t("label", { fallback: "WHY" })}</span>
+            <span className={styles.home_why__label}>{t('label', { fallback: 'WHY' })}</span>
             <div className={styles.home_why__divider} />
           </div>
 
@@ -45,8 +55,15 @@ export const HomeWhy = () => {
               viewport={{ once: true }}
               variants={fadeInUp}
             >
-              <h2 className={styles.home_why__title}>{t("title", { fallback: "Why Axelvior exists" })}</h2>
-              <p className={styles.home_why__desc}>{t("desc", { fallback: "Axelvior exists because many people build meaningful work between those assumptions — where generic guidance stops being useful, and improvisation becomes risky." })}</p>
+              <h2 className={styles.home_why__title}>
+                {t('title', { fallback: 'Why Axelvior exists' })}
+              </h2>
+              <p className={styles.home_why__desc}>
+                {t('desc', {
+                  fallback:
+                    'Axelvior exists because many people build meaningful work between those assumptions — where generic guidance stops being useful, and improvisation becomes risky.',
+                })}
+              </p>
             </motion.div>
 
             <motion.div
@@ -56,15 +73,15 @@ export const HomeWhy = () => {
               viewport={{ once: true }}
               variants={fadeInUp}
             >
-              <p className={styles.home_why__beliefs_lead}>{t("beliefLead", { fallback: "We believe:" })}</p>
+              <p className={styles.home_why__beliefs_lead}>
+                {t('beliefLead', { fallback: 'We believe:' })}
+              </p>
               <div className={styles.home_why__beliefs_grid}>
                 {beliefs.map((belief, i) => (
                   <div key={i} className={styles.home_why__belief_item}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={belief.icon} alt="" width={24} height={24} />
-                    <span className={styles.home_why__belief_title}>
-                      {belief.title}
-                    </span>
+                    <span className={styles.home_why__belief_title}>{belief.title}</span>
                   </div>
                 ))}
               </div>
@@ -80,14 +97,26 @@ export const HomeWhy = () => {
             variants={fadeInUp}
           >
             <div className={styles.home_why__banner_content}>
-              <h3 className={styles.home_why__banner_title}>{t("bannerTitle", { fallback: "Guiding your vision" })}</h3>
+              <h3 className={styles.home_why__banner_title}>
+                {t('bannerTitle', { fallback: 'Guiding your vision' })}
+              </h3>
               <div className={styles.home_why__banner_text}>
-                <p>{t("bannerText1", { fallback: "Axelvior does not exist to take control, replace judgment, or dictate direction." })}</p>
-                <p>{t("bannerText2", { fallback: "We help you regain control over what you are building, by making direction visible, decisions deliberate, and progress intentional." })}</p>
+                <p>
+                  {t('bannerText1', {
+                    fallback:
+                      'Axelvior does not exist to take control, replace judgment, or dictate direction.',
+                  })}
+                </p>
+                <p>
+                  {t('bannerText2', {
+                    fallback:
+                      'We help you regain control over what you are building, by making direction visible, decisions deliberate, and progress intentional.',
+                  })}
+                </p>
               </div>
-              <button className={styles.home_why__banner_btn}>
-                {t("bannerBtn", { fallback: "Read the thinking behind our work" })}
-              </button>
+              <Link href="/why" className={styles.home_why__banner_btn}>
+                {t('bannerBtn', { fallback: 'Read the thinking behind our work' })}
+              </Link>
             </div>
             <div className={styles.home_why__banner_decoration} aria-hidden="true">
               {/* eslint-disable-next-line @next/next/no-img-element */}

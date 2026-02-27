@@ -1,20 +1,18 @@
-"use client";
+'use client';
 
-import Link from "next/link";
+import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
-import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useFormsPopupStore } from '@/features/forms';
+import { usePackages } from '@/features/solutions/lib/packages';
 
-import { useFormsPopupStore } from "@/features/forms";
-import { usePackages } from "@/features/solutions/lib/packages";
+import { fadeInUp } from '@/shared/lib/helpers/animations';
+import { Button } from '@/shared/ui/kit/button/Button';
 
-import { fadeInUp } from "@/shared/lib/helpers/animations";
-import { Button } from "@/shared/ui/kit/button/Button";
-
-import styles from "./PricingPackages.module.scss";
+import styles from './PricingPackages.module.scss';
 
 export const PricingPackages = () => {
-  const t = useTranslations("pricingPackages");
+  const t = useTranslations('pricingPackages');
   const packages = usePackages();
   const openRequest = useFormsPopupStore((state) => state.openRequest);
 
@@ -32,7 +30,7 @@ export const PricingPackages = () => {
             viewport={{ once: true }}
             variants={fadeInUp}
           >
-            {t("heading", { fallback: "Our Packages" })}
+            {t('heading', { fallback: 'Our Packages' })}
           </motion.h2>
           <div className={styles.packages__divider} />
 
@@ -51,15 +49,12 @@ export const PricingPackages = () => {
                     <div className={styles.packages__info_text}>
                       <h3 className={styles.packages__name}>{pkg.name}</h3>
                       <div className={styles.packages__desc}>
-                        <p className={styles.packages__bold_intro}>
-                          {pkg.boldIntro}
-                        </p>
+                        <p className={styles.packages__bold_intro}>{pkg.boldIntro}</p>
                         <p>{pkg.description}</p>
                       </div>
                     </div>
                     <p className={styles.packages__price}>
-                      {t("from", { fallback: "From" })} €
-                      {pkg.price.toLocaleString("en-IE")}
+                      {t('from', { fallback: 'From' })} €{pkg.price.toLocaleString('en-IE')}
                     </p>
                     <Button variant="white" type="button" onClick={() => onClick(pkg.name)}>
                       {pkg.cta}
@@ -74,7 +69,7 @@ export const PricingPackages = () => {
                       viewport={{ once: true }}
                       variants={fadeInUp}
                     >
-                      {t("whatsIncluded", {
+                      {t('whatsIncluded', {
                         fallback: "What's included:",
                       })}
                     </motion.h4>
@@ -94,11 +89,7 @@ export const PricingPackages = () => {
                           variants={fadeInUp}
                         >
                           {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
-                            src={item.icon}
-                            alt=""
-                            className={styles.packages__icon}
-                          />
+                          <img src={item.icon} alt="" className={styles.packages__icon} />
                           <div className={styles.packages__item_text}>
                             <strong>{item.title}</strong>
                             <span>{item.description}</span>
