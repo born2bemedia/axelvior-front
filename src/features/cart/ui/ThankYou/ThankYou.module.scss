@@ -11,7 +11,7 @@
   color: #000;
   text-align: center;
   font-family: var(--font-clash-grotesk, sans-serif);
-  font-size: 80px;
+  font-size: 60px;
   font-weight: 300;
   line-height: 120%;
   letter-spacing: -0.5px;
@@ -25,75 +25,159 @@
   }
 }
 
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  gap: 8px;
-}
-
 .text {
-  color: #000;
+  color: var(--color-black-solid, #000);
   text-align: center;
   font-size: 16px;
+  font-style: normal;
   font-weight: 400;
-  line-height: 140%;
-  letter-spacing: -0.25px;
-
-  @include mobile {
+  line-height: 140%; /* 22.4px */
+  letter-spacing: var(--letter-spacing--0_25, -0.25px);
+  @include tablet {
     font-size: 14px;
   }
-  a {
-    text-decoration: underline;
-  }
 }
 
-.orderDetails {
-  width: 100%;
-  margin: 16px 0;
-}
-
-.orderTitle {
-  color: #000;
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 140%;
-  margin-bottom: 12px;
-  text-align: center;
-}
-
-.orderTable {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
-  margin: 0 auto;
-
-  th,
-  td {
-    padding: 10px 12px;
-    text-align: left;
-    border: 1px solid rgba(0, 0, 0, 0.15);
+.content {
+  margin-top: 20px;
+  display: flex;
+  padding: var(--item-spacing-40, 40px) var(--item-spacing-80, 80px);
+  justify-content: center;
+  align-items: center;
+  gap: var(--item-spacing-80, 40px);
+  background: var(--color-blue-8, #000829);
+  @include tablet {
+    padding: var(--item-spacing-40, 40px) var(--item-spacing-10, 16px);
+    flex-direction: column;
   }
 
-  th {
-    background: rgba(0, 0, 0, 0.04);
-    font-weight: 600;
-    color: #000;
+  .orderDetails {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--item-spacing-20, 20px);
+    align-items: center;
+    @include tablet {
+      width: 100%;
+    }
+    h2 {
+      color: var(--color-white-solid, #fff);
+      font-size: 40px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 120%; /* 48px */
+      letter-spacing: var(--letter-spacing--0_25, -0.25px);
+      width: 100%;
+      text-align: center;
+      @include tablet {
+        font-size: 24px;
+      }
+    }
+    table {
+      border-collapse: separate;
+      border-spacing: 10px;
+      width: 100%;
+      @include tablet {
+        width: 100%;
+        display: flex;
+      }
+      thead {
+        @include tablet {
+          display: none;
+        }
+      }
+      th {
+        padding: var(--item-spacing-8, 8px) var(--item-spacing-12, 12px);
+        color: var(--color-white-solid, #fff);
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 140%; /* 25.2px */
+        letter-spacing: var(--letter-spacing--0_5, -0.5px);
+        border: 1px solid var(--color-white-30, rgba(255, 255, 255, 0.3));
+        width: 25%;
+      }
+      tbody {
+        width: 100%;
+        @include tablet {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+        }
+        tr {
+          @include tablet {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            border: 1px solid var(--color-white-30, rgba(255, 255, 255, 0.3));
+            width: 100%;
+          }
+        }
+        td {
+          color: var(--color-white-solid, #fff);
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 140%; /* 25.2px */
+          letter-spacing: var(--letter-spacing--0_5, -0.5px);
+          border: 1px solid var(--color-white-30, rgba(255, 255, 255, 0.3));
+          padding: var(--item-spacing-8, 8px) var(--item-spacing-12, 12px);
+          width: 25%;
+          text-align: center;
+          @include tablet {
+            width: calc(50% - 10px);
+            padding: 0;
+            border: none;
+            text-align: left;
+            &:before {
+              content: attr(data-label);
+              font-weight: 700;
+              display: block;
+              margin-bottom: 5px;
+              color: var(--color-white-solid, #fff);
+              font-size: 12px;
+              font-style: normal;
+              font-weight: 700;
+              line-height: 140%; /* 16.8px */
+              letter-spacing: var(--letter-spacing--0_25, -0.25px);
+              text-transform: uppercase;
+            }
+          }
+          &:first-child {
+            text-align: left;
+            @include tablet {
+              width: 100%;
+              font-size: 20px;
+            }
+          }
+          &:last-child {
+            @include tablet {
+              width: 100%;
+              font-size: 20px;
+            }
+          }
+        }
+      }
+    }
   }
-
-  td {
-    color: #333;
-  }
-
-  @include mobile {
-    font-size: 12px;
-
-    th,
-    td {
-      padding: 8px;
+  .textWrapper {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--item-spacing-20, 20px);
+    align-items: flex-start;
+    @include tablet {
+      width: 100%;
+    }
+    p {
+      color: var(--color-white-solid, #fff);
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 140%; /* 22.4px */
+      letter-spacing: var(--letter-spacing--0_25, -0.25px);
     }
   }
 }

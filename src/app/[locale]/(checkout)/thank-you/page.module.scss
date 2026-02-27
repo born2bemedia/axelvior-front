@@ -5,4 +5,15 @@
   background: #f1f6fd;
   @include tablet {
   }
+  &__image_desktop {
+    @include mobile {
+      display: none;
+    }
+  }
+  &__image_mobile {
+    display: none;
+    @include mobile {
+      display: block;
+    }
+  }
 }
