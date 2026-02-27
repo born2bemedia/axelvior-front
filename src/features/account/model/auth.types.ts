@@ -4,4 +4,9 @@ export type AuthUser = {
   firstName?: string;
   lastName?: string;
   phone?: string;
+  address1?: string;
+  address2?: string;
+  city?: string;
+  country?: string;
+  zip?: string;
 };

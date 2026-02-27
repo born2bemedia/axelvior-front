@@ -5,6 +5,11 @@ export const contactDataSchema = z.object({
   lastName: z.string().min(1, 'Last name is required'),
   phone: z.string().optional(),
   email: z.string().email('Invalid email').min(1, 'Email is required'),
+  address1: z.string().min(1, 'Address is required'),
+  address2: z.string().min(1, 'Address is required'),
+  city: z.string().min(1, 'City is required'),
+  country: z.string().min(1, 'Country is required'),
+  zip: z.string().min(1, 'Zip is required'),
 });
 
 export const changePasswordSchema = z

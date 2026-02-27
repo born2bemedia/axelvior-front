@@ -20,14 +20,12 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 16px;
+  gap: 32px;
   width: 100%;
+
   button {
-    width: 300px;
-    margin-top: 8px;
-    @include tablet {
-      width: 100%;
-    }
+    line-height: 1;
+    padding: 11px 15px;
 
     &:disabled {
       opacity: 0.6;
@@ -36,43 +34,32 @@
   }
   .formGroup {
     display: flex;
-    padding: 12px;
-    align-items: center;
-    gap: 12px;
-    align-self: stretch;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid transparent;
-    @include tablet {
-      flex-direction: column;
-    }
+    align-items: flex-start;
+    gap: 4px;
+    flex-direction: column;
+
     &.errorInput {
       background: rgba(255, 0, 0, 0.05);
       border-color: rgba(255, 62, 71, 0.3);
     }
     label {
-      color: rgba(204, 204, 204, 0.3);
-      font-size: 14px;
+      color: #fff;
+      font-size: 12px;
       font-style: normal;
-      font-weight: 300;
-      line-height: normal;
-      width: 18%;
-      @include tablet {
-        width: 100%;
-      }
+      font-weight: 700;
+      line-height: 140%;
+      letter-spacing: -0.25px;
     }
     input {
-      flex: 1;
-      color: #fff;
-      font-size: 14px;
-      font-style: normal;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 18px;
       font-weight: 400;
-      line-height: normal;
-      text-transform: uppercase;
-      background: transparent;
-      border: none;
-      @include tablet {
-        width: 100%;
-      }
+      line-height: 1;
+      letter-spacing: -0.5px;
+      padding: 12px 16px;
+      width: 100%;
     }
     .error {
       color: #ff2d30;
@@ -293,10 +280,30 @@
       }
     }
   }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 20px;
+    width: 100%;
+
+    &_title {
+      color: #fff;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 140%;
+      letter-spacing: -0.25px;
+      margin-bottom: 32px;
+    }
+
+    & > :nth-child(6) {
+      grid-column: span 2;
+    }
+  }
 }
 
 .formSection {
-  margin-bottom: 2rem;
   width: 100%;
   h2 {
     color: #ccc;
@@ -311,6 +318,7 @@
   flex-direction: column;
   gap: 24px;
   width: 100%;
+  align-items: flex-start;
 
   .formGroup {
     display: flex;
@@ -320,33 +328,24 @@
     width: 100%;
 
     label {
-      color: #ccc;
-      font-size: 14px;
+      color: #fff;
+      font-size: 12px;
       font-style: normal;
-      font-weight: 300;
-      line-height: normal;
-    }
-
-    .required {
-      color: #ff2d30;
-      margin-left: 4px;
+      font-weight: 700;
+      line-height: 140%;
+      letter-spacing: -0.25px;
     }
 
     input {
-      display: flex;
-      height: 38px;
-      padding: 10px 16px;
-      align-items: center;
-      gap: 10px;
-      align-self: stretch;
-      transition: border-color 0.3s ease;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      background: rgba(255, 255, 255, 0.03);
-      color: #fff;
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 300;
-      line-height: normal;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: -0.5px;
+      padding: 12px 16px;
+      width: 100%;
 
       &:focus {
         outline: none;
@@ -373,11 +372,8 @@
   }
 
   button {
-    width: 300px;
-    margin-top: 8px;
-    @include tablet {
-      width: 100%;
-    }
+    line-height: 1;
+    padding: 11px 15px;
 
     &:disabled {
       opacity: 0.6;
@@ -418,7 +414,9 @@
   font-weight: 300;
   text-decoration: none;
   cursor: pointer;
-  transition: border-color 0.3s ease, background 0.3s ease;
+  transition:
+    border-color 0.3s ease,
+    background 0.3s ease;
   box-sizing: border-box;
   &:hover {
     border-color: rgba(255, 255, 255, 0.3);
@@ -446,7 +444,9 @@
   align-items: center;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
 
   &.open {
     opacity: 1;
@@ -480,5 +480,31 @@
       line-height: normal;
       margin-bottom: 20px;
     }
+  }
+}
+
+.passwordWrapper {
+  position: relative;
+}
+
+button.togglePassword {
+  position: absolute;
+  right: 16px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: opacity 0.2s ease;
+  width: 24px;
+  height: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  &:hover {
+    opacity: 0.6;
   }
 }

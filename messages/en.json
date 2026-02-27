@@ -270,6 +270,9 @@
     "subtitlePartThree": "to review the full range of services and packages we offer. Whether you’re just getting started or looking to scale your business to new heights, we have a solution for you.",
     "linkTitle": "Download Pricing PDF"
   },
+  "common": {
+    "back-to-ideas": "Back"
+  },
   "ideasCta": {
     "title1": "Ready to build a scalable business",
     "title2": "with clarity and purpose?",
@@ -279,9 +282,6 @@
   "ideasHero": {
     "title1": "Strategic insights for entrepreneurs.",
     "description": "A modern, action-oriented title that emphasizes strategic thinking and growth. Combines insightful and sharp ideas, perfect for entrepreneurs looking to fine-tune their approach."
-  },
-  "common": {
-    "back-to-ideas": "Back"
   },
   "pricingDownload": {
     "title1": "DOWNLOAD OUR PRICING PDF",
@@ -732,7 +732,16 @@
     "hi": "Hi"
   },
   "accountPage": {
+    "tabOneTitle": "Project History",
+    "tabTwoTitle": "Account Management",
     "loading": "Loading...",
+    "mainTitle": "Welcome",
+    "logOutLinkTitle": "Log Out",
+    "contentTitle": "This is your strategic hub for managing engagements, refining your profile, and downloading strategic documents.",
+    "itemOneTitle": "Project History:",
+    "itemOneDescription": "Review past engagements, download invoices, and deliverables.",
+    "itemTwoTitle": "Account Management:",
+    "itemTwoDescription": "Update your professional details and preferences.",
     "title": "My orders",
     "noServices": "You have no orders yet.",
     "allOrders": "Check all orders"
@@ -741,21 +750,32 @@
     "loading": "Loading...",
     "title": "Account Setting",
     "backToAccount": "← Back to account",
-    "currentPassword": "Current Password",
-    "currentPasswordPlaceholder": "Current Password",
-    "newPassword": "New Password",
-    "newPasswordPlaceholder": "New Password",
-    "repeatNewPassword": "Repeat New Password",
+    "formPasswordTitle": "Account Access",
+    "currentPassword": "CURRENT PASSWORD",
+    "currentPasswordPlaceholder": "Enter your password",
+    "newPassword": "NEW PASSWORD",
+    "newPasswordPlaceholder": "Enter your password",
+    "repeatNewPassword": "CONFIRM NEW PASSWORD",
     "repeatNewPasswordPlaceholder": "Repeat New Password",
-    "updateData": "Update Data",
-    "yourName": "Your Name",
-    "yourNamePlaceholder": "Your Name",
-    "yourLastName": "Your Last Name",
-    "yourLastNamePlaceholder": "Your Last Name",
-    "yourPhone": "Your Phone",
-    "yourPhonePlaceholder": "Your Phone",
-    "yourEmail": "Your Email",
+    "updateData": "Save",
+    "formTitle1": "Personal Information",
+    "firstName": "FIRST NAME",
+    "yourNamePlaceholder": "Enter your first name",
+    "yourLastName": "LAST NAME",
+    "yourLastNamePlaceholder": "Enter your last name",
+    "yourPhone": "PHONE NUMBER",
+    "yourEmail": "EMAIL",
     "yourEmailPlaceholder": "Your Email",
+    "yourAddress1": "STREET ADDRESS",
+    "yourAddress1Placeholder": "Enter your street address",
+    "yourAddress2": "APARTMENT/SUITE",
+    "yourAddress2Placeholder": "Enter your apartment/suite",
+    "yourCity": "CITY",
+    "yourCityPlaceholder": "Enter your city",
+    "yourCountry": "COUNTRY",
+    "yourCountryPlaceholder": "Enter your country",
+    "yourZip": "POSTAL CODE",
+    "yourZipPlaceholder": "Enter your postal code",
     "dataUpdated": "Data updated successfully!",
     "dataUpdatedDescription": "Your personal information has been updated successfully.",
     "close": "Close"
@@ -767,7 +787,7 @@
     "title": "Welcome Back to Axelvior",
     "subtitle": "Enter your credentials to log in. If you’ve forgotten your password, click “Forgot Password?” for assistance.",
     "email": "USERNAME OR EMAIL",
-    "placeHolderEmail": "Enter your username or email",
+    "placeHolderEmail": "Enter your username",
     "password": "PASSWORD",
     "placeHolderPassword": "Enter your password",
     "keepSigned": "Keep me signed in on this device",
@@ -776,18 +796,18 @@
     "signupLink": "Forgot Password?"
   },
   "myOrdersPage": {
-    "loading": "Loading orders...",
-    "title": "My Orders",
-    "noOrders": "You have no orders yet.",
-    "date": "Date",
+    "serviceOrdered": "Service Ordered",
     "orderId": "Order ID",
-    "service": "Service",
-    "quantity": "Quantity",
-    "total": "Total, €",
-    "status": "Status",
+    "total": "Total Price",
+    "paymentMethod": "Payment Method",
+    "status": "Order Status",
     "invoice": "Invoice",
+    "deliverablesBold": "Deliverables",
     "download": "Download",
-    "backToAccount": "← Back to account"
+    "loading": "Loading orders...",
+    "title": "Project History",
+    "noOrders": "You have no orders yet.",
+    "date": "Purchase Date"
   },
   "registration": {
     "successTitle": "Your account has been created successfully!",
