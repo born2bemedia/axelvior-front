@@ -1,5 +1,6 @@
 import localFont from 'next/font/local';
 
+import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale } from 'next-intl/server';
@@ -63,6 +64,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
+      <GoogleAnalytics gaId="G-7EH7P106ZY" />
       <body className={cn(cabinetGrotesk.variable, clashGrotesk.variable)}>
         <NextIntlClientProvider>
           <Header />
