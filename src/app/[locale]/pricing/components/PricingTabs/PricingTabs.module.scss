@@ -56,7 +56,9 @@
     letter-spacing: var(--letter-spacing--0_25, -0.25px);
     text-transform: uppercase;
     color: var(--color-black-solid, #000);
-    transition: font-weight 0.2s, border-color 0.2s;
+    transition:
+      font-weight 0.2s,
+      border-color 0.2s;
     justify-content: flex-start;
 
     @include mobile {
@@ -154,8 +156,9 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 500px;
-    flex-shrink: 0;
+    //width: 500px;
+    max-width: 500px;
+    //flex-shrink: 0;
 
     @include tablet {
       width: 100%;

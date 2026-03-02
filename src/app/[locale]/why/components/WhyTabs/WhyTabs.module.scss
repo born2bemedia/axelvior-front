@@ -56,7 +56,9 @@
     letter-spacing: var(--letter-spacing--0_25, -0.25px);
     text-transform: uppercase;
     color: var(--color-black-solid, #000);
-    transition: font-weight 0.2s, border-color 0.2s;
+    transition:
+      font-weight 0.2s,
+      border-color 0.2s;
     justify-content: flex-start;
 
     @include mobile {
@@ -126,7 +128,6 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    max-width: 700px;
     z-index: 1;
   }
 
@@ -149,6 +150,7 @@
   }
 
   &__tab_text {
+    max-width: 700px;
     display: flex;
     flex-direction: column;
     gap: 10px;

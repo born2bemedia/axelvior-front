@@ -2,6 +2,8 @@
 
 import { useEffect } from 'react';
 
+import type { Metadata } from 'next';
+
 import { useCartStore } from '@/features/cart';
 import { CheckoutForm } from '@/features/cart/ui/CheckoutForm/CheckoutForm';
 import { EmptyCart } from '@/features/cart/ui/EmptyCart/EmptyCart';

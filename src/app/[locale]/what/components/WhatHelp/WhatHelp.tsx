@@ -526,8 +526,7 @@ export const WhatHelp = () => {
       <div className={'container'}>
         <div className={styles.what_help__top}>
           <h2 className={styles.what_help__title}>
-            {/*{t('title1', { fallback: 'WHAT WE HELP WITH' })}*/}
-            WHAT WE HELP WITH
+            {t('title1', { fallback: 'WHAT WE HELP WITH' })}
           </h2>
 
           <div className={styles.what_help__tabs}>

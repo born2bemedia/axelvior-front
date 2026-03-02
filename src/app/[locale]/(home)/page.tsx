@@ -8,7 +8,7 @@ import {
   HomeWhat,
   HomeWho,
   HomeWhy,
-} from "./components";
+} from './components';
 
 export default async function Home() {
   return (

@@ -52,6 +52,11 @@
     "subtitle2": "Axelvior restores focus, helping you prioritize what matters now and making progress purposeful.",
     "subtitle3": "We ensure your effort adds up to steady, sustainable progress."
   },
+  "HomeRequest": {
+    "title1": "Let’s define the next step",
+    "description1": "Every collaboration at Axelvior begins with understanding.",
+    "description2": "This form helps us see what you’re building, where things feel unclear, and what kind of support you’re considering.\n"
+  },
   "homeWhat": {
     "card1Title": "Strategic direction",
     "card1Item1": "Clarifying priorities when multiple paths compete",
@@ -650,6 +655,10 @@
       "footer": "We work with those who are prepared to invest in their business's longevity — because growth doesn't happen overnight, and it's not linear."
     },
     "tab2": {
+      "item1": "Focused guidance, not \"strategic noise\"",
+      "item2": "Personalized frameworks, not templated solutions",
+      "item3": "Sustainable direction, not rapid growth at the cost of long-term stability",
+      "item4": "Structured decisions, not scattered action",
       "heading": "WHAT MAKES US DIFFERENT",
       "desc1": "At Axelvior, we don't take a one-size-fits-all approach.",
       "desc2": "We understand that each entrepreneur's journey is different, and we treat each one with the customized attention it deserves.",
@@ -663,6 +672,14 @@
       "desc3": "We are here to help you regain control over your direction — whether that means refining your offer, optimizing your workflows, or preparing for the next phase of growth."
     },
     "tab4": {
+      "offer1Title": "Strategic Direction",
+      "offer1Desc": "Helping you articulate and refine your business vision.",
+      "offer2Title": "Strategic Advice",
+      "offer2Desc": "Providing actionable guidance based on real-world insights.",
+      "offer3Title": "Business Structure & Systems",
+      "offer3Desc": "Building frameworks to scale your operations without losing sight of the mission.",
+      "offer4Title": "Positioning & Offer Development",
+      "offer4Desc": "Clarifying what you offer, and making sure it's aligned with your business direction.",
       "heading": "WHAT WE OFFER",
       "cta": "Start a conversation with Axelvior"
     },
@@ -732,8 +749,8 @@
     "hi": "Hi"
   },
   "accountPage": {
-    "tabOneTitle": "Project History",
     "tabTwoTitle": "Account Management",
+    "tabOneTitle": "Project History",
     "loading": "Loading...",
     "mainTitle": "Welcome",
     "logOutLinkTitle": "Log Out",
@@ -949,6 +966,54 @@
     "loading": "Loading...",
     "submit": "Submit",
     "formNote": "All enquiries are confidential. We respond within one business day."
+  },
+  "HomeRequestForm": {
+    "projectTypeBusinessDirection": "Business direction & clarity",
+    "projectTypeOfferRefinement": "Offer refinement & positioning",
+    "projectTypeGrowthPlanning": "Growth planning & prioritisation",
+    "projectTypeStructuralSetup": "Structural or operational setup",
+    "projectTypeStrategicReview": "Strategic review / second opinion",
+    "projectTypeOther": "Describe what you're looking for",
+    "investment": {
+      "under": "Under"
+    },
+    "timingNextMonth": "Within the next month",
+    "timingOneToThreeMonths": "1–3 months",
+    "timingThreeToSixMonths": "3–6 months",
+    "timingFlexible": "Flexible / not fixed yet",
+    "followUpEmail": "Email",
+    "followUpPhone": "Phone",
+    "followUpVideoCall": "Video Call",
+    "specifyText": "Please specify",
+    "optionalText": "OPTIONAL",
+    "fullName": "FULL NAME",
+    "fullNamePlaceholder": "Enter your full name",
+    "emailAddress": "EMAIL ADDRESS",
+    "emailAddressPlaceholder": "Enter your email address",
+    "phone": "PHONE NUMBER",
+    "companyName": "COMPANY NAME",
+    "companyNamePlaceholder": "Enter your company name",
+    "website": "YOUR WEBSITE",
+    "websitePlaceholder": "Enter your website URL",
+    "projectType": "WHAT BEST DESCRIBES WHAT YOU’RE LOOKING FOR?",
+    "investmentRange": "Scope & investment",
+    "investmentRangeSub": "Indicative investment range:",
+    "goals": "GOALS & FRICTION POINTS",
+    "goalsPlaceholder": "What are you trying to move forward with right now?",
+    "frictionPoints": "WHERE DOES IT CURRENTLY FEEL UNCLEAR, STUCK, OR INEFFICIENT?",
+    "optionalButHelpful": "optional but helpful",
+    "clientContext": "Who do you work with or serve?",
+    "clientContextPlaceholder": "Any detail that helps us understand your context",
+    "timing": "Timing",
+    "timingPlaceholder": "When would you ideally like to start?",
+    "followUp": "How should we follow up?",
+    "followUpPlaceholder": "Preferred way to continue the conversation",
+    "attachments": "Attachments",
+    "attachmentsNotes": "Upload any materials that help explain your situation",
+    "attachmentsExamples": "(e.g., notes, outlines, links, drafts)",
+    "notice": "Once submitted, we’ll review your request and follow up with the next steps or clarifying questions.",
+    "sending": "Sending...",
+    "submitRequest": "Submit a request"
   },
   "forms": {
     "requestForm": {

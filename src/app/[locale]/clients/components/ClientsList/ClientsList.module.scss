@@ -157,3 +157,9 @@
     letter-spacing: -0.25px;
   }
 }
+
+html[lang='de'] {
+  .clients_list__row_column_title_lang_adaptive {
+    font-size: 38px;
+  }
+}

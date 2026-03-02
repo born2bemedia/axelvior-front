@@ -467,7 +467,9 @@ export const ClientsList = () => {
               </div>
 
               <div className={styles.clients_list__row_column_two_item_two}>
-                <h3 className={styles.clients_list__row_column_title}>
+                <h3
+                  className={`${styles.clients_list__row_column_title} ${styles.clients_list__row_column_title_lang_adaptive}`}
+                >
                   {t('solutionTitle', {
                     fallback: 'What we did:',
                   })}

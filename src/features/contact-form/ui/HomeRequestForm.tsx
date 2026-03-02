@@ -3,6 +3,7 @@
 import { useCallback, useRef, useState } from 'react';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useTranslations } from 'next-intl';
 import { Controller, useForm } from 'react-hook-form';
 import PhoneInput from 'react-phone-input-2';
 
@@ -49,6 +50,37 @@ export const HomeRequestForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [attachments, setAttachments] = useState<File[]>([]);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const t = useTranslations('HomeRequestForm');
+
+  const PROJECT_TYPE_OPTIONS = [
+    t('projectTypeBusinessDirection', { fallback: 'Business direction & clarity' }),
+    t('projectTypeOfferRefinement', { fallback: 'Offer refinement & positioning' }),
+    t('projectTypeGrowthPlanning', { fallback: 'Growth planning & prioritisation' }),
+    t('projectTypeStructuralSetup', { fallback: 'Structural or operational setup' }),
+    t('projectTypeStrategicReview', { fallback: 'Strategic review / second opinion' }),
+    t('projectTypeOther', { fallback: 'Other' }),
+  ];
+
+  const INVESTMENT_OPTIONS = [
+    t('investment.under', { fallback: 'Under' }) + ' €1,000',
+    '€1,000 - €5,000',
+    '€5,000 - €10,000',
+    '€10,000 - €20,000',
+    '€20,000+',
+  ];
+
+  const TIMING_OPTIONS = [
+    t('timingNextMonth', { fallback: 'Within the next month' }),
+    t('timingOneToThreeMonths', { fallback: '1–3 months' }),
+    t('timingThreeToSixMonths', { fallback: '3–6 months' }),
+    t('timingFlexible', { fallback: 'Flexible / not fixed yet' }),
+  ];
+
+  const FOLLOW_UP_OPTIONS = [
+    t('followUpEmail', { fallback: 'Email' }),
+    t('followUpPhone', { fallback: 'Phone' }),
+    t('followUpVideoCall', { fallback: 'Video Call' }),
+  ];
 
   const {
     register,
@@ -103,6 +135,14 @@ export const HomeRequestForm = () => {
     setAttachments(files);
   };
 
+  const specifyText = t('specifyText', {
+    fallback: 'Please specify',
+  });
+
+  const optionalText = t('optionalText', {
+    fallback: 'OPTIONAL',
+  });
+
   return (
     <>
       <div className={styles.form}>
@@ -111,22 +151,25 @@ export const HomeRequestForm = () => {
           <div className={styles.section}>
             <div className={styles.row}>
               <div className={styles.field}>
-                <label htmlFor="fullName">Full name</label>
+                <label htmlFor="fullName">{t('fullName', { fallback: 'FULL NAME' })}</label>
                 <input
                   id="fullName"
                   type="text"
-                  placeholder="Enter your full name"
+                  placeholder={t('fullNamePlaceholder', { fallback: 'Enter your full name' })}
                   {...register('fullName')}
                   className={errors.fullName ? styles.errorInput : ''}
                 />
                 {errors.fullName && <p className={styles.error}>{errors.fullName.message}</p>}
               </div>
+
               <div className={styles.field}>
-                <label htmlFor="email">Email address</label>
+                <label htmlFor="email">{t('emailAddress', { fallback: 'EMAIL ADDRESS' })}</label>
                 <input
                   id="email"
                   type="email"
-                  placeholder="Enter your email address"
+                  placeholder={t('emailAddressPlaceholder', {
+                    fallback: 'Enter your email address',
+                  })}
                   {...register('email')}
                   className={errors.email ? styles.errorInput : ''}
                 />
@@ -136,7 +179,7 @@ export const HomeRequestForm = () => {
 
             <div className={styles.row}>
               <div className={styles.field}>
-                <label htmlFor="phone">Phone number</label>
+                <label htmlFor="phone">{t('phone', { fallback: 'PHONE NUMBER' })}</label>
                 <Controller
                   name="phone"
                   control={control}
@@ -155,14 +198,16 @@ export const HomeRequestForm = () => {
                 />
                 {errors.phone && <p className={styles.error}>{errors.phone.message}</p>}
               </div>
+
               <div className={styles.field}>
                 <label htmlFor="companyName">
-                  Company name <span className={styles.optional}>(OPTIONAL)</span>
+                  {t('companyName', { fallback: 'COMPANY NAME' })}{' '}
+                  <span className={styles.optional}>({optionalText})</span>
                 </label>
                 <input
                   id="companyName"
                   type="text"
-                  placeholder="Enter your company name"
+                  placeholder={t('companyNamePlaceholder', { fallback: 'Enter your company name' })}
                   {...register('companyName')}
                 />
               </div>
@@ -170,12 +215,13 @@ export const HomeRequestForm = () => {
 
             <div className={styles.field}>
               <label htmlFor="website">
-                Your website <span className={styles.optional}>(OPTIONAL)</span>
+                {t('website', { fallback: 'YOUR WEBSITE' })}{' '}
+                <span className={styles.optional}>({optionalText})</span>
               </label>
               <input
                 id="website"
                 type="url"
-                placeholder="Enter your website URL"
+                placeholder={t('websitePlaceholder', { fallback: 'Enter your website URL' })}
                 {...register('website')}
               />
             </div>
@@ -186,7 +232,11 @@ export const HomeRequestForm = () => {
           {/* ── About your project ───────────────────────── */}
           <div className={styles.section}>
             <div className={styles.field}>
-              <label htmlFor="projectType">What best describes what you&apos;re looking for?</label>
+              <label htmlFor="projectType">
+                {t('projectType', {
+                  fallback: 'WHAT BEST DESCRIBES WHAT YOU’RE LOOKING FOR?',
+                })}{' '}
+              </label>
               <div className={styles.selectWrapper}>
                 <select
                   id="projectType"
@@ -195,7 +245,7 @@ export const HomeRequestForm = () => {
                   defaultValue=""
                 >
                   <option value="" disabled>
-                    Please specify
+                    {specifyText}
                   </option>
                   {PROJECT_TYPE_OPTIONS.map((opt) => (
                     <option key={opt} value={opt}>
@@ -210,11 +260,13 @@ export const HomeRequestForm = () => {
 
             {projectType === 'Other' && (
               <div className={styles.field}>
-                <label htmlFor="projectTypeOther">Please specify</label>
+                <label htmlFor="projectTypeOther">{specifyText}</label>
                 <input
                   id="projectTypeOther"
                   type="text"
-                  placeholder="Describe what you're looking for"
+                  placeholder={t('projectTypeOther', {
+                    fallback: "Describe what you're looking for",
+                  })}
                   {...register('projectTypeOther')}
                 />
               </div>
@@ -222,8 +274,16 @@ export const HomeRequestForm = () => {
 
             <div className={styles.field}>
               <label htmlFor="investmentRange">
-                Scope &amp; investment
-                <span className={styles.sublabel}> — Indicative investment range:</span>
+                {t('investmentRange', {
+                  fallback: 'Scope & investment',
+                })}
+                <span className={styles.sublabel}>
+                  {' '}
+                  -
+                  {t('investmentRangeSub', {
+                    fallback: 'Indicative investment range:',
+                  })}
+                </span>
               </label>
               <div className={styles.selectWrapper}>
                 <select
@@ -233,7 +293,7 @@ export const HomeRequestForm = () => {
                   defaultValue=""
                 >
                   <option value="" disabled>
-                    Please specify
+                    {specifyText}
                   </option>
                   {INVESTMENT_OPTIONS.map((opt) => (
                     <option key={opt} value={opt}>
@@ -251,10 +311,16 @@ export const HomeRequestForm = () => {
             {/* ── Goals & friction points ───────────────────── */}
 
             <div className={styles.field}>
-              <label htmlFor="goals">Goals &amp; friction points</label>
+              <label htmlFor="goals">
+                {t('goals', {
+                  fallback: 'GOALS & FRICTION POINTS',
+                })}
+              </label>
               <textarea
                 id="goals"
-                placeholder="What are you trying to move forward with right now?"
+                placeholder={t('goalsPlaceholder', {
+                  fallback: 'What are you trying to move forward with right now?',
+                })}
                 rows={4}
                 {...register('goals')}
               />
@@ -262,22 +328,38 @@ export const HomeRequestForm = () => {
 
             <div className={styles.field}>
               <label htmlFor="frictionPoints">
-                Where does it currently feel unclear, stuck, or inefficient?
-                <span className={styles.sublabel}> (optional but helpful)</span>
+                {t('frictionPoints', {
+                  fallback: 'WHERE DOES IT CURRENTLY FEEL UNCLEAR, STUCK, OR INEFFICIENT?',
+                })}{' '}
+                <span className={styles.sublabel}>
+                  (
+                  {t('optionalButHelpful', {
+                    fallback: 'optional but helpful',
+                  })}
+                  )
+                </span>
               </label>
               <textarea
                 id="frictionPoints"
-                placeholder="Optional but helpful"
+                placeholder={t('optionalButHelpful', {
+                  fallback: 'optional but helpful',
+                })}
                 rows={4}
                 {...register('frictionPoints')}
               />
             </div>
 
             <div className={styles.field}>
-              <label htmlFor="clientContext">Who do you work with or serve?</label>
+              <label htmlFor="clientContext">
+                {t('clientContext', {
+                  fallback: 'Who do you work with or serve?',
+                })}
+              </label>
               <textarea
                 id="clientContext"
-                placeholder="Any detail that helps us understand your context"
+                placeholder={t('clientContextPlaceholder', {
+                  fallback: 'Any detail that helps us understand your context',
+                })}
                 rows={4}
                 {...register('clientContext')}
               />
@@ -286,7 +368,11 @@ export const HomeRequestForm = () => {
             {/* ── Timing ───────────────────────────────────── */}
 
             <div className={styles.field}>
-              <label htmlFor="timing">Timing</label>
+              <label htmlFor="timing">
+                {t('timing', {
+                  fallback: 'Timing',
+                })}
+              </label>
               <div className={styles.selectWrapper}>
                 <select
                   id="timing"
@@ -295,7 +381,9 @@ export const HomeRequestForm = () => {
                   defaultValue=""
                 >
                   <option value="" disabled>
-                    When would you ideally like to start?
+                    {t('timingPlaceholder', {
+                      fallback: 'When would you ideally like to start?',
+                    })}
                   </option>
                   {TIMING_OPTIONS.map((opt) => (
                     <option key={opt} value={opt}>
@@ -309,7 +397,11 @@ export const HomeRequestForm = () => {
             </div>
 
             <div className={styles.field}>
-              <label htmlFor="followUp">How should we follow up?</label>
+              <label htmlFor="followUp">
+                {t('followUp', {
+                  fallback: 'How should we follow up?',
+                })}
+              </label>
               <div className={styles.selectWrapper}>
                 <select
                   id="followUp"
@@ -318,7 +410,9 @@ export const HomeRequestForm = () => {
                   defaultValue=""
                 >
                   <option value="" disabled>
-                    Preferred way to continue the conversation
+                    {t('followUpPlaceholder', {
+                      fallback: 'Preferred way to continue the conversation',
+                    })}
                   </option>
                   {FOLLOW_UP_OPTIONS.map((opt) => (
                     <option key={opt} value={opt}>
@@ -335,7 +429,10 @@ export const HomeRequestForm = () => {
 
             <div className={styles.field}>
               <label htmlFor="attachments">
-                Attachments <span className={styles.optional}>(OPTIONAL)</span>
+                {t('attachments', {
+                  fallback: 'Attachments',
+                })}{' '}
+                <span className={styles.optional}>({optionalText})</span>
               </label>
               <div className={styles.fileUpload} onClick={() => fileInputRef.current?.click()}>
                 <span className={styles.fileUploadText}>
@@ -343,9 +440,13 @@ export const HomeRequestForm = () => {
                     attachments.map((f) => f.name).join(', ')
                   ) : (
                     <>
-                      Upload any materials that help explain your situation
+                      {t('attachmentsNotes', {
+                        fallback: 'Upload any materials that help explain your situation',
+                      })}
                       <br />
-                      (e.g., notes, outlines, links, drafts)
+                      {t('attachmentsExamples', {
+                        fallback: '(e.g., notes, outlines, links, drafts)',
+                      })}
                     </>
                   )}
                 </span>
@@ -382,11 +483,15 @@ export const HomeRequestForm = () => {
           {/* ── Submit ───────────────────────────────────── */}
           <div className={styles.submitArea}>
             <p className={styles.submitNote}>
-              Once submitted, we&apos;ll review your request and follow up with the next steps or
-              clarifying questions.
+              {t('notice', {
+                fallback:
+                  'Once submitted, we’ll review your request and follow up with the next steps or clarifying questions.',
+              })}
             </p>
             <button type="submit" className={styles.submitBtn} disabled={isLoading}>
-              {isLoading ? 'Sending...' : 'Submit a request'}
+              {isLoading
+                ? t('sending', { fallback: 'Sending...' })
+                : t('submitRequest', { fallback: 'Submit a request' })}
             </button>
           </div>
         </form>
