@@ -38,7 +38,9 @@ export const HomeDetails = () => {
                 {t('journeysLabel', { fallback: 'CLIENT JOURNEYS' })}
               </span>
               <h2 className={styles.home_details__heading}>
-                {t('journeysTitle', { fallback: 'What our work looks like in practice.' })}
+                {t('journeysTitle', {
+                  fallback: 'What our work looks like in practice.',
+                })}
               </h2>
               <p className={styles.home_details__desc}>
                 {t('journeysDesc', {
@@ -126,7 +128,10 @@ export const HomeDetails = () => {
           >
             <div className={styles.home_details__boxes_col}>
               <p className={styles.home_details__boxes_intro}>
-                {t('pricingBoxesIntro', { fallback: 'What is included in every engagement:' })}
+                {t('pricingDesc', {
+                  fallback:
+                    'Pricing reflects the level of involvement, complexity, and responsibility.',
+                })}
               </p>
               <div className={styles.home_details__boxes_grid}>
                 <div className={styles.home_details__box_row}>
@@ -138,11 +143,15 @@ export const HomeDetails = () => {
                   </div>
                 </div>
                 <div className={styles.home_details__box}>
-                  {t('pricingBox3', { fallback: 'What the collaboration is designed to achieve' })}
+                  {t('pricingBox3', {
+                    fallback: 'What the collaboration is designed to achieve',
+                  })}
                 </div>
               </div>
               <p className={styles.home_details__boxes_note}>
-                {t('pricingNote', { fallback: 'No ambiguity disguised as flexibility.' })}
+                {t('pricingNote', {
+                  fallback: 'No ambiguity disguised as flexibility.',
+                })}
               </p>
             </div>
 
@@ -151,12 +160,13 @@ export const HomeDetails = () => {
                 {t('pricingLabel', { fallback: 'PRICING WITH CLARITY' })}
               </span>
               <h2 className={styles.home_details__heading}>
-                {t('pricingTitle', { fallback: 'Clear scope. Clear expectations.' })}
+                {t('pricingTitle', {
+                  fallback: 'Clear scope. Clear expectations.',
+                })}
               </h2>
               <p className={styles.home_details__desc}>
-                {t('pricingDesc', {
-                  fallback:
-                    'Pricing reflects the level of involvement, complexity, and responsibility.',
+                {t('visionNote', {
+                  fallback: 'No ambiguity disguised as flexibility.',
                 })}
               </p>
               <Link href="/pricing" className={styles.home_details__btn}>
@@ -180,7 +190,9 @@ export const HomeDetails = () => {
                 {t('visionLabel', { fallback: 'TELL US YOUR VISION' })}
               </span>
               <h2 className={styles.home_details__heading}>
-                {t('visionTitle', { fallback: 'Every collaboration starts with context.' })}
+                {t('visionTitle', {
+                  fallback: 'Every collaboration starts with context.',
+                })}
               </h2>
               <p className={styles.home_details__desc}>
                 {t('visionDesc', {
@@ -194,22 +206,27 @@ export const HomeDetails = () => {
 
             <div className={styles.home_details__boxes_col}>
               <p className={styles.home_details__boxes_intro}>
-                {t('visionBoxesIntro', { fallback: 'The request form allows you to:' })}
+                {t('visionBoxesIntro', {
+                  fallback: 'The request form allows you to:',
+                })}
               </p>
               <div className={styles.home_details__boxes_row}>
                 <div className={styles.home_details__box}>
-                  {t('visionBox1', { fallback: "Describe what you're building" })}
+                  {t('visionBox1', {
+                    fallback: "Describe what you're building",
+                  })}
                 </div>
                 <div className={styles.home_details__box}>
-                  {t('visionBox2', { fallback: 'Explain where things feel unclear' })}
+                  {t('visionBox2', {
+                    fallback: 'Explain where things feel unclear',
+                  })}
                 </div>
                 <div className={styles.home_details__box}>
-                  {t('visionBox3', { fallback: "Outline what kind of support you're considering" })}
+                  {t('visionBox3', {
+                    fallback: "Outline what kind of support you're considering",
+                  })}
                 </div>
               </div>
-              <p className={styles.home_details__boxes_note}>
-                {t('visionNote', { fallback: 'No ambiguity disguised as flexibility.' })}
-              </p>
             </div>
           </motion.div>
         </div>
