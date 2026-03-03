@@ -58,7 +58,7 @@ export const HomeRequestForm = () => {
     t('projectTypeGrowthPlanning', { fallback: 'Growth planning & prioritisation' }),
     t('projectTypeStructuralSetup', { fallback: 'Structural or operational setup' }),
     t('projectTypeStrategicReview', { fallback: 'Strategic review / second opinion' }),
-    t('projectTypeOther', { fallback: 'Other' }),
+    t('projectTypeOtherOption', { fallback: 'Other' }),
   ];
 
   const INVESTMENT_OPTIONS = [
@@ -258,15 +258,12 @@ export const HomeRequestForm = () => {
               {errors.projectType && <p className={styles.error}>{errors.projectType.message}</p>}
             </div>
 
-            {projectType === 'Other' && (
+            {projectType === t('projectTypeOtherOption', { fallback: 'Other' }) && (
               <div className={styles.field}>
-                <label htmlFor="projectTypeOther">{specifyText}</label>
                 <input
                   id="projectTypeOther"
                   type="text"
-                  placeholder={t('projectTypeOther', {
-                    fallback: "Describe what you're looking for",
-                  })}
+                  placeholder={specifyText}
                   {...register('projectTypeOther')}
                 />
               </div>
@@ -277,13 +274,6 @@ export const HomeRequestForm = () => {
                 {t('investmentRange', {
                   fallback: 'Scope & investment',
                 })}
-                <span className={styles.sublabel}>
-                  {' '}
-                  -
-                  {t('investmentRangeSub', {
-                    fallback: 'Indicative investment range:',
-                  })}
-                </span>
               </label>
               <div className={styles.selectWrapper}>
                 <select
@@ -330,19 +320,12 @@ export const HomeRequestForm = () => {
               <label htmlFor="frictionPoints">
                 {t('frictionPoints', {
                   fallback: 'WHERE DOES IT CURRENTLY FEEL UNCLEAR, STUCK, OR INEFFICIENT?',
-                })}{' '}
-                <span className={styles.sublabel}>
-                  (
-                  {t('optionalButHelpful', {
-                    fallback: 'optional but helpful',
-                  })}
-                  )
-                </span>
+                })}
               </label>
               <textarea
                 id="frictionPoints"
-                placeholder={t('optionalButHelpful', {
-                  fallback: 'optional but helpful',
+                placeholder={t('frictionPointsPlaceholder', {
+                  fallback: 'You can use short notes or complete thoughts',
                 })}
                 rows={4}
                 {...register('frictionPoints')}

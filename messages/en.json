@@ -975,6 +975,7 @@
     "projectTypeStructuralSetup": "Structural or operational setup",
     "projectTypeStrategicReview": "Strategic review / second opinion",
     "projectTypeOther": "Describe what you're looking for",
+    "projectTypeOtherOption": "Other",
     "investment": {
       "under": "Under"
     },
@@ -1002,6 +1003,7 @@
     "goals": "GOALS & FRICTION POINTS",
     "goalsPlaceholder": "What are you trying to move forward with right now?",
     "frictionPoints": "WHERE DOES IT CURRENTLY FEEL UNCLEAR, STUCK, OR INEFFICIENT?",
+    "frictionPointsPlaceholder": "You can use short notes or complete thoughts",
     "optionalButHelpful": "optional but helpful",
     "clientContext": "Who do you work with or serve?",
     "clientContextPlaceholder": "Any detail that helps us understand your context",
