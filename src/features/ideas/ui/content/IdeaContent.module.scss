@@ -68,8 +68,16 @@
   list-style-type: disc;
 }
 
+.listCircle {
+  list-style-type: circle;
+}
+
 .listDecimal {
   list-style-type: decimal;
+}
+
+.liWithNested {
+  list-style-type: none;
 }
 
 .listItem {

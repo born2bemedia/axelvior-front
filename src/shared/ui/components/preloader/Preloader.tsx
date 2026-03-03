@@ -69,7 +69,7 @@ export const Preloader: React.FC = () => {
         left: 0,
         width: '100%',
         height: '100%',
-        backgroundColor: '#000',
+        backgroundColor: '#fff',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -82,7 +82,7 @@ export const Preloader: React.FC = () => {
       {animationData && (
         <Lottie
           animationData={animationData}
-          style={{ width: 400, height: "auto", maxWidth: '50%' }}
+          style={{ width: 400, height: 'auto', maxWidth: '50%' }}
           loop={true}
           autoplay={true}
         />

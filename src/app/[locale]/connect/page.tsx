@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-import { ConnectContact, ConnectForm, ConnectHero, ConnectPrice } from './components';
+import { ConnectContact, ConnectForm, ConnectHero } from './components';
 
 export const metadata: Metadata = {
   title: 'Connect with Axelvior | Strategic Advisory Services for Entrepreneurs',
@@ -20,7 +20,6 @@ export default async function Connects() {
       <ConnectHero />
       <ConnectContact />
       <ConnectForm />
-      <ConnectPrice />
     </>
   );
 }

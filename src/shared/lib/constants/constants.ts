@@ -1,5 +1,5 @@
 export const WEBSITE_EMAIL = 'info@axelvior.com';
-export const WEBSITE_PHONE = 'Phone number';
+export const WEBSITE_PHONE = '';
 
 export const LINKEDIN_URL = '#';
 export const FACEBOOK_URL = '#';

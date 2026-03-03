@@ -283,7 +283,16 @@
     "title1": "Ready to build a scalable business",
     "title2": "with clarity and purpose?",
     "subtitle1": "Start with a conversation today.",
-    "button": "Submit a request"
+    "button": "Submit a request",
+    "title1_1": "Ready to create a structured path",
+    "title2_1": "for your business?",
+    "subtitle1_1": "Start with a conversation today.",
+    "title1_2": "Ready to embrace the power of focus",
+    "title2_2": "and take your business to the next level?",
+    "subtitle1_2": "Start with a conversation today.",
+    "title1_3": "Ready to take the next step",
+    "title2_3": "in scaling your business?",
+    "subtitle1_3": "Start with a conversation today."
   },
   "ideasHero": {
     "title1": "Strategic insights for entrepreneurs.",

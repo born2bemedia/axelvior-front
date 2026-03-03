@@ -118,6 +118,22 @@ const ListItem = ({ value }: { value?: Children2[] }) => {
   if (!value) return null;
 
   return value.map((item, i) => {
+    if (item.type === 'list') {
+      const listNode = item as unknown as Children;
+      return (
+        <ul
+          key={`nested-list-${i}`}
+          className={cn(st.list, listNode.listType === 'bullet' ? st.listCircle : st.listDecimal)}
+        >
+          {listNode.children?.map((subItem, j) => (
+            <li key={`nested-li-${j}`}>
+              <ListItem value={subItem.children} />
+            </li>
+          ))}
+        </ul>
+      );
+    }
+
     if (item.type === 'link' || item.type === 'autolink') {
       return (
         <a key={`link-${i}`} href={item.fields?.url} target="_blank" rel="noopener noreferrer">

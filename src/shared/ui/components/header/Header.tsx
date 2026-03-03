@@ -103,7 +103,7 @@ export const Header = () => {
           <div className={styles.header__main__inner}>
             <div className={styles.header__left}>
               <Link href="/" className={styles.header__logo}>
-                <Image src="/images/logo.svg" alt="axelvior" width={87} height={20} />
+                <Image src="/images/logo.svg" alt="axelvior" width={106} height={24} />
               </Link>
 
               <nav className={styles.header__nav}>

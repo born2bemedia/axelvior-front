@@ -9,7 +9,7 @@ import { ToastContainer } from 'react-toastify';
 import { FormsPopupRenderer } from '@/features/forms';
 
 import { cn } from '@/shared/lib/helpers/styles';
-import { CookiePopup, Footer, Header } from '@/shared/ui/components';
+import { CookiePopup, Footer, Header, Preloader } from '@/shared/ui/components';
 
 import 'react-toastify/dist/ReactToastify.css';
 import '@/shared/lib/styles/null.scss';
@@ -67,6 +67,7 @@ export default async function RootLayout({
       <GoogleAnalytics gaId="G-7EH7P106ZY" />
       <body className={cn(cabinetGrotesk.variable, clashGrotesk.variable)}>
         <NextIntlClientProvider>
+          <Preloader />
           <Header />
           {children}
           <Footer />

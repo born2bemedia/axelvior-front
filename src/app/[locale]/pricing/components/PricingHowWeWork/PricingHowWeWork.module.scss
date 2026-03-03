@@ -175,6 +175,7 @@
     font-weight: 700;
     line-height: 140%;
     letter-spacing: var(--letter-spacing--0_25, -0.25px);
+    
     @include mobile {
       font-size: 20px;
     }
@@ -193,7 +194,7 @@
 
   &__bold_intro {
     font-weight: 700;
-    margin-bottom: 0;
+    margin-bottom: 10px;
   }
 
   &__right {

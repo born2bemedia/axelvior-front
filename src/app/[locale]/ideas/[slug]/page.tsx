@@ -1,15 +1,15 @@
-import React from "react";
-import Link from "next/link";
+import React from 'react';
+import Link from 'next/link';
 
-import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import type { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 
-import { getIdea } from "@/features/ideas/api/get-ideas";
-import { IdeaArticle } from "@/features/ideas/ui/article/IdeaArticle";
-import { InfoRenderer } from "@/features/ideas/ui/renderer/InfoRenderer";
+import { getIdea } from '@/features/ideas/api/get-ideas';
+import { IdeaArticle } from '@/features/ideas/ui/article/IdeaArticle';
+import { InfoRenderer } from '@/features/ideas/ui/renderer/InfoRenderer';
 
-import { IdeasCta } from "../components/IdeasCta/IdeasCta";
-import st from "./page.module.scss";
+import { IdeasCta } from '../components/IdeasCta/IdeasCta';
+import st from './page.module.scss';
 
 export async function generateMetadata({
   params,
@@ -25,7 +25,7 @@ export async function generateMetadata({
     openGraph: {
       title: idea.title,
       description: idea.seo_description,
-      images: "",
+      images: '',
     },
   };
 }
@@ -35,7 +35,7 @@ export default async function PostPage({
 }: {
   params: Promise<{ slug: string; locale: string }>;
 }) {
-  const t = await getTranslations("common");
+  const t = await getTranslations('common');
   const awaitedParams = await params;
   const { locale, slug } = awaitedParams;
   const idea = await getIdea({ slug: slug, locale });
@@ -45,14 +45,10 @@ export default async function PostPage({
 
   return (
     <>
-      <section
-        className={st.postTitle}
-      >
+      <section className={st.postTitle}>
         <div className="container">
           <div className={st.postTitle__content}>
-            <Link href="/ideas">
-              {t("back-to-ideas", { fallback: "Back" })}
-            </Link>
+            <Link href="/ideas">{t('back-to-ideas', { fallback: 'Back' })}</Link>
             <h1>{idea.title}</h1>
             <div className={st.postTitle__info}>
               <InfoRenderer content={idea.info.root.children} />
@@ -67,7 +63,7 @@ export default async function PostPage({
           </div>
         </section>
       )}
-      <IdeasCta />
+      <IdeasCta slug={slug} />
     </>
   );
 }

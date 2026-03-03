@@ -229,15 +229,15 @@ export const RegistrationForm = () => {
                 fallback:
                   'By signing up, you confirm that you are over 18 years old and agree to our',
               })}{' '}
-              <Link href={''}>
+              <Link href={'/legal/terms-of-use'}>
                 {t('agreementBoldOne', {
-                  fallback: 'Terms and Conditions',
+                  fallback: 'Terms of Use',
                 })}
               </Link>{' '}
               {t('agreementPartTwo', {
                 fallback: 'and',
               })}{' '}
-              <Link href={''}>
+              <Link href={'/legal/privacy-policy'}>
                 {t('agreementBoldTwo', {
                   fallback: 'Privacy Policy.',
                 })}
