@@ -9,8 +9,6 @@ import { ContactInfo } from '../contact-info/ContactInfo';
 import st from './PolicyContent.module.scss';
 
 export const PolicyContent = memo(({ node, type }: { node: Children; type: string }) => {
-  console.log(node);
-  console.log(type);
   if (type === 'heading') {
     if (node.tag === 'h2') {
       return (
@@ -57,7 +55,7 @@ export const PolicyContent = memo(({ node, type }: { node: Children; type: strin
               return <br key={`br-${i}`} />;
             }
 
-            if (item.type === 'link') {
+            if (item.type === 'link' || item.type === 'autolink') {
               return (
                 <a
                   key={`link-${i}`}
@@ -120,7 +118,7 @@ const ListItem = ({ value }: { value?: Children2[] }) => {
   if (!value) return null;
 
   return value.map((item, i) => {
-    if (item.type === 'link') {
+    if (item.type === 'link' || item.type === 'autolink') {
       return (
         <a key={`link-${i}`} href={item.fields?.url} target="_blank" rel="noopener noreferrer">
           {item.children?.map((child, j) => {

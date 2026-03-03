@@ -40,9 +40,6 @@ export const WhatHero = () => {
                 </span>
               </p>
 
-              <br />
-              <br />
-
               <p className={styles.what_hero__subtitle}>
                 {t('subTitle1Pre', { fallback: 'Our work is about' })}{' '}
                 <strong>{t('subTitleBold1', { fallback: 'creating clarity,' })}</strong>{' '}
