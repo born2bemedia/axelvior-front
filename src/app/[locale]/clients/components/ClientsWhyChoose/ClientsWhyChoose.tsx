@@ -13,7 +13,7 @@ import styles from './ClientsWhyChoose.module.scss';
 export const ClientsWhyChoose = () => {
   const t = useTranslations('clientsWhyChoose');
 
-  const studies = [
+  /*const studies = [
     {
       id: 'study-one',
       title: t('studyItemOneTitle', {
@@ -44,7 +44,7 @@ export const ClientsWhyChoose = () => {
       }),
       icon: '/images/clients/icon-hierarchy.svg',
     },
-  ];
+  ];*/
 
   return (
     <motion.section
@@ -109,7 +109,7 @@ export const ClientsWhyChoose = () => {
         </div>
       </div>
 
-      <h3 className={styles.clients_choose__bottom_title}>
+      {/**<h3 className={styles.clients_choose__bottom_title}>
         {t('studiesTitlePart', {
           fallback: 'Each of these case studies represents',
         })}{' '}
@@ -137,7 +137,7 @@ export const ClientsWhyChoose = () => {
             </h4>
           </li>
         ))}
-      </ul>
+      </ul> */}
     </motion.section>
   );
 };
