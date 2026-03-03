@@ -132,6 +132,10 @@ export const HomeDetails = () => {
                   fallback:
                     'Pricing reflects the level of involvement, complexity, and responsibility.',
                 })}
+                <br />
+                {t('pricingDesc2', {
+                  fallback: 'You will always know:',
+                })}
               </p>
               <div className={styles.home_details__boxes_grid}>
                 <div className={styles.home_details__box_row}>
