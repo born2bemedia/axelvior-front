@@ -133,6 +133,7 @@ export const HomeDetails = () => {
                     'Pricing reflects the level of involvement, complexity, and responsibility.',
                 })}
                 <br />
+                <br />
                 {t('pricingDesc2', {
                   fallback: 'You will always know:',
                 })}
@@ -152,11 +153,6 @@ export const HomeDetails = () => {
                   })}
                 </div>
               </div>
-              <p className={styles.home_details__boxes_note}>
-                {t('pricingNote', {
-                  fallback: 'No ambiguity disguised as flexibility.',
-                })}
-              </p>
             </div>
 
             <div className={styles.home_details__text_col}>
