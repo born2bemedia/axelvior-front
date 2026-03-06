@@ -32,10 +32,7 @@
 
     @include mobile {
       width: 100%;
-      flex-direction: row;
-      overflow-x: auto;
       gap: 0;
-      -webkit-overflow-scrolling: touch;
       &::-webkit-scrollbar {
         display: none;
       }
@@ -63,10 +60,12 @@
 
     @include mobile {
       white-space: nowrap;
-      padding: 12px 16px;
+      padding: 16px 0;
       border-top: none;
       border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-      font-size: 12px;
+      font-size: 14px;
+      margin: 0;
+      line-height: 1;
     }
 
     &--active {
@@ -88,7 +87,7 @@
     min-height: 500px;
     border-radius: 4px;
     overflow: hidden;
-    background: var(--color-blue-8, #000829);
+    background: #09234F;
     @include mobile {
       min-height: auto;
       width: 100%;

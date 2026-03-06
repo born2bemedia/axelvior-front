@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 import { useAuthStore } from '@/features/account';
 import { useCartStore } from '@/features/cart';
@@ -27,6 +27,7 @@ export const Header = () => {
   const totalItems = useCartStore((state) => {
     return state.items.reduce((total, item) => total + item.quantity, 0);
   });
+  const locale = useLocale();
 
   const t = useTranslations('header');
 
@@ -111,7 +112,11 @@ export const Header = () => {
                   <Link
                     key={index}
                     href={item.href}
-                    className={pathname === item.href ? styles.active : ''}
+                    className={
+                      pathname === `${locale === 'bg' ? '' : `/${locale}`}${item.href}`
+                        ? styles.active
+                        : ''
+                    }
                   >
                     {item.text}
                   </Link>
@@ -147,7 +152,9 @@ export const Header = () => {
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 aria-label="Toggle menu"
               >
-                {t('menu', { fallback: 'Menu' })}
+                {isMobileMenuOpen
+                  ? t('close', { fallback: 'Close' })
+                  : t('menu', { fallback: 'Menu' })}
               </button>
             </div>
           </div>

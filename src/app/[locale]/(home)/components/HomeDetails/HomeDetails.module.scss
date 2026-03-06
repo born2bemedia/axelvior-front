@@ -288,6 +288,9 @@
   &__boxes_grid {
     display: flex;
     gap: 10px;
+    @include mobile {
+      flex-direction: column;
+    }
   }
 
   &__box_row {

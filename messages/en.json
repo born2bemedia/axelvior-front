@@ -1141,7 +1141,8 @@
     "sign-up": "Sign up",
     "login": "Login",
     "cart": "Cart",
-    "menu": "Menu"
+    "menu": "Menu",
+    "close": "Close"
   },
   "priceList": {
     "title": "Check our full price list",

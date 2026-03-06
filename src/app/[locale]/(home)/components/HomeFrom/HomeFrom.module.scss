@@ -19,7 +19,21 @@
       height: 320px;
       left: -100px;
       top: -50px;
+      display: none;
     }
+  }
+  &__dots_mobile {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: auto;
+      height: 100%;
+      pointer-events: none;
+      user-select: none;
+      @include tablet {
+        display: block;
+      }
   }
 
   &__inner {

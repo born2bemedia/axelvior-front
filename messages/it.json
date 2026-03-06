@@ -382,7 +382,8 @@
     "sign-up": "Iscriviti",
     "what": "Cosa",
     "who": "Chi",
-    "why": "Perché"
+    "why": "Perché",
+    "close": "Chiudi"
   },
   "homeDetails": {
     "journeysBtn": "Visualizza il lavoro del cliente",
