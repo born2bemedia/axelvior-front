@@ -10,6 +10,8 @@ import {
   INSTAGRAM_URL,
   WEBSITE_EMAIL,
   WEBSITE_PHONE,
+  WEBSITE_REGISTERED_ADDRESS,
+  WEBSITE_REGISTERED_ADDRESS_MAP,
   X_URL,
 } from '@/shared/lib/constants/constants';
 import { fadeInUp } from '@/shared/lib/helpers/animations';
@@ -101,16 +103,16 @@ export const ConnectContact = () => {
                 className="adaptive-image"
               />
             </div>
-            <div>
+            <div className={styles.connect_contact__item_details}>
               <p className={styles.connect_contact__item_title}>
                 {t('contactItemThreeTitle', {
                   fallback: 'LEGAL CORRESPONDENCE',
                 })}
               </p>
-              <p className={styles.connect_contact__item_link}>Registered address:</p>
+              <p className={styles.connect_contact__item_link}>{WEBSITE_REGISTERED_ADDRESS}</p>
             </div>
             <div className={styles.connect_contact__item_image_main}>
-              <Image src="/images/connect/map.jpg" alt="Map Image" width={616} height={200} />
+              <div dangerouslySetInnerHTML={{ __html: WEBSITE_REGISTERED_ADDRESS_MAP }} />
             </div>
           </div>
 
