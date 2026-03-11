@@ -4,7 +4,13 @@ import Image from 'next/image';
 
 import { useTranslations } from 'next-intl';
 
-import { FACEBOOK_URL, INSTAGRAM_URL, X_URL } from '@/shared/lib/constants/constants';
+import {
+  FACEBOOK_URL,
+  INSTAGRAM_URL,
+  WEBSITE_EMAIL,
+  WEBSITE_REGISTERED_ADDRESS,
+  X_URL,
+} from '@/shared/lib/constants/constants';
 import { FacebookIcon, InstagramIcon, XIcon } from '@/shared/ui/icons';
 
 import styles from './Footer.module.scss';
@@ -27,9 +33,18 @@ export const Footer = () => {
     {
       category: t('engage', { fallback: 'Engage' }),
       links: [
-        { text: t('footer-clients', { fallback: 'Clients' }), href: '/clients' },
-        { text: t('footer-pricing', { fallback: 'Pricing' }), href: '/pricing' },
-        { text: t('footer-connect', { fallback: 'Connect' }), href: '/connect' },
+        {
+          text: t('footer-clients', { fallback: 'Clients' }),
+          href: '/clients',
+        },
+        {
+          text: t('footer-pricing', { fallback: 'Pricing' }),
+          href: '/pricing',
+        },
+        {
+          text: t('footer-connect', { fallback: 'Connect' }),
+          href: '/connect',
+        },
       ],
     },
     {
@@ -102,11 +117,31 @@ export const Footer = () => {
             </nav>
           </div>
 
+          <div className={styles.footer__details}>
+            <div className={styles.footer__details_row}>
+              <div className={styles.footer__details_item}>
+                <span>{t('footer-email', { fallback: 'Email' })}:</span>
+                <Link href={`mailto:${WEBSITE_EMAIL}`}>{WEBSITE_EMAIL}</Link>
+              </div>
+              <div className={styles.footer__details_item}>
+                <span>
+                  {t('footer-registered-address', {
+                    fallback: 'Registered address',
+                  })}
+                  :
+                </span>
+                <p>{WEBSITE_REGISTERED_ADDRESS}</p>
+              </div>
+            </div>
+          </div>
+
           {/* Bottom section: copyright + legal */}
           <div className={styles.footer__bottom}>
             <p className={styles.footer__copyright}>
               © {year} {t('company-name', { fallback: 'AXELVIOR' })}.{' '}
-              {t('all-rights', { fallback: 'All materials are legally protected.' })}
+              {t('all-rights', {
+                fallback: 'All materials are legally protected.',
+              })}
             </p>
             <div className={styles.footer__legal}>
               <Link href="/legal/terms-of-use">
