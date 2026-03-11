@@ -9,6 +9,8 @@ import {
   FACEBOOK_URL,
   INSTAGRAM_URL,
   WEBSITE_EMAIL,
+  WEBSITE_OFFICE_ADDRESS,
+  WEBSITE_OFFICE_ADDRESS_MAP,
   WEBSITE_PHONE,
   WEBSITE_REGISTERED_ADDRESS,
   WEBSITE_REGISTERED_ADDRESS_MAP,
@@ -126,16 +128,16 @@ export const ConnectContact = () => {
                 className="adaptive-image"
               />
             </div>
-            <div>
+            <div className={styles.connect_contact__item_details}>
               <p className={styles.connect_contact__item_title}>
                 {t('contactItemFourTitle', {
                   fallback: 'OUR LOCATION',
                 })}
               </p>
-              <p className={styles.connect_contact__item_link}>Office address:</p>
+              <p className={styles.connect_contact__item_link}>{WEBSITE_OFFICE_ADDRESS}</p>
             </div>
             <div className={styles.connect_contact__item_image_main}>
-              <Image src="/images/connect/map.jpg" alt="Map Image" width={616} height={200} />
+              <div dangerouslySetInnerHTML={{ __html: WEBSITE_OFFICE_ADDRESS_MAP }} />
             </div>
           </div>
         </div>

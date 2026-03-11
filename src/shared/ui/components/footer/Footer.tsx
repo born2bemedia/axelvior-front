@@ -8,6 +8,7 @@ import {
   FACEBOOK_URL,
   INSTAGRAM_URL,
   WEBSITE_EMAIL,
+  WEBSITE_OFFICE_ADDRESS,
   WEBSITE_REGISTERED_ADDRESS,
   X_URL,
 } from '@/shared/lib/constants/constants';
@@ -131,6 +132,14 @@ export const Footer = () => {
                   :
                 </span>
                 <p>{WEBSITE_REGISTERED_ADDRESS}</p>
+                <br />
+                <span>
+                  {t('footer-office-address', {
+                    fallback: 'Office address',
+                  })}
+                  :
+                </span>
+                <p>{WEBSITE_OFFICE_ADDRESS}</p>
               </div>
             </div>
           </div>
