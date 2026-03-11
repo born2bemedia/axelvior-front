@@ -147,7 +147,7 @@ export const Footer = () => {
           {/* Bottom section: copyright + legal */}
           <div className={styles.footer__bottom}>
             <p className={styles.footer__copyright}>
-              © {year} {t('company-name', { fallback: 'AXELVIOR' })}.{' '}
+              © {year} Expandro EOOD.{' '}
               {t('all-rights', {
                 fallback: 'All materials are legally protected.',
               })}
