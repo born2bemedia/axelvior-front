@@ -1036,9 +1036,9 @@
     "card4": "Riconoscere che la crescita porta nuove sfide, vincoli e rischi che richiedono nuovi approcci",
     "footer": "Il nostro lavoro non riguarda titoli o numero di persone. Riguarda la proprietà — intellettuale, strategica e personale.",
     "heading": "Axelvior è per imprenditori che:",
-    "footerRegisteredAddress": "Indirizzo registrato",
-    "footerEmail": "Email",
-    "footerOfficeAddress": "Indirizzo dell'ufficio"
+    "footer-registered-address": "Indirizzo registrato",
+    "footer-email": "Email",
+    "footer-office-address": "Indirizzo dell'ufficio"
   },
   "whoHero": {
     "subtitle1": "Non siamo un'agenzia di marketing né una consulenza tipica. Siamo qui per dare struttura al tuo lavoro — per aiutarti a trasformare gli sforzi in qualcosa di sostenibile e impattante.",
