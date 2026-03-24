@@ -9,7 +9,13 @@ import { useLocale, useTranslations } from 'next-intl';
 import { useAuthStore } from '@/features/account';
 import { useCartStore } from '@/features/cart';
 
-import { WEBSITE_EMAIL, WEBSITE_PHONE } from '@/shared/lib/constants/constants';
+import {
+  FACEBOOK_URL,
+  INSTAGRAM_URL,
+  WEBSITE_EMAIL,
+  WEBSITE_PHONE,
+  X_URL,
+} from '@/shared/lib/constants/constants';
 import { FacebookIcon, InstagramIcon, XIcon } from '@/shared/ui/icons';
 
 import { LangSelector } from '../language-switcher/LangSelector';
@@ -81,13 +87,23 @@ export const Header = () => {
             </div>
             <div className={styles.header__topbar_right_column}>
               <div className={styles.header__topbar__socials}>
-                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <a
+                  href={FACEBOOK_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                >
                   <FacebookIcon />
                 </a>
-                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <a
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                >
                   <InstagramIcon />
                 </a>
-                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="X">
+                <a href={X_URL} target="_blank" rel="noopener noreferrer" aria-label="X">
                   <XIcon />
                 </a>
               </div>

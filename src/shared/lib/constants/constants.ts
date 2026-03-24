@@ -2,9 +2,9 @@ export const WEBSITE_EMAIL = 'info@axelvior.com';
 export const WEBSITE_PHONE = '';
 
 export const LINKEDIN_URL = '#';
-export const FACEBOOK_URL = '#';
+export const FACEBOOK_URL = 'https://www.facebook.com/axelviorcom/';
 export const INSTAGRAM_URL = '#';
-export const X_URL = '#';
+export const X_URL = 'https://x.com/axelviorcom';
 
 export const WEBSITE_REGISTERED_ADDRESS =
   'Tsarevo Selo St. 5, Fl. 2, Apt. 4,  Belite Brezi, Krasno Selo District, 1612 Sofia, Bulgaria';
