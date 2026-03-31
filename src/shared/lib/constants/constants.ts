@@ -3,7 +3,7 @@ export const WEBSITE_PHONE = '';
 
 export const LINKEDIN_URL = '#';
 export const FACEBOOK_URL = 'https://www.facebook.com/axelviorcom/';
-export const INSTAGRAM_URL = '#';
+export const INSTAGRAM_URL = 'https://www.instagram.com/axelviorcom/';
 export const X_URL = 'https://x.com/axelviorcom';
 
 export const WEBSITE_REGISTERED_ADDRESS =
